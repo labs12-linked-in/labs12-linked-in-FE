@@ -16,11 +16,13 @@ class Forms extends Component {
     renderTableRows = () => {
         let rows = [];
         this.state.forms.forEach(function(form) {
-            //let forms = this.state.forms
                 rows.push (
                     <tr>
                         <td>{form.name}</td>
                         <td>{form.fields}</td>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
                         <td>edit</td>
                     </tr>
                 )
@@ -49,6 +51,7 @@ class Forms extends Component {
                     </thead>
                     {this.renderTableRows()}
                 </table>
+                <button>Create New</button>
             </div>
         )
     }
