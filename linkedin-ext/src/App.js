@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import './App.css';
+
+import Forms from './views/Forms.js';
 
 class App extends Component {
   render() {
@@ -13,7 +15,10 @@ class App extends Component {
         &nbsp; | &nbsp;
         <NavLink to="/scrape">Scrape</NavLink>
       </header>
-     
+        <Switch>
+          <Route path="/forms" component={Forms} />
+        </Switch>
+
      </div>
    );
   }
