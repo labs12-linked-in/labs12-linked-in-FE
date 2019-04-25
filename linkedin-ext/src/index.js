@@ -1,16 +1,13 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter } from 'react-router-dom';
+import { makeMainRoutes } from './routes';
 
 import './index.css';
-import App from './App';
 
+const routes = makeMainRoutes();
 
 
 ReactDOM.render(
-        <HashRouter>
-            <App />
-        </HashRouter>,
+    routes,
 document.getElementById('root'));
 
 
