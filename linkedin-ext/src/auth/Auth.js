@@ -61,7 +61,7 @@ export default class Auth {
         this.expiresAt = expiresAt;
 
         //navigate to the home route
-        history.replace('/');
+        history.replace('/app');
     }
 
     renewSession() {
