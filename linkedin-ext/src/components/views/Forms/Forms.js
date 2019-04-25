@@ -57,7 +57,6 @@ class Forms extends Component {
             </div>
         )
     }
-}
-       
+}    
 
 export default Forms;

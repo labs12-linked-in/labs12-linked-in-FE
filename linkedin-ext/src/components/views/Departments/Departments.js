@@ -1,29 +1,35 @@
 import React, {Component} from 'react';
 
-class departments extends Component {
-    constructor(props) {
-        super(props)
+import Department from './Department/Department'
+import NavBar from '../NavBar/NavBar'
 
-        this.state = {
-            dept: [
-                {'name': 'Sales'},
-                {'name': 'Manufacturing'},
-                {'name': 'Personal'},
-                {'name': 'Engineering'}
+class departments extends Component {
+
+        state = {
+            depts: [
+                {name: 'Sales'},
+                {name: 'Manufacturing'},
+                {name: 'Personal'},
+                {name: 'Engineering'}
             ]
         }
-    }
 
-    
 
     render() {
         return (
             <div>
-                <table>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </table>
+                <div>
+                    <NavBar />
+                </div>
+                <div>
+                    <bold>Department</bold>
+                    {this.state.depts.map(dept => (
+                        <Department
+                            name={dept.name} />
+                        )
+                    )}
+                </div>
+                
             </div>
         )
     }
