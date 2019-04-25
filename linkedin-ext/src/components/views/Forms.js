@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Forms extends Component {
@@ -51,7 +52,7 @@ class Forms extends Component {
                     </thead>
                     {this.renderTableRows()}
                 </table>
-                <button>Create New</button>
+                <Link to="/new-form" >{(<button>Create New</button>)}</Link>
             </div>
         )
     }
