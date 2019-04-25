@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import classes from './App.module.css'
 
-import Forms from './views/Forms.js';
+import Forms from './components/views/Forms.js';
+import NewForm from './components/views/NewForm.js';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
       </header>
         <Switch>
           <Route path="/forms" component={Forms} />
+          <Route path="/new-form" component={NewForm} />
         </Switch>
 
      </div>
