@@ -4,21 +4,17 @@ import classes from './App.module.css'
 
 import Forms from './components/views/Forms/Forms';
 import NewForm from './components/views/Forms/NewForm.js';
+import Departments from './components/views/Departments/Departments'
 
 class App extends Component {
+
   render() {
    return (
      <div className={classes.App}>
-      <header className={classes.Nav}>
-        <NavLink activeClassName={classes.active} className={classes.NavLink}to="/forms">Forms</NavLink>
-  
-        <NavLink activeClassName={classes.active} className={classes.NavLink}to="/dept">Departments</NavLink>
-
-        <NavLink activeClassName={classes.active} className={classes.NavLink}to="/scrape">Scrape</NavLink>
-      </header>
         <Switch>
           <Route path="/forms" component={Forms} />
           <Route path="/new-form" component={NewForm} />
+          <Route path='/dept' component={Departments} />
         </Switch>
 
      </div>
