@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
 import classes from './App.module.css';
-
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Home from './components/views/Home';
 import Forms from './components/views/Forms.js';
 import NewForm from './components/views/NewForm.js';
+import Departments from './components/views/Departments/Departments'
 
 
 class App extends Component {
-
     goTo(route) {
       this.props.history.replace(`/${route}`)
     }
@@ -48,6 +47,7 @@ class App extends Component {
           <Route path="/app" render={(props) => <App {...props} /> } />
           <Route path="/forms" component={Forms} />
           <Route path="/new-form" component={NewForm} />
+          <Route path='/dept' component={Departments} />
         </Switch>
      </div>
    );
