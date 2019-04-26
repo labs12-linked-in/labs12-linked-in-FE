@@ -7,7 +7,6 @@ class Home extends Component {
 
     render() {
         const { isAuthenticated } = this.props.auth;
-        console.log(props)
         return (
             <div>
                 { isAuthenticated() && ( <h4>You are logged in!</h4>)}
