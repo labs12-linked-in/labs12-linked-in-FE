@@ -9,7 +9,7 @@ const { CLIENT_ID } = JSON.parse(JSON.stringify(apiInfo));
 console.log(CLIENT_ID);
 
 const BASE_LINK = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code';
-const REDIRECT_URI = encodeURIComponent('http://localhost:3000/callback');
+const REDIRECT_URI = encodeURIComponent('http://localhost:3000/api/auth/verifying');
 const LINK = `${BASE_LINK}&client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}`;
 
 

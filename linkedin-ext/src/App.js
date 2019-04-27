@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-//import { Proptypes } from 'prop-types';
 import styled from 'styled-components';
 
 import { authWrapper } from './auth/AuthWrapper';
@@ -24,11 +23,6 @@ const AppWrapper = styled.div`
 
 class App extends Component {
 
-  //static propTypes = {
-    //getUserData: Proptypes.func.isRequired,
-    //history: Proptypes.object.isRequired,
-    //location: Proptypes.object.isRequired,
-  //}
 
   componentWillMount() {
     if (window.sessionStorage.getItem('token')) {
@@ -47,10 +41,10 @@ class App extends Component {
     return (
       <AppWrapper>
         <Switch>
-          <Route  path='/login' component={Login} />
-          <Route path='/home' component={authWrapper(Home)} />
-          <Route path='/verifying' component={Verifying} />
-          <Redirect from='/' to='/home' />
+          <Route  path='/api/auth/login' component={Login} />
+          <Route path='/api/auth/home' component={authWrapper(Home)} />
+          <Route path='/api/auth/verifying' component={Verifying} />
+          <Redirect from='/api/auth/login' to='/api/auth/home' />
         </Switch>
       </AppWrapper>
     )

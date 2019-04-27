@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { getJsonFromUrl } from '../../utilities/helpers';
 import { loginUser, getUserData } from '../../auth/actions';
 
+
 import Loading from '../../components/Loading';
 
 
@@ -37,7 +38,7 @@ class Verifying extends Component {
 
     render() {
         if (this.props.isAuthenticated) {
-            return <Redirect to={{ pathname: '/home' }} />;
+            return <Redirect to={{ pathname: 'api/auth/home' }} />;
         }
         return(
             <VerifyingWrapper>
