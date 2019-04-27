@@ -1,13 +1,19 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-import { makeMainRoutes } from './routes';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.css';
-
-const routes = makeMainRoutes();
+import App from './App';
+import ConfigStore from './store/ConfigStore.js';
 
 
 ReactDOM.render(
-    routes,
+    <Provider store={ConfigStore()}>
+        <Router>
+            <App />
+        </Router>
+    </Provider>,
 document.getElementById('root'));
 
 

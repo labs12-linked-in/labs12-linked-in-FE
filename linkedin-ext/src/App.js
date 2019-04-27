@@ -1,57 +1,60 @@
 import React, { Component } from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
-import classes from './App.module.css';
+import { Route, withRouter, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+//import { Proptypes } from 'prop-types';
+import styled from 'styled-components';
 
+import { authWrapper } from './auth/AuthWrapper';
+import Login from './components/views/Login';
+import Verifying from './components/views/Verifying';
 import Home from './components/views/Home';
-import Forms from './components/views/Forms.js';
-import NewForm from './components/views/NewForm.js';
+import { getUserData } from './auth/actions';
 
+
+
+
+const AppWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+`;
 
 class App extends Component {
 
-    goTo(route) {
-      this.props.history.replace(`/${route}`)
-    }
+  //static propTypes = {
+    //getUserData: Proptypes.func.isRequired,
+    //history: Proptypes.object.isRequired,
+    //location: Proptypes.object.isRequired,
+  //}
 
-    login() {
-      this.props.auth.login();
+  componentWillMount() {
+    if (window.sessionStorage.getItem('token')) {
+      const redirect = this.props.location.pathname;
+      this.props.getUserData(
+        () => {
+          if (redirect !== this.props.location.pathname) {
+            this.props.history.push(redirect);
+          }
+        }
+      )
     }
-
-    logout() {
-      this.props.auth.logout();
-    }
-
-    componentDidMount() {
-      const { renewSession } = this.props.auth;
-
-      if (localStorage.getItem('isLoggedIn') === 'true') {
-        renewSession();
-      }
-    }
+  }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
-
-   return (
-     <div className={classes.App}>
-      <header className={classes.Nav}>
-        <NavLink activeClassName={classes.active} className={classes.NavLink}to="/forms">Forms</NavLink>
-        <NavLink activeClassName={classes.active} className={classes.NavLink}to="/dept">Departments</NavLink>
-        <NavLink activeClassName={classes.active} className={classes.NavLink}to="/scrape">Scrape</NavLink>
-      </header>
-      <button onClick={this.goTo.bind(this, '/')}>Home</button>
-      { !isAuthenticated() && ( <button onClick={this.login.bind(this)}>Log In</button> ) }
-      { isAuthenticated() && ( <button onClick={this.logout.bind(this)}>Log Out</button> ) }
-
+    return (
+      <AppWrapper>
         <Switch>
-          <Route path="/" render={(props) => <Home {...props} /> } />
-          <Route path="/app" render={(props) => <App {...props} /> } />
-          <Route path="/forms" component={Forms} />
-          <Route path="/new-form" component={NewForm} />
+          <Route  path='/login' component={Login} />
+          <Route path='/home' component={authWrapper(Home)} />
+          <Route path='/verifying' component={Verifying} />
+          <Redirect from='/' to='/home' />
         </Switch>
-     </div>
-   );
+      </AppWrapper>
+    )
   }
 }
 
-export default App;
+export default withRouter(connect(null, { getUserData })(App));
