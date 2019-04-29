@@ -3,11 +3,15 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-export const wrapper = WrappedComponent =>
-    class extends Component {
+export function wrapper(WrappedComponent) {
+     class extends Component {
+
         static propTypes = {
             isAuthenticated: PropTypes.bool.isRequired,
         }
+
+        
+    }
 
         render() {
             if (!this.props.isAuthenticated) {
@@ -24,5 +28,10 @@ export const wrapper = WrappedComponent =>
         }
     }
 
-    export const authWrapper = comp =>
-    connect(state => ({ isAuthenticated: state.data.isAuthenticated}))(wrapper(comp));
+    function mapStateToProps(state) {
+        return {
+            isAuthenticated: state.data.isAuthenticated
+        }
+    }
+
+    export default connect(mapStateToProps)(wrapper(comp));
