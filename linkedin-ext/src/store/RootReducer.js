@@ -5,5 +5,5 @@ import viewReducer from '../reducers/ViewReducer';
 
 export default combineReducers({
     data: dataReducer,
-    view: viewReducer,
+    view: viewReducer
 })

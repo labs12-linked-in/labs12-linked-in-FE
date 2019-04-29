@@ -5,7 +5,7 @@ const initialState = {
 }
 
 
-const DataReducer = (state = initialState, { type, payload}) => {
+const dataReducer = (state = initialState, { type, payload}) => {
     switch (type) {
         case AuthConstants.LOGIN_USER.success: {
             window.sessionStorage.setItem('token', payload.token);
@@ -30,4 +30,4 @@ const DataReducer = (state = initialState, { type, payload}) => {
     }
 }
 
-export default DataReducer;
+export default dataReducer;

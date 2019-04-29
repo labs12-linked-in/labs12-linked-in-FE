@@ -2,7 +2,7 @@ import { apiMiddleware, CALL_API } from 'redux-api-middleware';
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import rootReducer from './RootReducer';
+import rootReducer from './rootReducer';
 
 export const injectToken = () => (next) => (action) => {
   const callApi = action[CALL_API];

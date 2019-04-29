@@ -1,4 +1,4 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 
 export const apiBuilder = (type, val) => ({
     request: `${type}/${val.toUpperCase()}_REQUEST`,
@@ -14,7 +14,7 @@ export const callApi = ({ endpoint, method, body, type, json, onSuccess, onFailu
         }
 
         const actionResponse = await dispatch({
-            [CALL_API]: {
+            [RSAA]: {
                 headers: headers || { 'Content-Type': 'application/json' },
                 endpoint,
                 method,

@@ -13,7 +13,7 @@ export const wrapper = WrappedComponent =>
             if (!this.props.isAuthenticated) {
                 return (
                     <Redirect to={{
-                        pathname: '/login',
+                        pathname: '/api/auth/login',
                     }} />
                 )
             } else {

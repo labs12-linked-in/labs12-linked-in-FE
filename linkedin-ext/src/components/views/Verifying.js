@@ -34,11 +34,12 @@ class Verifying extends Component {
     componentWillMount() {
         const data = getJsonFromUrl(this.props.location);
         this.props.loginUser(data, () => this.props.getUserData());
+        console.log(data);
     }
 
     render() {
         if (this.props.isAuthenticated) {
-            return <Redirect to={{ pathname: 'api/auth/home' }} />;
+            return <Redirect to={{ pathname: '/home' }} />;
         }
         return(
             <VerifyingWrapper>

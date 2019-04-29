@@ -26,6 +26,7 @@ class App extends Component {
 
   componentWillMount() {
     if (window.sessionStorage.getItem('token')) {
+      console.log('token')
       const redirect = this.props.location.pathname;
       this.props.getUserData(
         () => {
@@ -42,9 +43,9 @@ class App extends Component {
       <AppWrapper>
         <Switch>
           <Route  path='/api/auth/login' component={Login} />
-          <Route path='/api/auth/home' component={authWrapper(Home)} />
+          <Route path='/home' component={authWrapper(Home)} />
           <Route path='/api/auth/verifying' component={Verifying} />
-          <Redirect from='/api/auth/login' to='/api/auth/home' />
+          <Redirect from='/api/auth/login' to='/home' />
         </Switch>
       </AppWrapper>
     )
