@@ -45,7 +45,7 @@ class App extends Component {
           <Route  path='/api/auth/login' component={Login} />
           <Route path='/home' component={authWrapper(Home)} />
           <Route path='/api/auth/verifying' component={Verifying} />
-          <Redirect from='/api/auth/login' to='/home' />
+          <Redirect from='/api/auth/verifying' to='/home' />
         </Switch>
       </AppWrapper>
     )
