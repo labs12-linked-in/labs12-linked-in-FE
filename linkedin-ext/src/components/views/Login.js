@@ -41,7 +41,7 @@ const LoginButton = styled.button`
 class Login extends Component {
     verifyWithLinkedIn = () => {
         const id = uuid.v4();
-        window.open(`${LINK}&state=${id}&scope=r_liteprofile`);
+        window.open(`${LINK}&state=${id}&scope=r_liteprofile`, '_self');  //if self is not there, another window opens and skips linkedin sign, goes straight to verifying page
     }
 
     render() {
