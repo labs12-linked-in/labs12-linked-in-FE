@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 export function wrapper(WrappedComponent) {
-     class extends Component {
+     class extends AuthCheck Component {
 
         static propTypes = {
             isAuthenticated: PropTypes.bool.isRequired,
@@ -34,4 +34,4 @@ export function wrapper(WrappedComponent) {
         }
     }
 
-    export default connect(mapStateToProps)(wrapper(comp));
+    export default connect(mapStateToProps)(wrapper(AuthCheck));
