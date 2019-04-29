@@ -10,8 +10,6 @@ export function wrapper(WrappedComponent) {
             isAuthenticated: PropTypes.bool.isRequired,
         }
 
-        
-    }
 
         render() {
             if (!this.props.isAuthenticated) {
@@ -27,6 +25,7 @@ export function wrapper(WrappedComponent) {
             }
         }
     }
+}
 
     function mapStateToProps(state) {
         return {
