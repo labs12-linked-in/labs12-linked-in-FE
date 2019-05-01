@@ -7,7 +7,7 @@ import classes from './App.module.css'
 import Forms from './components/views/Forms/Forms';
 import NewForm from './components/views/Forms/NewForm.js';
 import Departments from './components/views/Departments/Departments'
-import Auth from './components/Auth/Auth'
+import * as actions from './store/actions/index'
 
 class App extends Component {
 
@@ -15,12 +15,12 @@ class App extends Component {
 
     let routes = (
       <Switch>
-        <Route path='/' component={Auth} />
-        <Redirect to='/' />
+        {/* <Route path='/' component={asyncAuth}  />
+        <Redirect to='/' /> */}
       </Switch>
     )
 
-    if (this.props.isAuthenticated) {
+    if (!this.props.isAuthenticated) {
       routes = (
         <Switch>
           <Route path='/forms' component={Forms} />
@@ -33,7 +33,12 @@ class App extends Component {
 
    return (
      <div className={classes.App}>
-        {routes}
+        <Switch>
+          <Route path='/forms' component={Forms} />
+          <Route path='/new-form' component={NewForm} />
+          <Route path='/dept' component={Departments} />
+          <Redirect to='/form' />
+        </Switch>
      </div>
    );
   }
@@ -42,8 +47,14 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.token !== null,
+    isAuthenticated: state.auth.token === null,
   }
 }
 
-export default  withRouter(connect(mapStateToProps)(App));
+const mapDispatchToProps = dispatch => {
+  return {
+    // onTryAutoSignin: () => dispatch(actions.checkAuthState())
+  }
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));
