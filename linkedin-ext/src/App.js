@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import classes from './App.module.css'
+import { Route, withRouter, Switch, NavLink } from 'react-router-dom';
 
-import Forms from './components/views/Forms/Forms';
-import NewForm from './components/views/Forms/NewForm.js';
-import Departments from './components/views/Departments/Departments'
+
+import Home from './components/views/Home';
+import Login from './components/views/Login';
+
+
 
 class App extends Component {
 
-  state = {
-    login: true
-  }
 
   render() {
 
    return (
-     <div className={classes.App}>
-        
+     <div>
+      <header>
+        <NavLink to="/forms">Forms</NavLink>
+        <NavLink to="/dept">Departments</NavLink>
+        <NavLink to="/scrape">Scrape</NavLink>
+      </header>
         <Switch>
-          <Route exact path='/'
-            render={() => (
-              this.state.login ? (
-                <Redirect to='/forms' />
-              ) : null
-            )} />
-          <Route path="/forms" component={Forms} />
-          <Route path="/new-form" component={NewForm} />
-          <Route path='/dept' component={Departments} />
+          <Route  path='/api/auth/login' component={Login} />
+          <Route path="/" render={(props) => <Home {...props} /> } />
+          <Route path="/home" render={(props) => <App {...props} /> } /> 
         </Switch>
      </div>
    );
   }
 }
 
-export default App;
+export default withRouter(App);
