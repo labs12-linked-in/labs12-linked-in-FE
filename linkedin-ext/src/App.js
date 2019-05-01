@@ -37,7 +37,7 @@ class App extends Component {
           <Route path='/forms' component={Forms} />
           <Route path='/new-form' component={NewForm} />
           <Route path='/dept' component={Departments} />
-          <Redirect to='/form' />
+          <Redirect to='/forms' />
         </Switch>
      </div>
    );
