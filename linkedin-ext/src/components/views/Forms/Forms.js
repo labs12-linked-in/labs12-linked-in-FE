@@ -2,62 +2,61 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
+import axios from 'axios'
+import Form from './Form'
+import {connect} from 'react-redux'
+import { getForm } from '../../../actions/actions'
 
 class Forms extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            forms: [
-                {'name': 'Resume Builder', 'fields': 3 },
-                {'name': 'Sales Contract', 'fields': 4 },
-                {'name': 'Contact', 'fields': 7 }
-            ]
-        }
+    
+
+    componentDidMount() {
+        this.props.getForm()
     }
-
-    renderTableRows = () => {
-        let rows = [];
-        this.state.forms.forEach(function(form) {
-                rows.push (
-                    <tr>
-                        <td>{form.name}</td>
-                        <td>{form.fields}</td>
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
-                        <td>edit</td>
-                    </tr>
-                )
-        })
-
-        let tby = null;
-            tby = <tbody>
-                    {rows.map((forms, key) => {
-                        return (
-                            forms
-                        )
-                    })}
-                    </tbody>
-        return tby
-    }
-
+    
     render() {
+
+        let form = (
+            <div>
+                loading
+            </div>
+        )
+
+        
+
+        if(!this.props.fetching) {
+            form = (
+                <div className={classes.Forms}>
+                    <NavBar />
+                    <div>Forms</div>
+                    <div className={classes.Title}>
+                        <div className={classes.Name}>Name</div>
+                        <div className={classes.Field}>Fields</div>
+                        <div className={classes.Empty}></div>
+                    </div>
+                    {this.props.forms.map(form => (
+                            <Form form={form} />
+                        ))}
+                    <button>Create New</button>
+                </div>
+            )
+        }
+        
         return (
             <div className={classes.Forms}>
-            <NavBar />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Fields</th>
-                        </tr>
-                    </thead>
-                    {this.renderTableRows()}
-                </table>
-                <Link to="/new-form" >{(<button>Create New</button>)}</Link>
+            {form}
             </div>
         )
     }
-}    
+} 
 
-export default Forms;
+const mapStateToProps = state => {
+    return {
+        forms: state.formReducer.forms,
+        fetching: state.formReducer.isLoading
+    }
+}
+
+
+
+export default connect(mapStateToProps, {getForm})(Forms);
