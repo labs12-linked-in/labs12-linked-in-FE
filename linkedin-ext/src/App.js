@@ -4,10 +4,12 @@ import { connect } from 'react-redux'
 
 import classes from './App.module.css'
 
+// import Home from './components/views/Home';
+import Login from './components/views/Login';
 import Forms from './components/views/Forms/Forms';
 import NewForm from './components/views/Forms/NewForm.js';
-import Departments from './components/views/Departments/Departments'
-import * as actions from './store/actions/index'
+import Departments from './components/views/Departments/Departments';
+
 
 class App extends Component {
 
@@ -34,9 +36,11 @@ class App extends Component {
    return (
      <div className={classes.App}>
         <Switch>
+          <Route  path='/api/auth/login' component={Login} />
+          {/* <Route path="/home" render={(props) => <Home {...props} /> } /> */}
           <Route path='/forms' component={Forms} />
           <Route path='/new-form' component={NewForm} />
-          <Route path='/dept' component={Departments} />
+          <Route path='api/departments' component={Departments} />
           <Redirect to='/forms' />
         </Switch>
      </div>

@@ -9,6 +9,7 @@ import authReducer from './store/reducers/auth'
 
 import './index.css';
 import App from './App';
+import reducer from './reducers/index';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
