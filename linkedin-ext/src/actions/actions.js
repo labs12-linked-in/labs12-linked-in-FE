@@ -7,8 +7,12 @@ export const GET_USER_FAILURE = "GET_USER_FAILURE";
 
 export const getUser = () => dispatch => {
     dispatch({ type: GET_USER_START });
-    const userData = JSON.parse(localStorage.getItem(user));
-    const { first_name, last_name, user_id } = userData;
     axios
-        .post('https://linkedinextension.herokuapp.com/api/auth/login')
-}
+        .get('http://localhost:9001/api/user')
+        .then(res => res.data)
+        .then(users => {
+            console.log("data", users);
+            dispatch({ type: GET_USER_SUCCESS, payload: users });
+        })
+        .catch(err => dispatch({type: GET_USER_FAILURE, ERROR: err }));
+};

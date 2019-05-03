@@ -1,17 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getUser } from '../../actions/actions.js'
+
+import NavBar from './NavBar/NavBar.js'
+
 
 
 class Home extends Component {
+  state = {
+    users: {
+      first_name: '',
+      last_name: ''
+    }
+  }
 
+  componentWillMount() {
+    this.props.getUser();
+  }
 
   render() {
 
    return (
      <div>
-       <h3>Home page after login or redirect to login if not logged in</h3>
+       <NavBar />
+        {this.state.users.map(user => (
+          <h4>{user.first_name}</h4>
+        ))}
      </div>
    );
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  console.log('state', state.userReducer)
+  return {
+    getUser: state.userReducer.getUser,
+    users: state.userReducer.users
+  }
+}
+
+export default connect(mapStateToProps, {getUser})(Home)

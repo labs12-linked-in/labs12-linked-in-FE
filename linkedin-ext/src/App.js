@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Switch, NavLink } from 'react-router-dom';
+import { Route, withRouter, Switch, Redirect }  from 'react-router-dom';
 import axios from './axios-instance';
 
 
@@ -27,18 +27,13 @@ componentDidMount() {
 
    return (
      <div>
-      <header>
-        <NavLink to="/forms">Forms</NavLink>
-        <NavLink to="/dept">Departments</NavLink>
-        <NavLink to="/scrape">Scrape</NavLink>
-      </header>
         <Switch>
           <Route  path='/api/auth/login' component={Login} />
           <Route path="/home" render={(props) => <Home {...props} /> } />
-          <Route path="/" render={(props) => <App {...props} /> } /> 
           <Route path='api/forms' component={Forms} />
           <Route path='/new-form' component={NewForm} />
           <Route path='api/departments' component={Departments} />
+          <Redirect to='/home' component={Home} />
         </Switch>
      </div>
    );
