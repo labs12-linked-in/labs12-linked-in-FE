@@ -15,7 +15,7 @@ const newDepartment = (props) => (
         <div className={classes.TopPortion}>
         <div className={classes.Cancle} onClick={props.cancle}>
             <img className={classes.Img} src={back} alt='Go back'/>
-            <p>Cancle</p>
+            <p>Cancel</p>
         </div>
         <div className={classes.Save}>
             <button>Save</button>

@@ -23,9 +23,9 @@ class Home extends Component {
    return (
      <div>
        <NavBar />
-        {this.state.users.map(user => (
-          <h4>{user.first_name}</h4>
-        ))}
+        {/* {this.props.users.map(user => ( */}
+          {/* <h4>{user.first_name}</h4> */}
+        {/* ))} */}
      </div>
    );
   }
