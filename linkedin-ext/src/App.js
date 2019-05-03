@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Switch, Redirect }  from 'react-router-dom';
+import { Route, withRouter, Switch }  from 'react-router-dom';
 import axios from './axios-instance';
 
 
@@ -7,7 +7,7 @@ import Home from './components/views/Home';
 import Login from './components/views/Login';
 import Forms from './components/views/Forms/Forms';
 import NewForm from './components/views/Forms/NewForm.js';
-import Departments from './components/views/Departments/Departments';
+import Department from './components/views/Departments/Departments';
 
 
 
@@ -32,8 +32,8 @@ componentDidMount() {
           <Route path="/home" render={(props) => <Home {...props} /> } />
           <Route path='api/forms' component={Forms} />
           <Route path='/new-form' component={NewForm} />
-          <Route path='api/departments' component={Departments} />
-          <Redirect to='/home' component={Home} />
+          <Route path='api/departments' component={Department} />
+          {/* <Redirect to='/home' component={Home} /> */}
         </Switch>
      </div>
    );
