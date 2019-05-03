@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux'
 
 import Department from './Department/Department'
 import NavBar from '../NavBar/NavBar'
 import classes from './Departments.module.css'
 import NewDepartment from './NewDepartment/NewDepartment'
+import {getDept} from '../../../actions/actions'
 
-class departments extends Component {
+class Departments extends Component {
 
         state = {
-            depts: [
-                {name: 'Sales'},
-                {name: 'Manufacturing'},
-                {name: 'Personal'},
-                {name: 'Engineering'}
-            ],
             isAddNew: false
+        }
+
+        componentDidMount() {
+            this.props.getDept()
         }
 
         addNewDepartment = () => {
@@ -30,7 +30,7 @@ class departments extends Component {
         let dept = null;
         if (this.state.isAddNew) {
             dept=<NewDepartment cancle={this.addNewDepartmentCancle} />;
-        } else {
+        } else if (!this.state.isAddNew && !this.props.fetching) {
             dept = (
                 <div className={classes.Departments}>
                 <div>
@@ -42,7 +42,7 @@ class departments extends Component {
                         <div>Home</div>
                         <div></div>
                     </div>
-                    {this.state.depts.map(dept => (
+                    {this.props.depts.map(dept => (
                         <Department
                             name={dept.name} />
                         )
@@ -64,4 +64,11 @@ class departments extends Component {
     }
 }
 
-export default departments
+const mapStateToProps = state => {
+    return {
+        depts: state.deptReducer.depts,
+        fetching: state.deptReducer.isLoading
+    }
+}
+
+export default connect(mapStateToProps,{getDept})(Departments)

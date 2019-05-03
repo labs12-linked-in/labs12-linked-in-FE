@@ -32,8 +32,9 @@ class Login extends Component {
     return (
       <div>
         <Wrapper>
-          <Button
-            href="https://linkedinextension.herokuapp.com/api/auth/linkedin/callback" target="_blank">Login with LinkedIn </Button>
+          {/* <Button */}
+           <a href="https://linkedinextension.herokuapp.com/api/auth/linkedin/callback">Login with LinkedIn</a>
+           {/* </Button> */}
           {/* <a href="http://localhost:9001/apiauth/google/callback">   */}
           {/* < div class="g-signin2" data-onsuccess="onSignIn"></div> */}
           {/* </a> */}
