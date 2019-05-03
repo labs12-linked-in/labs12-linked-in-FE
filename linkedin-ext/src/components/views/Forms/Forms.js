@@ -22,6 +22,8 @@ class Forms extends Component {
             </div>
         )
 
+        
+
         if(!this.props.fetching) {
             form = (
                 <div className={classes.Forms}>

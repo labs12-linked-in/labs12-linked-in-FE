@@ -26,23 +26,6 @@ componentDidMount() {
 }
   render() {
 
-    let routes = (
-      <Switch>
-        {/* <Route path='/' component={asyncAuth}  />
-        <Redirect to='/' /> */}
-      </Switch>
-    )
-
-    if (!this.props.isAuthenticated) {
-      routes = (
-        <Switch>
-          <Route path='/forms' component={Forms} />
-          <Route path='/new-form' component={NewForm} />
-          <Route path='/dept' component={Departments} />
-          <Redirect to='/form' />
-        </Switch>
-      )
-    }
 
    return (
      <div className={classes.App}>
@@ -62,7 +45,6 @@ componentDidMount() {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.token === null,
   }
 }
 
