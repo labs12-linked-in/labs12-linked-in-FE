@@ -34,7 +34,7 @@ componentDidMount() {
           {/* <Route path="/home" render={(props) => <Home {...props} /> } /> */}
           <Route path='/forms' component={Forms} />
           <Route path='/new-form' component={NewForm} />
-          <Route path='api/departments' component={Departments} />
+          <Route path='/dept' component={Departments} />
           <Redirect to='/forms' />
         </Switch>
      </div>

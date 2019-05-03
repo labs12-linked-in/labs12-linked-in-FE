@@ -8,6 +8,10 @@ export const GET_FORM_START = "GET_FORM_START";
 export const GET_FORM_SUCCESS = "GET_FORM_SUCCESS";
 export const GET_FORM_FAILURE = "GET_FORM_FAILURE";
 
+export const GET_DEPT_START = 'GET_DEPT_START'
+export const GET_DEPT_SUCCESS = 'GET_DEPT_SUCCESS'
+export const GET_DEPT_FAILURE = 'GET_DEPT_FAILURE'
+
 
 export const getUser = () => dispatch => {
     dispatch({ type: GET_USER_START });
@@ -30,4 +34,14 @@ export const getForm = () => dispatch => {
             dispatch({type: GET_FORM_SUCCESS, payload: forms})
         })
         .catch(err => dispatch({type: GET_FORM_FAILURE, ERROR: err}))
+}
+
+export const getDept = () => dispatch => {
+    dispatch({type: GET_DEPT_START});
+    axios.get('https://linkedinextension.herokuapp.com/api/departments/5')
+        .then(res => res.data)
+        .then(depts => {
+            dispatch({type: GET_DEPT_SUCCESS, payload: depts})
+        })
+        .catch(err => dispatch({type: GET_DEPT_FAILURE, ERROR: err}))
 }
