@@ -1,12 +1,16 @@
 import {
     GET_FORM_START,
     GET_FORM_SUCCESS,
-    GET_FORM_FAILURE
+    GET_FORM_FAILURE,
+    DELETE_FORM_START,
+    DELETE_FORM_SUCCESS,
+    DELETE_FORM_FAILURE
 } from '../actions/actions'
 
 const initialState = {
     forms: null,
     isLoading: true,
+    isDeleting: false,
     error: ''
 }
 
@@ -31,6 +35,26 @@ export const formReducer = ( state = initialState, action) => {
                 isLoading: false,
                 error: action.payload
             }
+
+        case DELETE_FORM_START:
+            return {
+                ...state,
+                isDeleting: true,
+                error: ''
+            }
+        case DELETE_FORM_SUCCESS:
+            return {
+                ...state,
+                isDeleting: false,
+                error: ''
+            }
+        case DELETE_FORM_FAILURE:
+            return {
+                ...state,
+                isDeleting: false,
+                error: action.payload
+            }
+        
         default: return state
     }
 }

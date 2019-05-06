@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const Button = styled.button`
+/*const Button = styled.button`
   background-color: #0073b1;
   border: 0;
   color: white;
@@ -23,7 +23,7 @@ const Button = styled.button`
   &:hover {
     opacity: 0.8;
   }
-`;
+`;*/
 
 
 class Login extends Component {

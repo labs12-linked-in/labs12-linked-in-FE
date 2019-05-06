@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
-import Form from './Form'
+import IndivForm from './IndivForm'
 import {connect} from 'react-redux'
-import { getForm } from '../../../actions/actions'
+import { getForm, deleteForm } from '../../../actions/actions'
 
 class Forms extends Component {
     
@@ -11,7 +11,7 @@ class Forms extends Component {
     componentDidMount() {
         this.props.getForm()
     }
-    
+
     render() {
 
         let form = (
@@ -33,7 +33,7 @@ class Forms extends Component {
                         <div className={classes.Empty}></div>
                     </div>
                     {this.props.forms.map(form => (
-                            <Form form={form} />
+                            <IndivForm deleteForm={this.props.deleteForm} />
                         ))}
                     <button>Create New</button>
                 </div>
@@ -51,10 +51,11 @@ class Forms extends Component {
 const mapStateToProps = state => {
     return {
         forms: state.formReducer.forms,
-        fetching: state.formReducer.isLoading
+        fetching: state.formReducer.isLoading,
+        deleteForm: state.formReducer.deleteForm
     }
 }
 
 
 
-export default connect(mapStateToProps, {getForm})(Forms);
+export default connect(mapStateToProps, {getForm, deleteForm})(Forms);
