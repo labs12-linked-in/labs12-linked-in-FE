@@ -1,46 +1,38 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
-
-const Wrapper = styled.div`
-  background-color: white;
-  box-shadow: 1px 1px 1px 1px #C9C9C9;
-  max-width: 300px;
-  padding: 16px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const Button = styled.button`
-  background-color: #0073b1;
-  border: 0;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 8px 16px;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
+import axios from 'axios';
 
 class Login extends Component {
 
+  componentDidMount () {
+    const oauthScript = document.createElement("script");
+    oauthScript.src = "https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js";
+
+    document.body.appendChild(oauthScript);
+  }
+
+  handleClick(e) {
+    // Prevents page reload
+    e.preventDefault();
+
+    // Initializes OAuth.io with API key
+    // Sign-up an account to get one
+    window.OAuth.initialize('Yq_ObrXeRonGLhBwvd3nXD2oFlA');
+
+    // Popup facebook and ask for authorization
+    window.OAuth.popup('linkedin2').done(function(result) {
+      console.log('linkedin:', result);
+      axios
+        .post('http://localhost:9001/api/users/user', {
+          result
+        })
+        .then(response => {
+          console.log(response)
+        })
+    });
+  }
+  
   render() {
-    return (
-      <div>
-        <Wrapper>
-          {/* <Button */}
-           <a href="https://linkedinextension.herokuapp.com/api/auth/linkedin/callback">Login with LinkedIn</a>
-           {/* </Button> */}
-          {/* <a href="http://localhost:9001/apiauth/google/callback">   */}
-          {/* < div class="g-signin2" data-onsuccess="onSignIn"></div> */}
-          {/* </a> */}
-        </Wrapper>
-      </div>
-    )
+    return <a href="" onClick={this.handleClick.bind(this)}> Sign in with LinkedIn </a>;
   }
 }
 
