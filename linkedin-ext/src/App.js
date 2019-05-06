@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import axios from "axios";
 
 import classes from "./App.module.css";
 
