@@ -1,3 +1,4 @@
+    
 import React, { Component } from "react";
 import axios from "axios";
 
@@ -27,6 +28,9 @@ class Login extends Component {
         })
         .then(response => {
           console.log(response);
+          localStorage.setItem('first_name', response.data.first_name)
+          localStorage.setItem('last_name', response.data.last_name)
+          localStorage.setItem('user_id', response.data.user_id)
         });
     });
   }
