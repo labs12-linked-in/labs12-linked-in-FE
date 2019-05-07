@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
-import Form from './Form'
+import Form from './Forms'
 import {connect} from 'react-redux'
 import { getForm } from '../../../actions/actions'
 
