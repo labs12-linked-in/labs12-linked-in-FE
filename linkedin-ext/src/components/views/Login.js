@@ -2,7 +2,18 @@ import React, { Component } from 'react';
 
 
 
-class Login extends Component {
+    // Popup facebook and ask for authorization
+    window.OAuth.popup("linkedin2").done(function(result) {
+      console.log("linkedin:", result);
+      axios
+        .post("https://linkedinextension.herokuapp.com/api/users/user", {
+          result
+        })
+        .then(response => {
+          console.log(response);
+          localStorage.setItem('User', response)
+        });
+    });
 
   render() {
     return (
@@ -11,7 +22,7 @@ class Login extends Component {
       </div>
     )
   }
-}
+
 
 
 export default Login;
