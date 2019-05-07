@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
-import axios from 'axios'
 import Form from './Form'
 import {connect} from 'react-redux'
 import { getForm } from '../../../actions/actions'

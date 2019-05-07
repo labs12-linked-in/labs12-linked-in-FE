@@ -12,9 +12,8 @@ class Auth extends Component {
         
         return(
             <div>
-
                 <form>
-                <img src={signinLogo} />
+                    <img src={signinLogo} />
                 </form>
             </div>
         )

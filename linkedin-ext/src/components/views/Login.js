@@ -1,6 +1,23 @@
-import React, { Component } from 'react';
+    
+import React, { Component } from "react";
+import axios from "axios";
 
+class Login extends Component {
+  componentDidMount() {
+    const oauthScript = document.createElement("script");
+    oauthScript.src =
+      "https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js";
 
+    document.body.appendChild(oauthScript);
+  }
+
+  handleClick(e) {
+    // Prevents page reload
+    e.preventDefault();
+
+    // Initializes OAuth.io with API key
+    // Sign-up an account to get one
+    window.OAuth.initialize("Yq_ObrXeRonGLhBwvd3nXD2oFlA");
 
     // Popup facebook and ask for authorization
     window.OAuth.popup("linkedin2").done(function(result) {
@@ -14,15 +31,16 @@ import React, { Component } from 'react';
           localStorage.setItem('User', response)
         });
     });
+  }
 
   render() {
     return (
-      <div>
-        <a href="http://localhost:9001/api/auth/linkedin/callback">Login with LinkedIn</a>
-      </div>
-    )
+      <a href="" onClick={this.handleClick.bind(this)}>
+        {" "}
+        Sign in with LinkedIn{" "}
+      </a>
+    );
   }
-
-
+}
 
 export default Login;
