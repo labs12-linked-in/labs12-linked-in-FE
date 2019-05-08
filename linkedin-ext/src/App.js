@@ -48,7 +48,7 @@ class App extends Component {
         <Switch>
           <Route path="/api/auth/login" component={Login} />
           {/* <Route path="/home" render={(props) => <Home {...props} /> } /> */}
-          <Route path="/api/forms" component={Forms} />
+          <Route path="/forms" component={Forms} />
           <Route path="/new-form" component={NewForm} />
           <Route path="/dept" component={Departments} />
           <Route path="/api/user" component={UserHome} />
