@@ -27,7 +27,7 @@ class Forms extends Component {
                 <div className={classes.Forms}>
                     <NavBar />
                     <div>Forms</div>
-                    <div className={classes.Title}>
+                    <div className={classes.Title} key={id}>
                         <div className={classes.Name}>Name</div>
                         <div className={classes.Field}>Fields</div>
                         <div className={classes.Empty}></div>
