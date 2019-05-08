@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import NavBar from '../NavBar/NavBar';
 import SelectBox from '../../../features/select-box';
@@ -41,8 +42,9 @@ const scrape = (props) => (
                 ]}
             />
             </div>
-
-            <button>Scrape</button>
+            
+            {/* temporary... needs to update to submit & actual scrape */}
+            <Link to={'/edit-scrape'}><button>Scrape</button></Link>
 
     </div>
 )

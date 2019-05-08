@@ -12,6 +12,7 @@ import UserHome from "./components/views/UserHome";
 import AddField from "./components/views/Forms/AddField";
 import FormRules from "./components/views/Forms/FormRules";
 import Scrape from "./components/views/Scrape/Scrape";
+import EditScrape from './components/views/Scrape/EditScrape';
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path="/add-field" component={AddField} />
           <Route path="/form-rules" component={FormRules} />
           <Route path="/scrape" component={Scrape} />
+          <Route path="/edit-scrape" component={EditScrape} />
         </Switch>
       </div>
     );
