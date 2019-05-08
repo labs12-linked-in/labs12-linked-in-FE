@@ -6,11 +6,12 @@ import classes from "./App.module.css";
 
 import Login from "./components/views/Login";
 import Forms from "./components/views/Forms/Forms";
-import NewForm from "./components/views/Forms/NewForm.js";
+import NewForm from "./components/views/Forms/NewForm";
 import Departments from "./components/views/Departments/Departments";
 import UserHome from "./components/views/UserHome";
 import AddField from "./components/views/Forms/AddField";
 import FormRules from "./components/views/Forms/FormRules";
+import Scrape from "./components/views/Scrape/Scrape";
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/api/user" component={UserHome} />
           <Route path="/add-field" component={AddField} />
           <Route path="/form-rules" component={FormRules} />
+          <Route path="/scrape" component={Scrape} />
         </Switch>
       </div>
     );
