@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SelectBox from '../../../features/select-box/index';
 
 class AddField extends Component {
     state = {
@@ -19,6 +20,7 @@ class AddField extends Component {
                     <button>Save</button>
                 </header>
                 <form>
+                    <h4>Title:</h4>
                     <input
                         required
                         type="text"
@@ -27,6 +29,20 @@ class AddField extends Component {
                         placeholder="Enter Title Name"
                         onChange={this.handleChange}
                     />
+                    <h4>Type:</h4>
+                    <SelectBox
+                        width={200}
+                        name="field_id" 
+                        items = {[
+                            { value: 'Text', id: 1 },
+                            { value: 'Image', id: 2 },
+                            { value: 'Number', id: 3 },
+                            { value: 'Yes/No', id: 4 },
+                            { value: 'Short Text', id: 5 },
+                            { value: 'Long Text', id: 6 },
+                        ]}
+                    />
+
                     <button>Select</button>
 
                 </form>

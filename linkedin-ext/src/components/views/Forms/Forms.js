@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
-import Form from './Forms'
+import Form from './Form'
 import {connect} from 'react-redux'
 import { getForm } from '../../../actions/actions'
 
@@ -27,7 +27,7 @@ class Forms extends Component {
                 <div className={classes.Forms}>
                     <NavBar />
                     <div>Forms</div>
-                    <div className={classes.Title} key={id}>
+                    <div className={classes.Title}>
                         <div className={classes.Name}>Name</div>
                         <div className={classes.Field}>Fields</div>
                         <div className={classes.Empty}></div>
