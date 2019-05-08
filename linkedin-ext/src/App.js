@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import classes from "./App.module.css";
@@ -47,7 +47,7 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Switch>
-          <Route path="/api/auth/login" component={Login} />
+          <Route path="/" exact component={Login} />
           {/* <Route path="/home" render={(props) => <Home {...props} /> } /> */}
           <Route path="/forms" component={Forms} />
           <Route path="/new-form" component={NewForm} />
