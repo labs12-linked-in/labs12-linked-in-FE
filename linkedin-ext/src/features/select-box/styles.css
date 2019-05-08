@@ -7,7 +7,7 @@
     left: 0;
 }
 
-.select-box--contaner {
+.select-box--container {
     height: 30px;
     border: 1px solid #aaa;
     width: 100%;
@@ -37,7 +37,7 @@
     height: 30px;
     margin: 0;
     display: inline-block;
-    background: #aaa;
+    background: lightblue;
     position: absolute;
     right: 0;
     top: 0;
