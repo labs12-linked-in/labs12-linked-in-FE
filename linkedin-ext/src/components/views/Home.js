@@ -7,7 +7,6 @@ import NavBar from './NavBar/NavBar.js'
 class Home extends Component {
 
   render() {
-
    return (
      <div>
        <NavBar />
@@ -16,4 +15,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Home;
