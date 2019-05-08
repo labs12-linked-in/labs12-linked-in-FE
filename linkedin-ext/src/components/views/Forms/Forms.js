@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import NavBar from '../NavBar/NavBar';
-import classes from './Forms.module.css'
 import Form from './Form'
-import {connect} from 'react-redux'
+
+import classes from './Forms.module.css'
 import { getForm } from '../../../actions/actions'
+
+
 
 class Forms extends Component {
     
@@ -33,7 +38,7 @@ class Forms extends Component {
                     {this.props.forms.map(form => (
                             <Form form={form} />
                         ))}
-                    <button>Create New</button>
+                    <Link to={'/new-form'}><button>Create New</button></Link>
                 </div>
             )
         }
