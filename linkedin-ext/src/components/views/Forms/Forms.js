@@ -20,8 +20,6 @@ class Forms extends Component {
             </div>
         )
 
-        
-
         if(!this.props.fetching) {
             form = (
                 <div className={classes.Forms}>
@@ -54,7 +52,6 @@ const mapStateToProps = state => {
         fetching: state.formReducer.isLoading
     }
 }
-
 
 
 export default connect(mapStateToProps, {getForm})(Forms);
