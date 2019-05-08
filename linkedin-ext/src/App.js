@@ -11,6 +11,7 @@ import NewForm from "./components/views/Forms/NewForm.js";
 import Departments from "./components/views/Departments/Departments";
 import UserHome from "./components/views/UserHome";
 import AddField from "./components/views/Forms/AddField";
+import FormRules from "./components/views/Forms/FormRules";
 
 class App extends Component {
   componentDidMount() {
@@ -52,7 +53,8 @@ class App extends Component {
           <Route path="/new-form" component={NewForm} />
           <Route path="/dept" component={Departments} />
           <Route path="/api/user" component={UserHome} />
-          <Route path="/addfield" component={AddField} />
+          <Route path="/add-field" component={AddField} />
+          <Route path="/form-rules" component={FormRules} />
           {/* <Redirect to="/api/auth/login" /> */}
         </Switch>
       </div>
