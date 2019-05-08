@@ -9,6 +9,7 @@ import Login from "./components/views/Login";
 import Forms from "./components/views/Forms/Forms";
 import NewForm from "./components/views/Forms/NewForm.js";
 import Departments from "./components/views/Departments/Departments";
+import UserHome from "./components/views/UserHome";
 
 class App extends Component {
   componentDidMount() {
@@ -49,7 +50,8 @@ class App extends Component {
           <Route path="/api/forms" component={Forms} />
           <Route path="/new-form" component={NewForm} />
           <Route path="/dept" component={Departments} />
-          <Redirect to="/api/auth/login" />
+          <Route path="/api/user" component={UserHome} />
+          {/* <Redirect to="/api/auth/login" /> */}
         </Switch>
       </div>
     );

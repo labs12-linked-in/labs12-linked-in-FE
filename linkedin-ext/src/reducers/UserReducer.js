@@ -30,7 +30,7 @@ export const userReducer = (state = initialState, action) => {
         case GET_USER_FAILURE:
             return {
                 ...state,
-                isLoading: false,
+                isFetching: false,
                 error: action.payload,
             }    
         default: return state;
