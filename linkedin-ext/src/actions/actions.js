@@ -34,9 +34,9 @@ export const getUser = () => dispatch => {
         .catch(err => dispatch({type: GET_USER_FAILURE, ERROR: err }));
 }
 
-export const getForm = () => dispatch => {
+export const getForm = (id) => dispatch => {
     dispatch({type: GET_FORM_START});
-    axios.get(`https://linkedinextension.herokuapp.com/api/forms/5`)
+    axios.get(`https://linkedinextension.herokuapp.com/api/forms/${id}`)
         .then(res => res.data)
         .then(forms => {
             dispatch({type: GET_FORM_SUCCESS, payload: forms})

@@ -17,7 +17,8 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Switch>
-          <Route path="/api/auth/login" component={Login} />
+          <Route exact path="/" component={Login} />
+          {/* <Route exact path='/' render = {props => (<Login {...props} history={this.props.history}/>)} /> */}
           <Route path="/forms" component={Forms} />
           <Route path="/new-form" component={NewForm} />
           <Route path="/dept" component={Departments} />

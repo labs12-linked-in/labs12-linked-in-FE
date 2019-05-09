@@ -9,7 +9,7 @@ class Forms extends Component {
     
 
     componentDidMount() {
-        this.props.getForm()
+        this.props.getForm(1)
     }
     
     render() {
@@ -30,6 +30,7 @@ class Forms extends Component {
                         <div className={classes.Field}>Fields</div>
                         <div className={classes.Empty}></div>
                     </div>
+                    
                     {this.props.forms.map(form => (
                             <Form form={form} />
                         ))}
