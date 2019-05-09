@@ -6,6 +6,12 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
+const deployedDb = 'https://linkedinextension.herokuapp.com';
+const localDb = 'http://localhost:9001';
+const deployedApp = 'https://linkedinextension.netlify.com';
+const localApp = 'http://localhost:3000';
+
+
 class Login extends Component {
   
   componentDidMount() {
@@ -19,10 +25,7 @@ class Login extends Component {
   }
 
   handleClick(e) {
-    console.log("e", e);
-    // console.log(this.props, "this props");
     // Prevents page reload
-    console.log(" start handle click");
     e.preventDefault();
     console.log(e)
     
@@ -33,12 +36,12 @@ class Login extends Component {
     // Popup and ask for authorization
     window.OAuth.popup("linkedin2").done(function(token) {
       axios
-        .post("https://linkedinextension.herokuapp.com/api/users/user", token)
+        .post(`${deployedDb}/api/users/user`, token)
         .then(response => {
           console.log(response, "res");
           localStorage.setItem("id", response.data.id);
           localStorage.setItem("user_id", response.data.user_id);
-          window.OAuth.redirect("linkedin2", "http://localhost:3000/forms");
+          window.OAuth.redirect("linkedin2", `${localApp}/forms`);
         });
     });
   }
