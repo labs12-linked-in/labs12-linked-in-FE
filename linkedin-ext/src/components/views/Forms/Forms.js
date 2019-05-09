@@ -13,17 +13,12 @@ class Forms extends Component {
     this.props.getForm(localStorage.getItem('id'))
   }
 
-  // componentWillReceiveProps() {
-  //   this.props.getForm(localStorage.getItem('id'))
-  // }
-
     newForm = () => {
         this.props.history.push('/newform')
     }
     
     render() {
       
-
         let form = (
             <div>
                 loading
