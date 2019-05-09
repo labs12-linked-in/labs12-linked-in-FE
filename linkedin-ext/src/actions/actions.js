@@ -34,14 +34,25 @@ export const getUser = () => dispatch => {
         .catch(err => dispatch({type: GET_USER_FAILURE, ERROR: err }));
 }
 
-export const getForm = () => dispatch => {
+export const getForm = (id) => dispatch => {
     dispatch({type: GET_FORM_START});
-    axios.get(`https://linkedinextension.herokuapp.com/api/forms/5`)
+    axios.get(`https://linkedinextension.herokuapp.com/api/forms/${id}`)
         .then(res => res.data)
         .then(forms => {
             dispatch({type: GET_FORM_SUCCESS, payload: forms})
         })
-        .catch(err => dispatch({type: GET_FORM_FAILURE, ERROR: err}))
+        .catch(err => dispatch({type: GET_FORM_FAILURE, ERROR: err, payload: null}))
+}
+
+export const addForm = (newForm) => dispatch => {
+    console.log(newForm.name)
+    axios.post(`https://linkedinextension.herokuapp.com/api/forms/${newForm.id}`, {
+        name: newForm.name,
+    })
+    .then(form => {
+        console.log(form)
+    })
+    .catch(err => console.log(err))
 }
 
 export const deleteForm = (userId, formId) => {

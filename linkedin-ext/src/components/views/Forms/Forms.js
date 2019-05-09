@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
 import Form from './Form'
@@ -9,7 +10,11 @@ class Forms extends Component {
     
 
     componentDidMount() {
-        this.props.getForm()
+        this.props.getForm(localStorage.getItem('user_id'))
+    }
+
+    newForm = () => {
+        this.props.history.push('/newform')
     }
     
     render() {
@@ -20,7 +25,7 @@ class Forms extends Component {
             </div>
         )
 
-        if(!this.props.fetching) {
+        if(!this.props.fetching && this.props.forms !== null) {
             form = (
                 <div className={classes.Forms}>
                     <NavBar />
@@ -30,10 +35,28 @@ class Forms extends Component {
                         <div className={classes.Field}>Fields</div>
                         <div className={classes.Empty}></div>
                     </div>
+                    <div>
+                    
                     {this.props.forms.map(form => (
                             <Form form={form} />
                         ))}
-                    <button>Create New</button>
+                    </div>
+                    <button onClick={this.newForm}>Create New</button>
+                </div>
+            )
+        }
+
+        else if(!this.props.fetching && this.props.forms === null) {
+            form = (
+                <div className={classes.Forms}>
+                    <NavBar />
+                    <div>Forms</div>
+                    <div className={classes.Title}>
+                    </div>
+                    <div>
+                        No Form was found please create a Form
+                    </div>
+                    <button onClick={this.newForm}>Create New</button>
                 </div>
             )
         }
