@@ -10,13 +10,14 @@ import { getForm } from "../../../actions/actions";
 
 class Forms extends Component {
   componentDidMount() {
+    console.log("forms mount");
     this.props.getForm();
   }
 
   render() {
     let form = <div>loading</div>;
-
-    if (!this.props.fetching) {
+    console.log(this.props.forms);
+    if (this.props.forms) {
       form = (
         <div className={classes.Forms}>
           <NavBar />
@@ -39,6 +40,15 @@ class Forms extends Component {
     return <div className={classes.Forms}>{form}</div>;
   }
 }
+
+const mapStateToProps = state => {
+  const forms = state.formReducer.forms;
+  return { forms };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
 export default connect(
   mapStateToProps,

@@ -32,7 +32,11 @@ export const getUser = () => dispatch => {
 export const getForm = () => dispatch => {
   dispatch({ type: GET_FORM_START });
   axios
-    .get(`https://linkedinextension.herokuapp.com/api/forms/5`)
+    .get(
+      `https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem(
+        "id"
+      )}`
+    )
     .then(res => res.data)
     .then(forms => {
       dispatch({ type: GET_FORM_SUCCESS, payload: forms });
