@@ -48,9 +48,6 @@ const mapStateToProps = state => {
   return { depts };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
 
 export default connect(
   mapStateToProps,
