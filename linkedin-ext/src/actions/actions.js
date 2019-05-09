@@ -29,20 +29,26 @@ export const getUser = () => dispatch => {
     .catch(err => dispatch({ type: GET_USER_FAILURE, ERROR: err }));
 };
 
-export const getForm = () => dispatch => {
-  dispatch({ type: GET_FORM_START });
-  axios
-    .get(
-      `https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem(
-        "id"
-      )}`
-    )
-    .then(res => res.data)
-    .then(forms => {
-      dispatch({ type: GET_FORM_SUCCESS, payload: forms });
+export const getForm = (id) => dispatch => {
+    dispatch({type: GET_FORM_START});
+    axios.get(`https://linkedinextension.herokuapp.com/api/forms/${id}`)
+        .then(res => res.data)
+        .then(forms => {
+            dispatch({type: GET_FORM_SUCCESS, payload: forms})
+        })
+        .catch(err => dispatch({type: GET_FORM_FAILURE, ERROR: err, payload: null}))
+}
+
+export const addForm = (newForm) => async dispatch  => {
+    console.log(newForm.name)
+    await axios.post(`https://linkedinextension.herokuapp.com/api/forms/${newForm.id}`, {
+        name: newForm.name,
     })
-    .catch(err => dispatch({ type: GET_FORM_FAILURE, ERROR: err }));
-};
+    .then(form => {
+        console.log(form)
+    })
+    .catch(err => console.log(err))
+}
 
 export const deleteForm = (userId, formId) => {
   const deletedForm = axios.delete(

@@ -1,49 +1,79 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, {Component } from 'react';
+import {connect} from 'react-redux'
+import {addForm} from '../../../actions/actions'
+import { Redirect } from 'react-router-dom'
+
+import classes from './NewForm.module.css'
+
 
 class NewForm extends Component {
-    state ={
-        newForm: ""
+
+    state = {
+        formName: '',
+        fields: {
+            name: null,
+            type: null
+        }
     }
 
-    handleChange = e => {
-        this.setState({ 
-            [e.target.name]: e.target.value
-        })
+    handleInputChange = event => {
+        this.setState({[event.target.name]: event.target.value})
+    }
+
+    addFormName = event => {
+        // event.preventDefault();
+
+        const newForm = {
+            id: localStorage.getItem('id'),
+            name: this.state.formName,
+            firstName: localStorage.getItem('first_name'),
+            lastName: localStorage.getItem('last_name')
+        }
+        this.props.addForm(newForm)
+        this.props.history.push('/forms')
+
+        
+    }
+
+    cancel = () => {
+        this.props.history.goBack()
     }
 
     render() {
         return (
-            <div>
-                <header>
-                  <span onClick={() => this.props.history.push("/forms")}> Cancel </span>
-                  <button>Save</button>
-                </header>
-                <form>
-                    <input
-                        required
-                        type="text"
-                        value={this.state.formName}
-                        name="formName"
-                        placeholder="Enter Form Name"
-                        onChange={this.handleChange}
-                    />
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Fields</th>
-                                <th>Type</th>
-                            </tr>
-                        </thead>
-                    </table>
-                    <Link to={'/add-field'}><button>Add Field</button></Link>
+            <div className={classes.Body}>
+                <div className={classes.Header}>
+                    <div className={classes.Cancel} onClick={this.cancel}>cancel</div>
+                    <button className={classes.Save} onClick={this.addFormName}>Save</button>
+                </div>
+
+                <div className={classes.Title}>
+                    Form Name
+                </div>
+                <form className={classes.FormInput}> 
+                    <input type='text' name='formName' value={this.state.formName} onChange={this.handleInputChange}></input>
                 </form>
-                <footer>
-                    <Link to={'/form-rules'}><button>Create Form Rules</button></Link>
-                </footer>
+
+                <div className={classes.SubTitle}>
+                    <div>Fields:</div>
+                    <div>Type:</div>
+                </div>
+
             </div>
         )
     }
 }
 
-export default NewForm;
+const mapStateToProps = state => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addForm: (newForm) => dispatch(addForm(newForm))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(NewForm)
