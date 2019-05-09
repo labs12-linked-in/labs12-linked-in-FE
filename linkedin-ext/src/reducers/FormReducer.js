@@ -5,7 +5,7 @@ import {
     DELETE_FORM_START,
     DELETE_FORM_SUCCESS,
     DELETE_FORM_FAILURE
-} from '../actions/actions'
+} from '../actions/formActions.js';
 
 const initialState = {
     forms: null,

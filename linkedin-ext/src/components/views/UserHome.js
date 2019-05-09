@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import NavBar from './NavBar/NavBar.js';
-import { getUser } from '../../actions/actions';
+import { getUser } from '../../actions/userActions';
 
 class UserHome extends Component {
     constructor(props) {

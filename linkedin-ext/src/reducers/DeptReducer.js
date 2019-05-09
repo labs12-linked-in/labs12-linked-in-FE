@@ -2,7 +2,7 @@ import {
   GET_DEPT_START,
   GET_DEPT_SUCCESS,
   GET_DEPT_FAILURE
-} from "../actions/deptActions";
+} from "../actions/deptActions.js";
 
 const initialState = {
   depts: null,

@@ -4,7 +4,8 @@ import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
 import Form from './Form'
 import {connect} from 'react-redux'
-import { getForm } from '../../../actions/actions'
+import { getForm } from "../../../actions/formActions.js";
+
 
 class Forms extends Component {
   componentDidMount() {
@@ -78,8 +79,7 @@ const mapStateToProps = state => {
   return { forms };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-export default connect(mapStateToProps,{ getForm })(Forms);
+export default connect(
+  mapStateToProps,
+  { getForm }
+)(Forms);
