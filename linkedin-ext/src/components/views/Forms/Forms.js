@@ -1,44 +1,77 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
-import NavBar from "../NavBar/NavBar";
-import Form from "./Form";
-
-import classes from "./Forms.module.css";
+import React, { Component } from 'react';
+import {Redirect} from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
+import classes from './Forms.module.css'
+import Form from './Form'
+import {connect} from 'react-redux'
 import { getForm } from "../../../actions/formActions.js";
+
 
 class Forms extends Component {
   componentDidMount() {
     console.log("forms mount");
-    this.props.getForm();
+    this.props.getForm(localStorage.getItem('id'))
   }
 
-  render() {
-    let form = <div>loading</div>;
-    console.log(this.props.forms);
-    if (this.props.forms) {
-      form = (
-        <div className={classes.Forms}>
-          <NavBar />
-          <div>Forms</div>
-          <div className={classes.Title}>
-            <div className={classes.Name}>Name</div>
-            <div className={classes.Field}>Fields</div>
-            <div className={classes.Empty} />
-          </div>
-          {this.props.forms.map(form => (
-            <Form form={form} />
-          ))}
-          <Link to={"/new-form"}>
-            <button>Create New</button>
-          </Link>
-        </div>
-      );
+  // componentWillReceiveProps() {
+  //   this.props.getForm(localStorage.getItem('id'))
+  // }
+
+    newForm = () => {
+        this.props.history.push('/newform')
     }
+    
+    render() {
+      
 
-    return <div className={classes.Forms}>{form}</div>;
-  }
+        let form = (
+            <div>
+                loading
+            </div>
+        )
+
+        if(!this.props.fetching && this.props.forms !== null) {
+            form = (
+                <div className={classes.Forms}>
+                    <NavBar />
+                    <div>Forms</div>
+                    <div className={classes.Title}>
+                        <div className={classes.Name}>Name</div>
+                        <div className={classes.Field}>Fields</div>
+                        <div className={classes.Empty}></div>
+                    </div>
+                    <div>
+                    
+                    {this.props.forms.map(form => (
+                            <Form form={form} />
+                        ))}
+                    </div>
+                    <button onClick={this.newForm}>Create New</button>
+                </div>
+            )
+        }
+
+        else if(!this.props.fetching && this.props.forms === null) {
+            form = (
+                <div className={classes.Forms}>
+                    <NavBar />
+                    <div>Forms</div>
+                    <div className={classes.Title}>
+                    </div>
+                    <div>
+                        No Form was found please create a Form
+                    </div>
+                    <button onClick={this.newForm}>Create New</button>
+                </div>
+            )
+        }
+        
+        return (
+            <div className={classes.Forms}>
+            {form}
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state => {
