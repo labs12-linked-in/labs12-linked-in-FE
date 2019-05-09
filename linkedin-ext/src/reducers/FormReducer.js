@@ -5,7 +5,7 @@ import {
     DELETE_FORM_START,
     DELETE_FORM_SUCCESS,
     DELETE_FORM_FAILURE
-} from '../actions/actions'
+} from '../actions/formActions.js';
 
 const initialState = {
     forms: null,
@@ -33,7 +33,8 @@ export const formReducer = ( state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload
+                forms: action.payload,
+                error: action.ERROR
             }
 
         case DELETE_FORM_START:

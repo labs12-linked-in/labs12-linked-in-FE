@@ -2,7 +2,7 @@ import {
     GET_USER_START,
     GET_USER_SUCCESS,
     GET_USER_FAILURE
-} from '../actions/actions.js';
+} from '../actions/userActions.js';
 
 const initialState = {
     userProfile: [],
