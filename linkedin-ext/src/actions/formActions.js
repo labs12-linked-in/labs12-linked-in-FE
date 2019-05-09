@@ -30,8 +30,8 @@ export const DELETE_FORM_FAILURE = "DELETE_FORM_FAILURE";
         `https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`
       )
       .then(res => {
-        console.log(res);
-        // dispatch({ type: DELETE_FORM_SUCCESS, payload:  });
+        // console.log(res);
+        dispatch({ type: DELETE_FORM_SUCCESS, payload: res.data });
       })
       .catch(err => {
         dispatch({ type: DELETE_FORM_FAILURE, payload: err.response });

@@ -29,7 +29,7 @@ class Departments extends Component {
               <div />
             </div>
             {this.props.depts.map(dept => (
-              <Department name={dept.name} />
+              <Department dept={dept} />
             ))}
             <Link to={"/new-dept"}>
               <button>Create New</button>
