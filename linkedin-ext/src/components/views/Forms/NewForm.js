@@ -1,7 +1,7 @@
 import React, {Component } from 'react';
 import {connect} from 'react-redux'
 import {addForm} from '../../../actions/formActions.js'
-import { Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import classes from './NewForm.module.css'
 
@@ -58,7 +58,12 @@ class NewForm extends Component {
                     <div>Fields:</div>
                     <div>Type:</div>
                 </div>
-
+                <div>
+                    <Link to={'/add-field'}><button>Add Field</button></Link>
+                </div>
+                <div>
+                    <Link to={'/form-rules'}><button>Create Form Rules</button></Link>    
+                </div>
             </div>
         )
     }
