@@ -8,6 +8,7 @@ import Login from "./components/views/Login";
 import Forms from "./components/views/Forms/Forms";
 import NewForm from "./components/views/Forms/NewForm";
 import Departments from "./components/views/Departments/Departments";
+import NewDepartment from "./components/views/Departments/NewDepartment/NewDepartment.js";
 import UserHome from "./components/views/UserHome";
 import AddField from "./components/views/Forms/AddField";
 import FormRules from "./components/views/Forms/FormRules";
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/forms" component={Forms} />
           <Route path="/new-form" component={NewForm} />
           <Route path="/dept" component={Departments} />
+          <Route path="/new-dept" component={NewDepartment} />
           <Route path="/api/user" component={UserHome} />
           <Route path="/add-field" component={AddField} />
           <Route path="/form-rules" component={FormRules} />
