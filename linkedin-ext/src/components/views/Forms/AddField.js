@@ -18,6 +18,7 @@ class AddField extends Component {
                 <header>
                     <span onClick={() => this.props.history.push("/new-form")}> Cancel </span>
                     <button>Save</button>
+                    <h3>Add a new form field</h3>
                 </header>
                 <form>
                     <h4>Title:</h4>

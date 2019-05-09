@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class NewForm extends Component {
     state ={
@@ -35,10 +36,10 @@ class NewForm extends Component {
                             </tr>
                         </thead>
                     </table>
-                    <button>Add Field</button>
+                    <Link to={'/add-field'}><button>Add Field</button></Link>
                 </form>
                 <footer>
-                    <button>Create Form Rules</button>
+                    <Link to={'/form-rules'}><button>Create Form Rules</button></Link>
                 </footer>
             </div>
         )
