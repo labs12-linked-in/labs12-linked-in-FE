@@ -11,7 +11,7 @@ class Department extends Component {
 
   render() {
     return (    
-    <div className={classes.Department} key={this.props.dept.id}>
+    <div className={classes.Title} key={this.props.dept.id}>
       <div className={classes.Name}>{this.props.dept.name}</div>
       <div className={classes.Empty}><button>edit</button></div>
       <div className={classes.Delete}><button onClick={() => {

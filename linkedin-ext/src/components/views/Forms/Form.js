@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import classes from "./Forms.module.css";
+import classes from "./Form.module.css";
 import { deleteForm } from '../../../actions/formActions.js'
 
 class Form extends Component {

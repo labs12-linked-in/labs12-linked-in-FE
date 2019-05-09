@@ -23,7 +23,7 @@ class Departments extends Component {
             <NavBar />
           </div>
           <div>
-            <div className={classes.bold}>Department</div>
+            <div className={classes.bold}>Departments</div>
             <div className={classes.TopSeparation}>
               <div>Name</div>
               <div />
