@@ -21,7 +21,7 @@ class Departments extends Component {
             this.setState({isAddNew: true})
         }
 
-        addNewDepartmentCancle = () => {
+        addNewDepartmentCancel = () => {
             this.setState({isAddNew: false})
         }
 
@@ -29,7 +29,7 @@ class Departments extends Component {
 
         let dept = null;
         if (this.state.isAddNew) {
-            dept=<NewDepartment cancle={this.addNewDepartmentCancle} />;
+            dept=<NewDepartment cancel={this.addNewDepartmentCancel} />;
         } else if (!this.state.isAddNew && !this.props.fetching) {
             dept = (
                 <div className={classes.Departments}>

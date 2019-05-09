@@ -13,7 +13,7 @@ const positions = [
 const newDepartment = (props) => (
     <div className={classes.NewDepartment}>
         <div className={classes.TopPortion}>
-        <div className={classes.Cancle} onClick={props.cancle}>
+        <div className={classes.Cancle} onClick={props.cancel}>
             <img className={classes.Img} src={back} alt='Go back'/>
             <p>Cancel</p>
         </div>
@@ -32,7 +32,10 @@ const newDepartment = (props) => (
         <div className={classes.Data}>
             <div className={classes.Target}>
                 {positions.map(positon => (
+                    <div>
                     <div>{positon.position}</div>
+                    <div><p>+ email</p></div>
+                    </div>
                 ))}
             </div>
             <div className={classes.Email}>
