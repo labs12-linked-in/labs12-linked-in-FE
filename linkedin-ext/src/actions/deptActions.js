@@ -7,7 +7,11 @@ export const GET_DEPT_FAILURE = "GET_DEPT_FAILURE";
 export const getDept = () => dispatch => {
   dispatch({ type: GET_DEPT_START });
   axios
-    .get("https://linkedinextension.herokuapp.com/api/departments/5")
+    .get(
+      `https://linkedinextension.herokuapp.com/api/departments/${localStorage.getItem(
+        "id"
+      )}`
+    )
     .then(res => res.data)
     .then(depts => {
       dispatch({ type: GET_DEPT_SUCCESS, payload: depts });
