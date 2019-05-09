@@ -36,7 +36,7 @@ class NewForm extends Component {
     }
 
     cancel = () => {
-        this.props.history.goBack()
+        this.props.history.push('/forms')
     }
 
     render() {
