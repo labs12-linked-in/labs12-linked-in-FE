@@ -12,10 +12,9 @@ import UserHome from "./components/views/UserHome";
 import AddField from "./components/views/Forms/AddField";
 import FormRules from "./components/views/Forms/FormRules";
 import Scrape from "./components/views/Scrape/Scrape";
-import EditScrape from './components/views/Scrape/EditScrape';
+import EditScrape from "./components/views/Scrape/EditScrape";
 
 class App extends Component {
-
   render() {
     return (
       <div className={classes.App}>
