@@ -10,7 +10,7 @@ import NewForm from "./components/views/Forms/NewForm";
 import Departments from "./components/views/Departments/Departments";
 import NewDepartment from "./components/views/Departments/NewDepartment/NewDepartment.js";
 import UserHome from "./components/views/UserHome";
-import AddField from "./components/views/Forms/AddField";
+import AddField from "./components/views/FormFields/AddField";
 import FormRules from "./components/views/Forms/FormRules";
 import Scrape from "./components/views/Scrape/Scrape";
 import EditScrape from "./components/views/Scrape/EditScrape";

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SelectBox from '../../../features/select-box/index';
+import SelectBox from '../../../features/select-box/index.js';
 
 class AddField extends Component {
     state = {
