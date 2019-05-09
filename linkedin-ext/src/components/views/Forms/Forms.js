@@ -6,7 +6,7 @@ import NavBar from "../NavBar/NavBar";
 import Form from "./Form";
 
 import classes from "./Forms.module.css";
-import { getForm } from "../../../actions/actions";
+import { getForm } from "../../../actions/formActions";
 
 class Forms extends Component {
   componentDidMount() {
