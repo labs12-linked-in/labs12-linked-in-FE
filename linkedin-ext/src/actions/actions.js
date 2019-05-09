@@ -50,6 +50,16 @@ export const addForm = (newForm) => async dispatch  => {
     .catch(err => console.log(err))
 }
 
+export const editForm = (userId, formId, name) => dispatch => {
+    axios.post(`https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`, {
+        name: name
+    })
+    .then(form => {
+        console.log(form)
+    })
+    .catch(err => console.log(err))
+}
+
 export const deleteForm = (userId, formId) => {
   const deletedForm = axios.delete(
     `https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`

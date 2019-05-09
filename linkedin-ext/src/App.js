@@ -14,6 +14,7 @@ import AddField from "./components/views/Forms/AddField";
 import FormRules from "./components/views/Forms/FormRules";
 import Scrape from "./components/views/Scrape/Scrape";
 import EditScrape from "./components/views/Scrape/EditScrape";
+import EditForm from './components/views/Forms/EditForm'
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/" exact component={Login} />
           <Route path="/forms" component={Forms} />
           <Route path='/newform' component={NewForm} />
+          <Route path='/editfrom' component={EditForm} />
           <Route path="/dept" component={Departments} />
           <Route path="/new-dept" component={NewDepartment} />
           <Route path="/api/user" component={UserHome} />
