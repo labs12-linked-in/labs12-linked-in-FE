@@ -33,7 +33,8 @@ export const formReducer = ( state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                error: action.payload
+                forms: action.payload,
+                error: action.ERROR
             }
 
         case DELETE_FORM_START:
