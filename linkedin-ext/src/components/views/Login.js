@@ -19,7 +19,7 @@ class Login extends Component {
     // Sign-up an account to get one
     window.OAuth.initialize("Yq_ObrXeRonGLhBwvd3nXD2oFlA");
 
-    // Popup facebook and ask for authorization
+    // Popup and ask for authorization
     window.OAuth.popup("linkedin2").done(function(result) {
       console.log("linkedin:", result);
       axios

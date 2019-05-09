@@ -35,7 +35,6 @@ export const getForm = () => dispatch => {
     .get(`https://linkedinextension.herokuapp.com/api/forms/5`)
     .then(res => res.data)
     .then(forms => {
-      console.log("data", forms);
       dispatch({ type: GET_FORM_SUCCESS, payload: forms });
     })
     .catch(err => dispatch({ type: GET_FORM_FAILURE, ERROR: err }));
