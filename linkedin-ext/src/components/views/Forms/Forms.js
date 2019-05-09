@@ -7,17 +7,21 @@ import {connect} from 'react-redux'
 import { getForm } from '../../../actions/actions'
 
 class Forms extends Component {
-    
+  componentDidMount() {
+    console.log("forms mount");
+    this.props.getForm(localStorage.getItem('id'))
+  }
 
-    componentDidMount() {
-        this.props.getForm(localStorage.getItem('user_id'))
-    }
+  // componentWillReceiveProps() {
+  //   this.props.getForm(localStorage.getItem('id'))
+  // }
 
     newForm = () => {
         this.props.history.push('/newform')
     }
     
     render() {
+      
 
         let form = (
             <div>
@@ -67,14 +71,15 @@ class Forms extends Component {
             </div>
         )
     }
-} 
-
-const mapStateToProps = state => {
-    return {
-        forms: state.formReducer.forms,
-        fetching: state.formReducer.isLoading
-    }
 }
 
+const mapStateToProps = state => {
+  const forms = state.formReducer.forms;
+  return { forms };
+};
 
-export default connect(mapStateToProps, {getForm})(Forms);
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps,{ getForm })(Forms);
