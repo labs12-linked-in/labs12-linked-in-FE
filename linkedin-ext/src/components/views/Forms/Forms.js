@@ -46,10 +46,6 @@ const mapStateToProps = state => {
   return { forms };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
 export default connect(
   mapStateToProps,
   { getForm }
