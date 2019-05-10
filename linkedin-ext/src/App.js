@@ -9,7 +9,7 @@ import Forms from "./components/views/Forms/Forms";
 import NewForm from "./components/views/Forms/NewForm";
 import Departments from "./components/views/Departments/Departments";
 import NewDepartment from "./components/views/Departments/NewDepartment/NewDepartment.js";
-import UserHome from "./components/views/UserHome";
+import UpdateIndivDept from "./components/views/Departments/Department/UpdateDept.js";
 import AddField from "./components/views/FormFields/AddField";
 import FormRules from "./components/views/Forms/FormRules";
 import Scrape from "./components/views/Scrape/Scrape";
@@ -22,14 +22,14 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/forms" component={Forms} />
-          <Route path='/newform' component={NewForm} />
+          <Route path='/new-form' component={NewForm} />
           <Route path="/dept" component={Departments} />
           <Route path="/new-dept" component={NewDepartment} />
-          <Route path="/api/user" component={UserHome} />
           <Route path="/add-field" component={AddField} />
           <Route path="/form-rules" component={FormRules} />
           <Route path="/scrape" component={Scrape} />
           <Route path="/edit-scrape" component={EditScrape} />
+          <Route path="/update-department" component={UpdateIndivDept} />
         </Switch>
       </div>
     );
