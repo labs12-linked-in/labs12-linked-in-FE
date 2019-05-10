@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import classes from './Forms.module.css'
 import Form from './Form'
@@ -8,6 +7,7 @@ import { getForm } from "../../../actions/formActions.js";
 
 
 class Forms extends Component {
+
   componentDidMount() {
     console.log("forms mount");
     this.props.getForm(localStorage.getItem('id'))
@@ -70,8 +70,10 @@ class Forms extends Component {
 }
 
 const mapStateToProps = state => {
-  const forms = state.formReducer.forms;
-  return { forms };
+    return {
+        forms: state.formReducer.forms,
+        getForm: state.formReducer.getForm
+    }
 };
 
 export default connect(

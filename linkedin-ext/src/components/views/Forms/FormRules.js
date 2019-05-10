@@ -13,7 +13,7 @@ class FormRules extends Component {
         return (
             <div>
                 <header>
-                    <span onClick={() => this.props.history.push("/new-form")}> Cancel </span>
+                    <span onClick={() => this.props.history.push("/newform")}> Cancel </span>
                     <h3>Form Rules</h3>
                     <button>Save</button>
                 </header>
