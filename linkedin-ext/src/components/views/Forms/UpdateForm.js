@@ -8,11 +8,6 @@ class UpdateIndivForm extends Component {
     forms: this.props.formInfo
   };
 
-  componentDidMount() {
-    console.log(this.props);
-    // this.setState({ form: this.props })
-  }
-
   handleChange = e => {
     this.setState({
       formInfo: {
@@ -37,8 +32,6 @@ class UpdateIndivForm extends Component {
   };
 
   render() {
-    console.log("UPDATE FORM PROPS", this.props);
-
     return (
       <div>
         <form>

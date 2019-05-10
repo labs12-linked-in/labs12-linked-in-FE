@@ -19,7 +19,6 @@ export const getDept = () => dispatch => {
     )
     .then(res => res.data)
     .then(depts => {
-      // console.log("DEPTS FROM deptActions.js", depts);
       dispatch({ type: GET_DEPT_SUCCESS, payload: depts });
     })
     .catch(err => dispatch({ type: GET_DEPT_FAILURE, ERROR: err }));
@@ -92,4 +91,13 @@ export const updateDept = (deptId, updatedDept) => dispatch => {
     .catch(err => {
       dispatch({ type: UPDATE_DEPT_FAILURE, payload: err });
     });
+};
+
+export const ADD_UPDATE_DEPT_START = "ADD_UPDATE_DEPT_START";
+export const ADD_UPDATE_DEPT_SUCCESS = "ADD_UPDATE_DEPT_SUCCESS";
+export const ADD_UPDATE_DEPT_FAILURE = "ADD_UPDATE_DEPT_FAILURE";
+
+export const addDeptToUpdate = dept => dispatch => {
+  dispatch({ type: ADD_UPDATE_DEPT_START });
+  dispatch({ type: ADD_UPDATE_DEPT_SUCCESS, payload: { dept } });
 };

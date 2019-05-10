@@ -5,13 +5,13 @@ import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
 import { Link } from "react-router-dom";
 
 class Form extends Component {
+
   deleteForm = (userId, formId) => {
     this.props.deleteForm(userId, formId);
   };
 
   addFormToUpdate = form => {
     this.props.addFormToUpdate(form);
-    console.log(this.props);
     this.props.history.push("/update-form");
   };
 
@@ -21,13 +21,11 @@ class Form extends Component {
       <div className={classes.Title} key={id}>
         <div className={classes.Name}>{name}</div>
         <div className={classes.Field}>{field_count}</div>
-
         <div className={classes.Empty}>
           <button onClick={() => this.addFormToUpdate(this.props.form)}>
             edit
           </button>
         </div>
-
         <div className={classes.Delete}>
           <button
             onClick={() => {
