@@ -12,18 +12,10 @@ class Forms extends Component {
     console.log(this.props.forms);
   }
 
-    newForm = () => {
-        this.props.history.push('/new-form')
-    }
+  newForm = () => {
+      this.props.history.push('/new-form')
+  }
     
-    render() {
-      
-        let form = (
-            <div>
-                loading
-            </div>
-        )
-
   render() {
     let form = <div>loading</div>;
 
