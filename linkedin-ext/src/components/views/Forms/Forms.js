@@ -7,15 +7,13 @@ import { getForm } from "../../../actions/formActions.js";
 
 class Forms extends Component {
   componentDidMount() {
-    console.log("forms mount");
     this.props.getForm(localStorage.getItem("id"));
-    console.log(this.props.forms);
   }
 
   newForm = () => {
-      this.props.history.push('/new-form')
-  }
-    
+    this.props.history.push("/new-form");
+  };
+
   render() {
     let form = <div>loading</div>;
 
@@ -31,7 +29,7 @@ class Forms extends Component {
           </div>
           <div>
             {this.props.forms.map(form => (
-              <Form form={form} />
+              <Form form={form} history={this.props.history} />
             ))}
           </div>
           <button onClick={this.newForm}>Create New</button>

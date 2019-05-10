@@ -10,7 +10,10 @@ import {
   DELETE_DEPT_FAILURE,
   UPDATE_DEPT_START,
   UPDATE_DEPT_SUCCESS,
-  UPDATE_DEPT_FAILURE
+  UPDATE_DEPT_FAILURE,
+  ADD_UPDATE_DEPT_START,
+  ADD_UPDATE_DEPT_SUCCESS,
+  ADD_UPDATE_DEPT_FAILURE
 
 } from "../actions/deptActions.js";
 
@@ -20,6 +23,7 @@ const initialState = {
   gettingDept: false,
   isDeleting: false,
   isUpdating: false,
+  deptToUpdate: null,
   error: ''
 };
 
@@ -102,7 +106,14 @@ export const deptReducer = (state = initialState, action) => {
         ...state,
         isUpdating: false,
         error: action.payload
-      }  
+      }
+
+    case ADD_UPDATE_DEPT_SUCCESS:
+      return {
+        ...state,
+        deptToUpdate: action.payload,
+        error: ""
+      };
       
     default:
       return state;
