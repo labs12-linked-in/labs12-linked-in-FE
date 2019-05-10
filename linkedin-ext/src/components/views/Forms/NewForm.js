@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addForm } from "../../../actions/formActions.js";
 import { Link } from "react-router-dom";
+import { deleteField } from "../../../actions/formFieldActions.js";
 
 import classes from "./NewForm.module.css";
 
@@ -46,6 +47,10 @@ class NewForm extends Component {
     this.props.history.push("/forms");
   };
 
+  deleteField = (userId, fieldId) => {
+    this.props.deleteField(userId, fieldId)
+  };
+
   render() {
     let { name, fields } = this.state;
     return (
@@ -83,9 +88,14 @@ class NewForm extends Component {
                   value={fields[idx].selected}
                   className="selected"
                 />
-                <button onClick={this.deleteField} value={idx}>
-                  Delete Field
-                </button>
+                <div className={classes.Delete}><button onClick={() => {
+                  if (window.confirm('Are you sure you want to delete this form?'))
+                    this.deleteField(
+                      this.props.form.user_id, 
+                      this.props.form.field_id
+                    )
+                  }}>X</button>
+                </div>
               </div>
             );
           })}
