@@ -15,17 +15,25 @@ class Department extends Component {
   }
 
   render() {
-    console.log(this.props.dept)
+    const { department_id, name, user_id } = this.props.dept ;
     return (    
-    <div className={classes.Title} key={this.props.dept.department_id}>
-      <div className={classes.Name}>{this.props.dept.name}</div>
-      <div className={classes.Empty}><Link to={`/update-department/${localStorage.getItem('id')}/${this.props.dept.department_id}`}><button>edit</button></Link></div>
+    <div className={classes.Title} key={department_id}>
+      <div className={classes.Name}>{name}</div>
+
+
+      <div className={classes.Empty}>
+        <Link to={`/update-department/${user_id}/${department_id}`}> 
+          <button>edit</button>
+        </Link>
+      </div>
+
+
       <div className={classes.Delete}><button onClick={() => {
         if (window.confirm('Are you sure you want to delete this department?'))
         // console.log("DEPT PROPS: ", this.props)
           this.deleteDepartment(
-            this.props.dept.user_id, 
-            this.props.dept.department_id
+            user_id, 
+            department_id
           )
       }}>X</button></div>
     </div>

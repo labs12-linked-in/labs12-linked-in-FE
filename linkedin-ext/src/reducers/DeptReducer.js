@@ -19,7 +19,7 @@ const initialState = {
   isLoading: false,
   gettingDept: false,
   isDeleting: false,
-  isupdating: false,
+  isUpdating: false,
   error: ''
 };
 
@@ -100,7 +100,7 @@ export const deptReducer = (state = initialState, action) => {
     case UPDATE_DEPT_FAILURE:
       return {
         ...state,
-        isupdating: false,
+        isUpdating: false,
         error: action.payload
       }  
       
