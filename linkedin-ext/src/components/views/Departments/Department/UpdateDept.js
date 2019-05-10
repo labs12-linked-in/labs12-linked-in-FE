@@ -30,14 +30,6 @@ class UpdateIndivDept extends Component {
         })
     }
 
-    /*updateDept = (e, id) => {
-        e.preventDefault();
-        const { name, admin_email, supervisor_email, manager_email, director_email, vp_email } = this.state;
-        this.props.updateDept(id, { name, admin_email, supervisor_email, manager_email, director_email, vp_email })
-        this.setState({ name: "", admin_email: "", supervisor_email: "", manager_email: "", director_email: "", vp_email: "" })
-        this.props.history.push("/dept")
-    }*/
-
     updateDept = (e, id) => {
         const updatedDept = {
             name: this.state.depInfo.name, 
