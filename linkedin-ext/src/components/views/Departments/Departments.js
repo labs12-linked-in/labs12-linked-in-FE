@@ -9,13 +9,11 @@ import { getDept } from "../../../actions/deptActions";
 
 class Departments extends Component {
   componentDidMount() {
-    console.log("dep mount");
     this.props.getDept();
   }
 
   render() {
     let dept = <div>Loading</div>;
-    console.log(this.props);
     if (this.props.depts) {
       dept = (
         <div className={classes.Departments}>
@@ -29,7 +27,7 @@ class Departments extends Component {
               <div />
             </div>
             {this.props.depts.map(dept => (
-              <Department dept={dept} />
+              <Department dept={dept} history={this.props.history}  />
             ))}
             <Link to={"/new-dept"}>
               <button>Create New</button>
