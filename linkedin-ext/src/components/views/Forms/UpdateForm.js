@@ -5,6 +5,7 @@ import { getIndivForm, updateForm } from '../../../actions/formActions.js';
 
 class UpdateIndivForm extends Component {
     state = {
+        forms: this.props.formInfo,
         formInfo: {
             name: this.props.formInfo[0].name, 
             // ******************** need to add fields still ********************
@@ -14,6 +15,7 @@ class UpdateIndivForm extends Component {
     componentDidMount() {
         console.log(this.props)
         this.props.getIndivForm(this.props.formInfo[0].form_id)
+        // this.setState({ form: this.props })
     }
     
     handleChange = e => {
@@ -22,6 +24,7 @@ class UpdateIndivForm extends Component {
                 ...this.state.formInfo,
                 [e.target.name]: e.target.value
             }
+
         })
     }
     
