@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 import classes from "./Form.module.css";
 import { deleteForm } from '../../../actions/formActions.js'
 import { Link } from 'react-router-dom';
@@ -38,4 +38,4 @@ class Form extends Component {
 export default connect(
   null,
   { deleteForm }
-)(Form)
+)(Form);

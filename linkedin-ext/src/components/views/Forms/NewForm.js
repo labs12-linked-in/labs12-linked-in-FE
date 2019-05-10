@@ -22,6 +22,15 @@ class NewForm extends Component {
     }
   };
 
+  deleteField = e => {
+    e.preventDefault();
+    let fields = [...this.state.fields];
+    fields.splice(e.target.value, 1);
+    this.setState({ fields }, () =>
+      console.log(this.state.fields, "after delete")
+    );
+  };
+
   addField = e => {
     e.preventDefault();
     this.setState(prevState => ({
