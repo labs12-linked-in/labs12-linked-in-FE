@@ -15,8 +15,7 @@ class UpdateIndivDept extends Component {
         }
     }
 
-    componentWillMount() {
-        console.log("params ID", this.props.depInfo[0].department_id)
+    componentDidMount() {
         this.props.getIndivDept(this.props.depInfo[0].department_id)
     }
 
@@ -30,14 +29,6 @@ class UpdateIndivDept extends Component {
         })
     }
 
-    /*updateDept = (e, id) => {
-        e.preventDefault();
-        const { name, admin_email, supervisor_email, manager_email, director_email, vp_email } = this.state;
-        this.props.updateDept(id, { name, admin_email, supervisor_email, manager_email, director_email, vp_email })
-        this.setState({ name: "", admin_email: "", supervisor_email: "", manager_email: "", director_email: "", vp_email: "" })
-        this.props.history.push("/dept")
-    }*/
-
     updateDept = (e, id) => {
         const updatedDept = {
             name: this.state.depInfo.name, 
@@ -48,61 +39,64 @@ class UpdateIndivDept extends Component {
             vp_email: this.state.depInfo.vp_email
         }
         e.preventDefault()
-        console.log(this.props.depInfo[0].department_id)
         this.props.updateDept(this.props.depInfo[0].department_id, updatedDept)
-        this.setState({ name: "", admin_email: "", supervisor_email: "", manager_email: "", director_email: "", vp_email: "" })
+        this.setState({ 
+            name: "", 
+            admin_email: "", 
+            supervisor_email: "", 
+            manager_email: "", 
+            director_email: "", 
+            vp_email: "" 
+        })
         this.props.history.push("/dept")
     }
 
-
-
-    render () {
-        const { name, admin_email, supervisor_email, manager_email, director_email, vp_email } = this.state;
+    render() {
+        const { name, admin_email, supervisor_email, manager_email, director_email, vp_email } = this.state.depInfo;
         const { department_id } = this.props.depInfo[0]
-        console.log("ID1", department_id)
         return (
             <div>
                 <form>
                     <input 
                         type="text"
                         name="name"
-                        value={this.state.depInfo.name}
+                        value={name}
                         onChange={this.handleChange}
                     />
                     <input
                         type="text"
                         name="admin_email"
-                        value={this.state.depInfo.admin_email}
+                        value={admin_email}
                         onChange={this.handleChange}
-                        placeholder={this.state.depInfo.admin_email}
+                        placeholder={admin_email}
                     />
                      <input
                         type="text"
                         name="supervisor_email"
-                        value={this.state.depInfo.supervisor_email}
+                        value={supervisor_email}
                         onChange={this.handleChange}
-                        placeholder={this.state.depInfo.supervisor_email}
+                        placeholder={supervisor_email}
                     />
                      <input
                         type="text"
                         name="manager_email"
-                        value={this.state.depInfo.manager_email}
+                        value={manager_email}
                         onChange={this.handleChange}
-                        placeholder={this.state.depInfo.manager_email}
+                        placeholder={manager_email}
                     />
                     <input
                         type="text"
                         name="director_email"
-                        value={this.state.depInfo.director_email}
+                        value={director_email}
                         onChange={this.handleChange}
-                        placeholder={this.state.depInfo.director_email}
+                        placeholder={director_email}
                     />
                     <input
                         type="text"
                         name="vp_email"
-                        value={this.state.depInfo.vp_email}
+                        value={vp_email}
                         onChange={this.handleChange}
-                        placeholder={this.state.depInfo.vp_email}
+                        placeholder={vp_email}
                     />
                     <div>
                         <button onClick={e => this.updateDept(e, department_id)}>Save Changes</button>

@@ -14,7 +14,7 @@ class Forms extends Component {
   }
 
     newForm = () => {
-        this.props.history.push('/newform')
+        this.props.history.push('/new-form')
     }
     
     render() {
