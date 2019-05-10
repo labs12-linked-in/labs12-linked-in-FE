@@ -2,15 +2,23 @@ import {
     GET_FORM_START,
     GET_FORM_SUCCESS,
     GET_FORM_FAILURE,
+    GET_INDIVFORM_START,
+    GET_INDIVFORM_SUCCESS,
+    GET_INDIVFORM_FAILURE,
     DELETE_FORM_START,
     DELETE_FORM_SUCCESS,
-    DELETE_FORM_FAILURE
+    DELETE_FORM_FAILURE,
+    UPDATE_FORM_START,
+    UPDATE_FORM_SUCCESS,
+    UPDATE_FORM_FAILURE
 } from '../actions/formActions.js';
 
 const initialState = {
     forms: null,
     isLoading: true,
+    gettingForm: false,
     isDeleting: false,
+    isUpdating: false,
     error: ''
 }
 
@@ -37,6 +45,27 @@ export const formReducer = ( state = initialState, action) => {
                 error: action.ERROR
             }
 
+        case GET_INDIVFORM_START:
+            return {
+              ...state,
+              gettingForm: true,
+              error: ""
+            };
+      
+        case GET_INDIVFORM_SUCCESS:
+            return {
+              ...state,
+              gettingForm: false,
+              error: ""
+            };
+      
+        case GET_INDIVFORM_FAILURE:
+            return {
+                ...state,
+                gettingForm: false,
+                error: action.payload
+            };
+
         case DELETE_FORM_START:
             return {
                 ...state,
@@ -55,7 +84,27 @@ export const formReducer = ( state = initialState, action) => {
                 isDeleting: false,
                 error: action.payload
             }
-        
-        default: return state
+
+        case UPDATE_FORM_START:
+            return {
+              ...state,
+              isUpdating: true,
+              error: ""
+            }
+        case UPDATE_FORM_SUCCESS:
+            return {
+              ...state,
+              isUpdating: false,
+              error: ''
+            }
+        case UPDATE_FORM_FAILURE:
+            return {
+              ...state,
+              isUpdating: false,
+              error: action.payload
+            }  
+            
+        default: 
+            return state;
     }
 }

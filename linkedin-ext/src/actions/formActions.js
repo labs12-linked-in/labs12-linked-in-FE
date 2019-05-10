@@ -19,6 +19,23 @@ export const getForm = () => dispatch => {
     .catch(err => dispatch({ type: GET_FORM_FAILURE, ERROR: err }));
 };
 
+export const GET_INDIVFORM_START = "GET_INDIVDEPT_START";
+export const GET_INDIVFORM_SUCCESS = "GET_INDIVDEPT_SUCCESS";
+export const GET_INDIVFORM_FAILURE = "GET_INDIVDEPT_FAILURE";
+
+export const getIndivForm = (formId) => dispatch => {
+  dispatch({ type: GET_INDIVFORM_START });
+  axios
+    .get(`https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem('id')}/${formId}`)
+    .then(res => res.data)
+    .then(form => {
+      dispatch({ type: GET_INDIVFORM_SUCCESS, payload: form })
+    })
+    .catch(err => {
+      dispatch({ type: GET_INDIVFORM_FAILURE, payload: err })
+    })
+}
+
 export const DELETE_FORM_START = "DELETE_FORM_START";
 export const DELETE_FORM_SUCCESS = "DELETE_FORM_SUCCESS";
 export const DELETE_FORM_FAILURE = "DELETE_FORM_FAILURE";
@@ -70,3 +87,22 @@ export const addForm = newForm => async dispatch => {
     })
     .catch(err => console.log(err));
 };
+
+
+export const UPDATE_FORM_START = "UPDATE_FORM_START";
+export const UPDATE_FORM_SUCCESS = "UPDATE_FORM_SUCCESS";
+export const UPDATE_FORM_FAILURE = "UPDATE_FORM_FAILURE";
+
+export const updateForm = (formId, updatedForm) => dispatch => {
+  dispatch({ type: UPDATE_FORM_START })
+
+  axios
+    .put(`https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem('id')}/${formId}`, updatedForm)
+    .then(res => res.data)
+    .then(form => {
+      dispatch({ type: UPDATE_FORM_SUCCESS, payload: {formId, ...form} })
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_FORM_FAILURE, payload: err})
+    })
+}

@@ -10,11 +10,12 @@ class UpdateIndivForm extends Component {
             // ******************** need to add fields still ********************
         }
     }
-
+    
     componentDidMount() {
+        console.log(this.props)
         this.props.getIndivForm(this.props.formInfo[0].form_id)
     }
-
+    
     handleChange = e => {
         this.setState({
             formInfo: {
@@ -23,7 +24,7 @@ class UpdateIndivForm extends Component {
             }
         })
     }
-
+    
     updateForm = (e, id) => {
         const updatedForm = {
             name: this.state.formInfo.name,
@@ -37,9 +38,11 @@ class UpdateIndivForm extends Component {
         })
         this.props.history.push('/forms')
     }
-
+    
     render() {
+        console.log("UPDATE FORM PROPS", this.props)
         const { name } = this.state.formInfo;
+        const { form_id } = this.props.formInfo[0]
         return (
             <div>
                 <form>
