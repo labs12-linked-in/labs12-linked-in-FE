@@ -1,19 +1,7 @@
-<<<<<<< HEAD
-import React, {Component } from 'react';
-import {connect} from 'react-redux'
-<<<<<<< HEAD
-import {addForm} from '../../../actions/actions'
-=======
-import {addForm} from '../../../actions/formActions.js'
-import { Link } from 'react-router-dom'
->>>>>>> 9dfe18c73aefd218d08c48a245ed2176ccd91692
-
-import classes from './NewForm.module.css'
-=======
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addForm } from "../../../actions/formActions.js";
->>>>>>> 040de3652f5563f99e8af828d72a6bba48c6a7da
+
 
 import classes from "./NewForm.module.css";
 
