@@ -5,6 +5,7 @@ import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
 import { Link } from "react-router-dom";
 
 class Form extends Component {
+  
 
   deleteForm = (userId, formId) => {
     this.props.deleteForm(userId, formId);
