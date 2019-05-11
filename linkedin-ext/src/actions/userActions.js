@@ -1,5 +1,10 @@
 import axios from "axios";
 
+const deployedDb = "https://linkedinextension.herokuapp.com";
+const localDb = "http://localhost:9001";
+const deployedApp = "https://linkedinextension.netlify.com";
+const localApp = "http://localhost:3000";
+
 export const GET_USER_START = "GET_USER_START";
 export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
 export const GET_USER_FAILURE = "GET_USER_FAILURE";

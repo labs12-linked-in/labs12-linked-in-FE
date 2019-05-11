@@ -4,17 +4,17 @@ import { connect } from "react-redux";
 
 import classes from "./App.module.css";
 
-import Login from "./components/views/Login";
-import Forms from "./components/views/Forms/Forms";
-import NewForm from "./components/views/Forms/NewForm";
-import Departments from "./components/views/Departments/Departments";
+import Login from "./components/views/Login.js";
+import Forms from "./components/views/Forms/Forms.js";
+import NewForm from "./components/views/Forms/NewForm.js";
+import Departments from "./components/views/Departments/Departments.js";
 import NewDepartment from "./components/views/Departments/NewDepartment/NewDepartment.js";
-import UserHome from "./components/views/UserHome";
-import AddField from "./components/views/FormFields/AddField";
-import FormRules from "./components/views/Forms/FormRules";
-import Scrape from "./components/views/Scrape/Scrape";
-import EditScrape from "./components/views/Scrape/EditScrape";
-import EditForm from './components/views/Forms/EditForm'
+import UpdateIndivDept from "./components/views/Departments/Department/UpdateDept.js";
+import AddField from "./components/views/FormFields/AddField.js";
+import FormRules from "./components/views/Forms/FormRules.js";
+import Scrape from "./components/views/Scrape/Scrape.js";
+import EditScrape from "./components/views/Scrape/EditScrape.js";
+import UpdateIndivForm from './components/views/Forms/UpdateForm.js'
 
 class App extends Component {
   render() {
@@ -23,15 +23,15 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/forms" component={Forms} />
-          <Route path='/newform' component={NewForm} />
-          <Route path='/editfrom' component={EditForm} />
+          <Route path='/new-form' component={NewForm} />
           <Route path="/dept" component={Departments} />
           <Route path="/new-dept" component={NewDepartment} />
-          <Route path="/api/user" component={UserHome} />
           <Route path="/add-field" component={AddField} />
           <Route path="/form-rules" component={FormRules} />
           <Route path="/scrape" component={Scrape} />
           <Route path="/edit-scrape" component={EditScrape} />
+          <Route path="/update-department" component={UpdateIndivDept} />
+          <Route path="/update-form" component={UpdateIndivForm} />
         </Switch>
       </div>
     );

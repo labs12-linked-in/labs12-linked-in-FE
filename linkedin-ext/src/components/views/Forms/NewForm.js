@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {Component } from 'react';
 import {connect} from 'react-redux'
 <<<<<<< HEAD
@@ -8,81 +9,116 @@ import { Link } from 'react-router-dom'
 >>>>>>> 9dfe18c73aefd218d08c48a245ed2176ccd91692
 
 import classes from './NewForm.module.css'
+=======
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addForm } from "../../../actions/formActions.js";
+>>>>>>> 040de3652f5563f99e8af828d72a6bba48c6a7da
 
+import classes from "./NewForm.module.css";
 
 class NewForm extends Component {
+  state = {
+    fields: [{ name: "", selected: "" }],
+    name: ""
+  };
 
-    state = {
-        formName: '',
-        fields: {
-            name: null,
-            type: null
-        }
+  handleChange = e => {
+    if (["name", "selected"].includes(e.target.className)) {
+      let fields = [...this.state.fields];
+      fields[e.target.dataset.id][e.target.className] = e.target.value;
+      this.setState({ fields }, () => console.log(this.state.fields));
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
     }
+  };
 
-    handleInputChange = event => {
-        this.setState({[event.target.name]: event.target.value})
-    }
+  deleteField = e => {
+    e.preventDefault();
+    let fields = [...this.state.fields];
+    fields.splice(e.target.value, 1);
+    this.setState({ fields }, () =>
+      console.log(this.state.fields, "after delete")
+    );
+  };
 
-    addFormName = event => {
-        // event.preventDefault();
+  addField = e => {
+    e.preventDefault();
+    this.setState(prevState => ({
+      fields: [...prevState.fields, { name: "", selected: "" }]
+    }));
+  };
 
-        const newForm = {
-            id: localStorage.getItem('id'),
-            name: this.state.formName,
-            firstName: localStorage.getItem('first_name'),
-            lastName: localStorage.getItem('last_name')
-        }
-        this.props.addForm(newForm)
-        this.props.history.push('/forms')
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.addForm(this.state);
+  };
 
-        
-    }
+  cancel = () => {
+    this.props.history.push("/forms");
+  };
 
-    cancel = () => {
-        this.props.history.push('/forms')
-    }
+  render() {
+    let { name, fields } = this.state;
+    return (
+      <div className={classes.Body}>
+        <div className={classes.Header}>
+          <div className={classes.Cancel} onClick={this.cancel}>
+            Cancel
+          </div>
+        </div>
 
-    render() {
-        return (
-            <div className={classes.Body}>
-                <div className={classes.Header}>
-                    <div className={classes.Cancel} onClick={this.cancel}>cancel</div>
-                    <button className={classes.Save} onClick={this.addFormName}>Save</button>
-                </div>
-
-                <div className={classes.Title}>
-                    Form Name
-                </div>
-                <form className={classes.FormInput}> 
-                    <input type='text' name='formName' value={this.state.formName} onChange={this.handleInputChange}></input>
-                </form>
-
-                <div className={classes.SubTitle}>
-                    <div>Fields:</div>
-                    <div>Type:</div>
-                </div>
-                <div>
-                    <Link to={'/add-field'}><button>Add Field</button></Link>
-                </div>
-                <div>
-                    <Link to={'/form-rules'}><button>Create Form Rules</button></Link>    
-                </div>
-            </div>
-        )
-    }
+        <form onChange={this.handleChange}>
+          <label htmlFor="name">Name</label>
+          <input type="text" name="name" id="name" value={name} />
+          <button onClick={this.addField}>Add new form field</button>
+          {fields.map((val, idx) => {
+            let nameId = `name-${idx}`,
+              selectedId = `selected-${idx}`;
+            return (
+              <div key={idx}>
+                <label htmlFor={nameId}>{`Name #${idx + 1}`}</label>
+                <input
+                  type="text"
+                  name={nameId}
+                  data-id={idx}
+                  id={nameId}
+                  value={fields[idx].name}
+                  className="name"
+                />
+                <label htmlFor={selectedId}>Selected</label>
+                <input
+                  type="text"
+                  name={selectedId}
+                  data-id={idx}
+                  id={selectedId}
+                  value={fields[idx].selected}
+                  className="selected"
+                />
+                <button onClick={this.deleteField} value={idx}>
+                  Delete Field
+                </button>
+              </div>
+            );
+          })}
+          <button onClick={this.handleSubmit}>Submit</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-    return {
-
-    }
-}
+  return {};
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-        addForm: (newForm) => dispatch(addForm(newForm))
-    }
-}
+  return {
+    addForm: newForm => dispatch(addForm(newForm))
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps)(NewForm)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewForm);
