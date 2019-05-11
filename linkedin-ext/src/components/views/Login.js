@@ -34,9 +34,10 @@ class Login extends Component {
     window.OAuth.popup("linkedin2").done(function(token) {
       axios.post(`${deployedDb}/api/users/user`, token).then(response => {
         console.log(response, "res");
-        localStorage.setItem("id", response.data.id);
         localStorage.setItem("user_id", response.data.user_id);
-        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
+        localStorage.setItem("firstName", response.data.first_name);
+        localStorage.setItem("lastName", response.data.last_name);
+        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
       });
     });
   }
