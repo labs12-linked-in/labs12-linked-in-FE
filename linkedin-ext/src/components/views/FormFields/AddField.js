@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SelectBox from '../../../features/select-box/index';
+import SelectBox from '../../../features/select-box/index.js';
 
 class AddField extends Component {
     state = {
@@ -16,7 +16,7 @@ class AddField extends Component {
         return (
             <div>
                 <header>
-                    <span onClick={() => this.props.history.push("/new-form")}> Cancel </span>
+                    <span onClick={() => this.props.history.push("/newform")}> Cancel </span>
                     <button>Save</button>
                     <h3>Add a new form field</h3>
                 </header>

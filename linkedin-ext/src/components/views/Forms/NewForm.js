@@ -1,6 +1,11 @@
 import React, {Component } from 'react';
 import {connect} from 'react-redux'
+<<<<<<< HEAD
 import {addForm} from '../../../actions/actions'
+=======
+import {addForm} from '../../../actions/formActions.js'
+import { Link } from 'react-router-dom'
+>>>>>>> 9dfe18c73aefd218d08c48a245ed2176ccd91692
 
 import classes from './NewForm.module.css'
 
@@ -35,7 +40,7 @@ class NewForm extends Component {
     }
 
     cancel = () => {
-        this.props.history.goBack()
+        this.props.history.push('/forms')
     }
 
     render() {
@@ -57,7 +62,12 @@ class NewForm extends Component {
                     <div>Fields:</div>
                     <div>Type:</div>
                 </div>
-
+                <div>
+                    <Link to={'/add-field'}><button>Add Field</button></Link>
+                </div>
+                <div>
+                    <Link to={'/form-rules'}><button>Create Form Rules</button></Link>    
+                </div>
             </div>
         )
     }

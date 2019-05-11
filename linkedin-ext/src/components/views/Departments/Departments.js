@@ -23,13 +23,13 @@ class Departments extends Component {
             <NavBar />
           </div>
           <div>
-            <div className={classes.bold}>Department</div>
+            <div className={classes.bold}>Departments</div>
             <div className={classes.TopSeparation}>
               <div>Name</div>
               <div />
             </div>
             {this.props.depts.map(dept => (
-              <Department name={dept.name} />
+              <Department dept={dept} />
             ))}
             <Link to={"/new-dept"}>
               <button>Create New</button>
@@ -48,9 +48,6 @@ const mapStateToProps = state => {
   return { depts };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
 
 export default connect(
   mapStateToProps,

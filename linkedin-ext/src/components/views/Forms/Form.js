@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import classes from "./Forms.module.css";
+import classes from "./Form.module.css";
 import { deleteForm } from '../../../actions/formActions.js'
 import { editForm } from '../../../actions/actions'
 
@@ -24,7 +24,7 @@ class Form extends Component {
       <div className={classes.Empty}><button onClick={this.editForm}>edit</button></div>
       <div className={classes.Delete}><button onClick={() => {
         if (window.confirm('Are you sure you want to delete this form?'))
-        console.log(this.props)
+        // console.log("FORMS PROPS: ", this.props)
           this.deleteProject(
             this.props.form.user_id, 
             this.props.form.form_id
