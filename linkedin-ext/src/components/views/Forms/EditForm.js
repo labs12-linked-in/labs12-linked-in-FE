@@ -3,7 +3,10 @@ import {connect} from 'react-redux'
 
 const editForm = (props) => {
 
-    return ()
+    return (
+        <div>
+        </div>
+    )
 }
 
 export default editForm
