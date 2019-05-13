@@ -16,6 +16,8 @@ import {
   ADD_UPDATE_FORM_FAILURE
 } from "../actions/formActions.js";
 
+import { GET_FIELD_SUCCESS } from "../actions/formFieldActions";
+
 const initialState = {
   forms: null,
   isLoading: true,
@@ -23,6 +25,7 @@ const initialState = {
   isDeleting: false,
   isUpdating: false,
   formToUpdate: null,
+  fieldsToUpdate: [],
   error: ""
 };
 
@@ -113,7 +116,12 @@ export const formReducer = (state = initialState, action) => {
         formToUpdate: action.payload,
         error: ""
       };
-
+    case GET_FIELD_SUCCESS:
+      return {
+        ...state,
+        fieldsToUpdate: action.payload,
+        error: ""
+      };
     default:
       return state;
   }

@@ -12,11 +12,7 @@ export const GET_DEPT_FAILURE = "GET_DEPT_FAILURE";
 export const getDept = () => async dispatch => {
   dispatch({ type: GET_DEPT_START });
   await axios
-    .get(
-      `https://linkedinextension.herokuapp.com/api/departments/${localStorage.getItem(
-        "id"
-      )}`
-    )
+    .get(`${localDb}/api/departments/${localStorage.getItem("id")}`)
     .then(res => res.data)
     .then(depts => {
       dispatch({ type: GET_DEPT_SUCCESS, payload: depts });
@@ -31,11 +27,7 @@ export const GET_INDIVDEPT_FAILURE = "GET_INDIVDEPT_FAILURE";
 export const getIndivDept = deptId => dispatch => {
   dispatch({ type: GET_INDIVDEPT_START });
   axios
-    .get(
-      `https://linkedinextension.herokuapp.com/api/departments/${localStorage.getItem(
-        "id"
-      )}/${deptId}`
-    )
+    .get(`${localDb}/api/departments/${localStorage.getItem("id")}/${deptId}`)
     .then(res => res.data)
     .then(department => {
       dispatch({ type: GET_INDIVDEPT_SUCCESS, payload: department });
@@ -52,9 +44,7 @@ export const DELETE_DEPT_FAILURE = "DELETE_DEPT_FAILURE";
 export const deleteDept = (userId, deptId) => dispatch => {
   dispatch({ type: DELETE_DEPT_START });
   return axios
-    .delete(
-      `https://linkedinextension.herokuapp.com/api/departments/${userId}/${deptId}`
-    )
+    .delete(`${localDb}/api/departments/${userId}/${deptId}`)
     .then(res => {
       // console.log(res);
       dispatch({ type: DELETE_DEPT_SUCCESS, payload: res.data });
@@ -75,9 +65,7 @@ export const updateDept = (deptId, updatedDept) => dispatch => {
 
   axios
     .put(
-      `https://linkedinextension.herokuapp.com/api/departments/${localStorage.getItem(
-        "id"
-      )}/${deptId}`,
+      `${localDb}/api/departments/${localStorage.getItem("id")}/${deptId}`,
       updatedDept
     )
     .then(res => res.data)

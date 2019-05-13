@@ -9,12 +9,14 @@ export const GET_FIELD_START = "GET_FIELD_START";
 export const GET_FIELD_SUCCESS = "GET_FIELD_SUCCESS";
 export const GET_FIELD_FAILURE = "GET_FIELD_FAILURE";
 
-export const getField = () => dispatch => {
+export const getField = id => async dispatch => {
+  console.log(id, "start fields");
   dispatch({ type: GET_FIELD_START });
-  axios
-    .get(`https://linkedinextension.herokuapp.com/api/fields`)
+  await axios
+    .get(`${deployedDb}/api/fields/field/${id}`)
     .then(res => res.data)
     .then(fields => {
+      console.log(fields, "fields");
       dispatch({ type: GET_FIELD_SUCCESS, payload: fields });
     })
     .catch(err => dispatch({ type: GET_FIELD_FAILURE, ERROR: err }));
@@ -27,7 +29,7 @@ export const DELETE_FIELD_FAILURE = "DELETE_FIELD_FAILURE";
 export const deleteField = (userId, formId) => dispatch => {
   dispatch({ type: DELETE_FIELD_START });
   return axios
-    .delete(`https://linkedinextension.herokuapp.com/api/fields`)
+    .delete(`${deployedDb}/api/fields`)
     .then(res => {
       dispatch({ type: DELETE_FIELD_SUCCESS, payload: res.data });
     })
