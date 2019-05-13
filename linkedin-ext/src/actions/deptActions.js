@@ -9,9 +9,9 @@ export const GET_DEPT_START = "GET_DEPT_START";
 export const GET_DEPT_SUCCESS = "GET_DEPT_SUCCESS";
 export const GET_DEPT_FAILURE = "GET_DEPT_FAILURE";
 
-export const getDept = () => dispatch => {
+export const getDept = () => async dispatch => {
   dispatch({ type: GET_DEPT_START });
-  axios
+  await axios
     .get(
       `https://linkedinextension.herokuapp.com/api/departments/${localStorage.getItem(
         "id"

@@ -9,9 +9,9 @@ export const GET_FORM_START = "GET_FORM_START";
 export const GET_FORM_SUCCESS = "GET_FORM_SUCCESS";
 export const GET_FORM_FAILURE = "GET_FORM_FAILURE";
 
-export const getForm = () => dispatch => {
+export const getForm = () => async dispatch => {
   dispatch({ type: GET_FORM_START });
-  axios
+  await axios
     .get(
       `https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem(
         "id"

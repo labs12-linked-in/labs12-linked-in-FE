@@ -35,9 +35,9 @@ class Login extends Component {
       axios.post(`${deployedDb}/api/users/user`, token).then(response => {
         console.log(response, "res");
         localStorage.setItem("id", response.data.id);
-        localStorage.setItem('firstName', response.data.first_name);
-        localStorage.setItem('lastName', response.data.last_name);
-        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
+        localStorage.setItem("firstName", response.data.first_name);
+        localStorage.setItem("lastName", response.data.last_name);
+        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
       });
     });
   }
