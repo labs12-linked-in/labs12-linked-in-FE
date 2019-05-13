@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "bootstrap-social": "^5.1.1",
     "jquery": "^3.4.1",
+    "jspdf-react": "^1.0.10",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
