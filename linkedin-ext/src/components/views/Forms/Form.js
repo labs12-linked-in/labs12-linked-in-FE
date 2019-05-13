@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import classes from "./Form.module.css";
 import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
 
-
 class Form extends Component {
   
 

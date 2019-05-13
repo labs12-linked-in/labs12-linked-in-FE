@@ -5,19 +5,19 @@ const localDb = "http://localhost:9001";
 const deployedApp = "https://linkedinextension.netlify.com";
 const localApp = "http://localhost:3000";
 
-export const GET_FIELD_START = "GET_FIELD_START";
-export const GET_FIELD_SUCCESS = "GET_FIELD_SUCCESS";
-export const GET_FIELD_FAILURE = "GET_FIELD_FAILURE";
+export const GET_FIELDS_START = "GET_FIELDS_START";
+export const GET_FIELDS_SUCCESS = "GET_FIELDS_SUCCESS";
+export const GET_FIELDS_FAILURE = "GET_FIELDS_FAILURE";
 
-export const getField = () => dispatch => {
-  dispatch({ type: GET_FIELD_START });
+export const getFields = (form_id) => dispatch => {
+  dispatch({ type: GET_FIELDS_START });
   axios
-    .get(`https://linkedinextension.herokuapp.com/api/fields`)
+    .get(`https://linkedinextension.herokuapp.com/api/field`)
     .then(res => res.data)
     .then(fields => {
-      dispatch({ type: GET_FIELD_SUCCESS, payload: fields });
+      dispatch({ type: GET_FIELDS_SUCCESS, payload: fields });
     })
-    .catch(err => dispatch({ type: GET_FIELD_FAILURE, ERROR: err }));
+    .catch(err => dispatch({ type: GET_FIELDS_FAILURE, ERROR: err }));
 };
 
 export const DELETE_FIELD_START = "DELETE_FIELD_START";
@@ -27,7 +27,7 @@ export const DELETE_FIELD_FAILURE = "DELETE_FIELD_FAILURE";
 export const deleteField = (userId, formId) => dispatch => {
   dispatch({ type: DELETE_FIELD_START });
   return axios
-    .delete(`https://linkedinextension.herokuapp.com/api/fields`)
+    .delete(`https://linkedinextension.herokuapp.com/api/field`)
     .then(res => {
       dispatch({ type: DELETE_FIELD_SUCCESS, payload: res.data });
     })

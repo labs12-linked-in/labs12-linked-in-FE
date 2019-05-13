@@ -40,6 +40,7 @@ class NewForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addForm(this.state);
+    this.props.history.push("/forms")
   };
 
   cancel = () => {
