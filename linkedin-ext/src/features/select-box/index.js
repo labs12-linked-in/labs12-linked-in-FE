@@ -1,55 +1,31 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import './styles.css'
 
-class SelectBox extends Component {
-    state = {
-        ...this.props,
-        items: this.props.items || [],
-        showItems: false,
-        selectedItem: this.props.items && this.props.items[0]
-    }
-
-    dropDown = () => {
-        this.setState(prevState => ({
-            showItems: !prevState.showItems
-        }))
-    }
-
-    selectItem = (item) => this.setState({
-        selectedItem: item,
-        showItems: false
-    })
-
-    render() {
-        return (
-            <div>
-                <div className="select-box--box" style={{ width: this.state.width || 180 }}>
-                    <div className="select-box--container">
-                        <div className="select-box--selected-item">
-                            {this.state.selectedItem.value}
-                        </div>
-                        <div className="select-box--arrow" onClick={this.dropDown}>
-                            <span className={`${this.state.showItems ? 'select-box--arrow-up' : 'select-box--arrow-down'}`} />
-                        </div>
-                        <div style={{display: this.state.showItems ? 'block' : 'none' }}
-                            className="select-box--items">
-                            {this.state.items.map(item => <div key={item.id} onClick={() => this.selectItem(item)}
-                            className={this.state.selectedItem === item ? 'selected' : ''} >
-                            { item.value }
-                            </div>)}
-                        </div>
-
-                    </div>
-                </div>
-                <input 
-                    type="hidden" 
-                    value={this.state.selectedItem.id}
-                    name={this.state.name}
-                />
-            </div>
-        )
-    }
+const SelectBox = props => {
+    return (
+        <div className="form-group">
+          <select
+            required
+            id={props.name}
+            name={props.name}
+            defaultValue={props.defaultValue}
+            onChange={props.handleChange}
+            className="form-control"
+          >
+            <option value="" disabled>
+              {props.placeholder}
+            </option>
+            {props.options.map(option => {
+              return (
+                <option key={option} value={option} label={option}>
+                  {option}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      );
 }
 
-export default SelectBox
+export default SelectBox;

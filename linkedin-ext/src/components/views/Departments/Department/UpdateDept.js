@@ -16,7 +16,8 @@ class UpdateIndivDept extends Component {
     }
 
     componentDidMount(){
-        this.setState({departments: {
+        this.setState({
+            departments: {
             ...this.props.deptToUpdate.dept
         }})
     }

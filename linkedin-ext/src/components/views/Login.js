@@ -36,7 +36,7 @@ class Login extends Component {
         console.log(response, "res");
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("user_id", response.data.user_id);
-        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
       });
     });
   }
