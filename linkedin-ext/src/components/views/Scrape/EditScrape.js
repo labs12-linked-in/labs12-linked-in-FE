@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 
 class EditScrape extends Component {
 
+    state = {
+        email: {
+            recipients: [],
+            sender: '',
+            subject: '',
+            content: {
+                name: '',
+                jobTitle: '',
+                location: ''
+            }
+        }
+    }
+
     render() {
         return (
             <div>
