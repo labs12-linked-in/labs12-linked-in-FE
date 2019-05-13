@@ -28,7 +28,7 @@ return (
             <input type="text" name="yearsExp" id="yearsExp" placeholder="5" />
         </form>
 
-        <button onClick={() => this.demoFromHTML()}>PDF FILE</button>
+        <button onClick={() => this.demoFromHTML()}>Export</button>
         <button>Submit</button>
     </div>
     );
