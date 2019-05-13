@@ -2,11 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { getIndivForm, updateForm } from "../../../actions/formActions.js";
+import { getFields } from "../../../actions/formFieldActions.js";
 
 class UpdateIndivForm extends Component {
   state = {
     forms: this.props.formInfo
   };
+
+  componentDidMount() {
+    this.props.getFields();
+  }
 
   handleChange = e => {
     this.setState({
@@ -19,7 +24,7 @@ class UpdateIndivForm extends Component {
 
   updateForm = (e, id) => {
     const updatedForm = {
-      name: this.state.formInfo.name
+      //name: this.state.formInfo.name
       // ******************** need to add fields still ********************
     };
     e.preventDefault();
@@ -56,11 +61,14 @@ const mapStateToProps = state => {
     updateForm: state.formReducer.updateForm,
     isUpdating: state.formReducer.isUpdating,
     formInfo: state.formReducer.forms,
-    formToUpdate: state.formReducer.formToUpdate
+    formToUpdate: state.formReducer.formToUpdate,
+    getFields: state.formReducer.getFields,
+    gettingField: state.formReducer.gettingField,
+    fields: state.formReducer.fields
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getIndivForm, updateForm }
+  { getIndivForm, updateForm, getFields }
 )(UpdateIndivForm);
