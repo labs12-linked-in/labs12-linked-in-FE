@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addForm } from "../../../actions/formActions.js";
 
+
 import classes from "./NewForm.module.css";
 
 class NewForm extends Component {
