@@ -4,6 +4,7 @@ import classes from "./Form.module.css";
 import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
 
 class Form extends Component {
+  
 
   deleteForm = (userId, formId) => {
     this.props.deleteForm(userId, formId);
