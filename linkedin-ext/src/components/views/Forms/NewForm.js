@@ -7,12 +7,12 @@ import classes from "./NewForm.module.css";
 
 class NewForm extends Component {
   state = {
-    fields: [{ name: "", selected: "" }],
+    fields: [{ name: "" }],
     name: ""
   };
 
   handleChange = e => {
-    if (["name", "selected"].includes(e.target.className)) {
+    if (["name"].includes(e.target.className)) {
       let fields = [...this.state.fields];
       fields[e.target.dataset.id][e.target.className] = e.target.value;
       this.setState({ fields }, () => console.log(this.state.fields));
@@ -33,7 +33,7 @@ class NewForm extends Component {
   addField = e => {
     e.preventDefault();
     this.setState(prevState => ({
-      fields: [...prevState.fields, { name: "", selected: "" }]
+      fields: [...prevState.fields, { name: ""}]
     }));
   };
 
@@ -62,8 +62,7 @@ class NewForm extends Component {
           <input type="text" name="name" id="name" value={name} />
           <button onClick={this.addField}>Add new form field</button>
           {fields.map((val, idx) => {
-            let nameId = `name-${idx}`,
-              selectedId = `selected-${idx}`;
+            let nameId = `name-${idx}`
             return (
               <div key={idx}>
                 <label htmlFor={nameId}>{`Name #${idx + 1}`}</label>
@@ -74,15 +73,6 @@ class NewForm extends Component {
                   id={nameId}
                   value={fields[idx].name}
                   className="name"
-                />
-                <label htmlFor={selectedId}>Selected</label>
-                <input
-                  type="text"
-                  name={selectedId}
-                  data-id={idx}
-                  id={selectedId}
-                  value={fields[idx].selected}
-                  className="selected"
                 />
                 <button onClick={this.deleteField} value={idx}>
                   Delete Field
