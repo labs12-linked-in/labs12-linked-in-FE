@@ -47,8 +47,7 @@ class UpdateIndivForm extends Component {
             onChange={this.handleChangeForm}
           />
           {this.state.fields.map((val, idx) => {
-            let nameId = `name-${idx}`,
-              selectedId = `selected-${idx}`;
+            let nameId = `name-${idx}`
             return (
               <div key={idx}>
                 <label htmlFor={nameId}>{`Field #${idx + 1}`}</label>
@@ -59,16 +58,6 @@ class UpdateIndivForm extends Component {
                   id={nameId}
                   value={this.state.fields[idx].name}
                   className="name"
-                  onChange={this.handleChangeField}
-                />
-                <label htmlFor={selectedId}>Selected</label>
-                <input
-                  type="text"
-                  name={selectedId}
-                  data-id={idx}
-                  id={selectedId}
-                  value={this.state.fields[idx].selected}
-                  className="selected"
                   onChange={this.handleChangeField}
                 />
                 <button onClick={this.deleteField} value={idx}>
