@@ -3,6 +3,11 @@ import axios from "axios";
 import classes from "./NewDepartment.module.css";
 import { Link } from "react-router-dom";
 
+const deployedDb = "https://linkedinextension.herokuapp.com";
+const localDb = "http://localhost:9001";
+const deployedApp = "https://linkedinextension.netlify.com";
+const localApp = "http://localhost:3000";
+
 export default class newDepartment extends Component {
   state = {
     depInfo: {
@@ -29,9 +34,7 @@ export default class newDepartment extends Component {
     try {
       const result = await axios
         .post(
-          `https://linkedinextension.herokuapp.com/api/departments/${localStorage.getItem(
-            "id"
-          )}`,
+          `${deployedDb}/api/departments/${localStorage.getItem("id")}`,
           this.state.depInfo,
           {
             headers: {

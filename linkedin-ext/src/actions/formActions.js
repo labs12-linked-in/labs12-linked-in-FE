@@ -12,11 +12,7 @@ export const GET_FORM_FAILURE = "GET_FORM_FAILURE";
 export const getForm = () => async dispatch => {
   dispatch({ type: GET_FORM_START });
   await axios
-    .get(
-      `https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem(
-        "id"
-      )}`
-    )
+    .get(`${deployedDb}/api/forms/${localStorage.getItem("id")}`)
     .then(res => res.data)
     .then(forms => {
       dispatch({ type: GET_FORM_SUCCESS, payload: forms });
@@ -31,11 +27,7 @@ export const GET_INDIVFORM_FAILURE = "GET_INDIVDEPT_FAILURE";
 export const getIndivForm = formId => dispatch => {
   dispatch({ type: GET_INDIVFORM_START });
   axios
-    .get(
-      `https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem(
-        "id"
-      )}/${formId}`
-    )
+    .get(`${deployedDb}/api/forms/${localStorage.getItem("id")}/${formId}`)
     .then(res => res.data)
     .then(form => {
       dispatch({ type: GET_INDIVFORM_SUCCESS, payload: form });
@@ -52,11 +44,8 @@ export const DELETE_FORM_FAILURE = "DELETE_FORM_FAILURE";
 export const deleteForm = (userId, formId) => dispatch => {
   dispatch({ type: DELETE_FORM_START });
   return axios
-    .delete(
-      `https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`
-    )
+    .delete(`${deployedDb}/api/forms/${userId}/${formId}`)
     .then(res => {
-      // console.log(res);
       dispatch({ type: DELETE_FORM_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -66,21 +55,15 @@ export const deleteForm = (userId, formId) => dispatch => {
 };
 
 export const addForm = newForm => async dispatch => {
-  console.log(newForm, "begin new form");
   await axios
-    .post(
-      `https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem(
-        "id"
-      )}`,
-      {
-        name: newForm.name
-      }
-    )
+    .post(`${deployedDb}/api/forms/${localStorage.getItem("id")}`, {
+      name: newForm.name
+    })
     .then(async id => {
       console.log(id, "id");
       for (let i = 0; i < newForm.fields.length; i++) {
         await axios
-          .post(`https://linkedinextension.herokuapp.com/api/fields/field`, {
+          .post(`${deployedDb}/api/fields/field`, {
             form_id: id.data,
             name: newForm.fields[i].name,
             type: newForm.fields[i].selected,
@@ -101,23 +84,31 @@ export const UPDATE_FORM_START = "UPDATE_FORM_START";
 export const UPDATE_FORM_SUCCESS = "UPDATE_FORM_SUCCESS";
 export const UPDATE_FORM_FAILURE = "UPDATE_FORM_FAILURE";
 
-export const updateForm = (formId, updatedForm) => dispatch => {
+export const updateForm = (newForm, newField) => dispatch => {
   dispatch({ type: UPDATE_FORM_START });
-
   axios
     .put(
-      `https://linkedinextension.herokuapp.com/api/forms/${localStorage.getItem(
-        "id"
-      )}/${formId}`,
-      updatedForm
+      `${deployedDb}/api/forms/${newForm.user_id}/${newForm.form_id}`,
+      newForm
     )
     .then(res => res.data)
     .then(form => {
-      dispatch({ type: UPDATE_FORM_SUCCESS, payload: { formId, ...form } });
+      dispatch({ type: UPDATE_FORM_SUCCESS, payload: { ...form } });
     })
     .catch(err => {
       dispatch({ type: UPDATE_FORM_FAILURE, payload: err });
     });
+
+  for (let i = 0; i < newField.length; i++) {
+    axios
+      .put(`${deployedDb}/api/fields/field`, newField[i])
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 };
 
 export const ADD_UPDATE_FORM_START = "ADD_UPDATE_FORM_START";

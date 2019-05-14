@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-class EditScrape extends Component {
+class EditScrape extends React.Component {
 
     render() {
         return (
@@ -17,4 +17,4 @@ class EditScrape extends Component {
     }
 }
 
-export default EditScrape
+export default EditScrape;
