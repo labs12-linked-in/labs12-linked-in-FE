@@ -5,21 +5,21 @@ const localDb = "http://localhost:9001";
 const deployedApp = "https://linkedinextension.netlify.com";
 const localApp = "http://localhost:3000";
 
-export const GET_FIELD_START = "GET_FIELD_START";
-export const GET_FIELD_SUCCESS = "GET_FIELD_SUCCESS";
-export const GET_FIELD_FAILURE = "GET_FIELD_FAILURE";
+export const GET_FIELDS_START = "GET_FIELDS_START";
+export const GET_FIELDS_SUCCESS = "GET_FIELDS_SUCCESS";
+export const GET_FIELDS_FAILURE = "GET_FIELDS_FAILURE";
 
 export const getField = id => async dispatch => {
   console.log(id, "start fields");
-  dispatch({ type: GET_FIELD_START });
+  dispatch({ type: GET_FIELDS_START });
   await axios
     .get(`${deployedDb}/api/fields/field/${id}`)
     .then(res => res.data)
     .then(fields => {
       console.log(fields, "fields");
-      dispatch({ type: GET_FIELD_SUCCESS, payload: fields });
+      dispatch({ type: GET_FIELDS_SUCCESS, payload: fields });
     })
-    .catch(err => dispatch({ type: GET_FIELD_FAILURE, ERROR: err }));
+    .catch(err => dispatch({ type: GET_FIELDS_FAILURE, ERROR: err }));
 };
 
 export const DELETE_FIELD_START = "DELETE_FIELD_START";

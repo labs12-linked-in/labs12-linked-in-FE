@@ -58,7 +58,7 @@ export const deleteForm = (userId, formId) => dispatch => {
 export const addForm = newForm => async dispatch => {
   console.log(newForm, "begin new form");
   await axios
-    .post(`${deployedDb}/${localStorage.getItem("id")}`, {
+    .post(`${deployedDb}/api/forms/${localStorage.getItem("id")}`, {
       name: newForm.name
     })
     .then(async id => {

@@ -16,12 +16,18 @@ import {
   ADD_UPDATE_FORM_FAILURE
 } from "../actions/formActions.js";
 
-import { GET_FIELD_SUCCESS } from "../actions/formFieldActions";
+import {
+  GET_FIELDS_START,
+  GET_FIELDS_SUCCESS,
+  GET_FIELDS_FAILURE
+} from "../actions/formFieldActions";
 
 const initialState = {
   forms: null,
+  fields: null,
   isLoading: true,
   gettingForm: false,
+  gettingField: false,
   isDeleting: false,
   isUpdating: false,
   formToUpdate: null,
@@ -73,6 +79,29 @@ export const formReducer = (state = initialState, action) => {
         error: action.payload
       };
 
+    case GET_FIELDS_START:
+      return {
+        ...state,
+        gettingField: true,
+        error: ""
+      };
+
+    case GET_FIELDS_SUCCESS:
+      console.log(action, "act");
+      return {
+        ...state,
+        fieldsToUpdate: action.payload,
+        gettingField: false,
+        error: ""
+      };
+
+    case GET_FIELDS_FAILURE:
+      return {
+        ...state,
+        gettingField: false,
+        error: action.payload
+      };
+
     case DELETE_FORM_START:
       return {
         ...state,
@@ -114,12 +143,6 @@ export const formReducer = (state = initialState, action) => {
       return {
         ...state,
         formToUpdate: action.payload,
-        error: ""
-      };
-    case GET_FIELD_SUCCESS:
-      return {
-        ...state,
-        fieldsToUpdate: action.payload,
         error: ""
       };
     default:
