@@ -1,8 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from "react-redux";
+import { getField } from "../../../actions/formFieldActions.js";
 
 class EditScrape extends React.Component {
 
+    state = {
+        form: this.props.formToUpdate,
+        fields: []
+    }
+
+    async componentDidMount() {
+        // await this.props.getField(this.props.formToUpdate.form_id);
+        this.setState({ fields: this.props.fieldsToUpdate });
+    }
+
+
+
     render() {
+        console.log(this.props.formToUpdate);
         return (
             <div>
                 <header>
@@ -17,4 +32,13 @@ class EditScrape extends React.Component {
     }
 }
 
-export default EditScrape;
+const mapStateToProps = state => {
+    return {
+        // formToUpdate: state.formReducer.formToUpdate.form,
+        fieldsToUpdate: state.formReducer.fieldsToUpdate
+    };
+};
+
+
+export default connect(
+    mapStateToProps, {getField})(EditScrape);
