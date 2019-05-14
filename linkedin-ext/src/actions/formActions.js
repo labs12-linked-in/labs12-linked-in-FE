@@ -46,7 +46,6 @@ export const deleteForm = (userId, formId) => dispatch => {
   return axios
     .delete(`${deployedDb}/api/forms/${userId}/${formId}`)
     .then(res => {
-      // console.log(res);
       dispatch({ type: DELETE_FORM_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -56,7 +55,6 @@ export const deleteForm = (userId, formId) => dispatch => {
 };
 
 export const addForm = newForm => async dispatch => {
-  console.log(newForm, "begin new form");
   await axios
     .post(`${deployedDb}/api/forms/${localStorage.getItem("id")}`, {
       name: newForm.name
@@ -88,8 +86,6 @@ export const UPDATE_FORM_FAILURE = "UPDATE_FORM_FAILURE";
 
 export const updateForm = (newForm, newField) => dispatch => {
   dispatch({ type: UPDATE_FORM_START });
-  console.log(newForm, "newfor");
-  console.log(newField, "newfie");
   axios
     .put(
       `${deployedDb}/api/forms/${newForm.user_id}/${newForm.form_id}`,
@@ -104,7 +100,6 @@ export const updateForm = (newForm, newField) => dispatch => {
     });
 
   for (let i = 0; i < newField.length; i++) {
-    console.log("infieldsup", i, newField[i]);
     axios
       .put(`${deployedDb}/api/fields/field`, newField[i])
       .then(res => {
