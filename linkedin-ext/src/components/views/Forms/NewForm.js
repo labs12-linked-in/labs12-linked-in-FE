@@ -2,19 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addForm } from "../../../actions/formActions.js";
 
-
 import classes from "./NewForm.module.css";
 
 class NewForm extends Component {
   state = {
     fields: [{ name: "" }],
-    name: ""
+    name: "",
+    fieldOptions: ["Job Title", "Name", "Location"]
   };
 
   handleChange = e => {
-    if (["name"].includes(e.target.className)) {
+    if (e.target.name != "name") {
       let fields = [...this.state.fields];
-      fields[e.target.dataset.id][e.target.className] = e.target.value;
+      fields[e.target.dataset.key].name = e.target.value;
       this.setState({ fields }, () => console.log(this.state.fields));
     } else {
       this.setState({ [e.target.name]: e.target.value });
@@ -33,14 +33,14 @@ class NewForm extends Component {
   addField = e => {
     e.preventDefault();
     this.setState(prevState => ({
-      fields: [...prevState.fields, { name: ""}]
+      fields: [...prevState.fields, { name: "" }]
     }));
   };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.addForm(this.state);
-    this.props.history.push("/forms")
+    this.props.history.push("/forms");
   };
 
   cancel = () => {
@@ -57,23 +57,47 @@ class NewForm extends Component {
           </div>
         </div>
 
-        <form onChange={this.handleChange}>
+        <form>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" value={name} />
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={name}
+            onChange={this.handleChange}
+          />
           <button onClick={this.addField}>Add new form field</button>
           {fields.map((val, idx) => {
-            let nameId = `name-${idx}`
+            let nameId = `name-${idx}`;
             return (
               <div key={idx}>
-                <label htmlFor={nameId}>{`Name #${idx + 1}`}</label>
-                <input
-                  type="text"
-                  name={nameId}
-                  data-id={idx}
-                  id={nameId}
-                  value={fields[idx].name}
-                  className="name"
-                />
+                <label htmlFor={nameId}>{`Field #${idx + 1}`}</label>
+                <div>
+                  <select
+                    data-key={idx}
+                    value={this.state.fields[idx].name}
+                    onChange={this.handleChange}
+                  >
+                    <option value="" disabled>
+                      {"Select Field"}
+                    </option>
+                    {this.state.fieldOptions.map(option => {
+                      return (
+                        <option
+                          type="text"
+                          name={nameId}
+                          data-key={idx}
+                          id={nameId}
+                          value={option}
+                          className="name"
+                        >
+                          {option}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+
                 <button onClick={this.deleteField} value={idx}>
                   Delete Field
                 </button>
