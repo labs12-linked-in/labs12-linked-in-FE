@@ -65,9 +65,7 @@ export const addForm = newForm => async dispatch => {
         await axios
           .post(`${deployedDb}/api/fields/field`, {
             form_id: id.data,
-            name: newForm.fields[i].name,
-            type: newForm.fields[i].selected,
-            selected: newForm.fields[i].selected
+            name: newForm.fields[i].name
           })
           .then(res => {
             console.log(res, "field res");
