@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
-const localDb = "http://localhost:9001";
-const deployedApp = "https://linkedinextension.netlify.com";
-const localApp = "http://localhost:3000";
+// const localDb = "http://localhost:9001";
+// const deployedApp = "https://linkedinextension.netlify.com";
+// const localApp = "http://localhost:3000";
 
 export const GET_FORM_START = "GET_FORM_START";
 export const GET_FORM_SUCCESS = "GET_FORM_SUCCESS";

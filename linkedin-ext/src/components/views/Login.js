@@ -6,9 +6,9 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
-const localDb = "http://localhost:9001";
+// const localDb = "http://localhost:9001";
 const deployedApp = "https://linkedinextension.netlify.com";
-const localApp = "http://localhost:3000";
+// const localApp = "http://localhost:3000";
 
 class Login extends Component {
   componentDidMount() {
@@ -46,9 +46,9 @@ class Login extends Component {
     console.log(this.props);
 
     return (
-      <a href="" onClick={this.handleClick}>
+      <button onClick={this.handleClick}>
         Sign in with LinkedIn
-      </a>
+      </button>
     );
   }
 }

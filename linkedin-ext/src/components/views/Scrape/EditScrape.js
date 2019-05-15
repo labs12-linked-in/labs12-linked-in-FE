@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { getField } from "../../../actions/formFieldActions.js";
 
-class EditScrape extends React.Component {
+class EditScrape extends Component {
 
     state = {
         form: this.props.formToUpdate,

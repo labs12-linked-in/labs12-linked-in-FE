@@ -16,7 +16,7 @@ class Form extends Component {
   };
 
   render() {
-    const { id, name, field_count, user_id, form_id } = this.props.form;
+    const { id, name, field_count } = this.props.form;
     return (
       <div className={classes.Title} key={id}>
         <div className={classes.Name}>{name}</div>

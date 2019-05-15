@@ -1,18 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import classes from './Scrape.module.css';
 import NavBar from '../NavBar/NavBar';
 import SelectBox from '../../../features/select-box/index.js';
 import { getForm } from "../../../actions/formActions.js";
 import { connect } from "react-redux";
 import { getDept } from "../../../actions/deptActions.js";
-
-
-// 1) loop through forms on state and match the name to the selected for name and grab the selected form id
-// 2) do a call with the selected form id to get the fields and set those to the selecte form fields on state
-
-
-
+import { getField } from  '../../../actions/formFieldActions.js';
 
 class Scrape extends Component {
 
@@ -32,8 +25,11 @@ class Scrape extends Component {
     
     async componentDidMount() {
         await this.props.getForm(localStorage.getItem("id"));
-        await this.props.getDept(localStorage.getItem("id"));
-
+        
+        // ****************************
+        //commented out until form rules and/or emailing is implemented and this is needed
+        // await this.props.getDept(localStorage.getItem("id"));
+        // ****************************
         
             for (let i = 0; i<this.props.forms.length; i++) {
                 this.setState({
@@ -58,18 +54,17 @@ class Scrape extends Component {
         // ****************************
     }
     
-    getSelectedFormFields = () => {
+    getSelectedFormFields = async () => {
         for (let i = 0; i < this.props.forms.length; i++ ) {
-            if (this.props.forms[i].name == this.state.selectedFormName) {
-                this.setState({ selectedFormId: this.props.forms[i].form_id })
-                console.log('ss')
+            if (this.props.forms[i].name === this.state.selectedFormName) {
+                await this.setState({ selectedFormId: this.props.forms[i].form_id })
             }
         }
+        await this.props.getField(this.state.selectedFormId)
+        this.setState({ selectedFormFields: this.props.getFields })
     }
 
     handleInput = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -119,6 +114,7 @@ const mapStateToProps = state => {
     return {
       forms: state.formReducer.forms,
       getForm: state.formReducer.getForm,
+      getFields: state.formReducer.fieldsToUpdate
       
       // ****************************
       //commented out until form rules and/or emailing is implemented and this is needed
@@ -130,6 +126,6 @@ const mapStateToProps = state => {
   
   export default connect(
     mapStateToProps,
-    { getForm, getDept }
+    { getForm, getDept, getField }
   )(Scrape);
   
