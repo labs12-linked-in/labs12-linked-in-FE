@@ -87,7 +87,6 @@ export const formReducer = (state = initialState, action) => {
       };
 
     case GET_FIELDS_SUCCESS:
-      console.log(action, "act");
       return {
         ...state,
         fieldsToUpdate: action.payload,
