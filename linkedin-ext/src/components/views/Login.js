@@ -7,8 +7,8 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
 // const localDb = "http://localhost:9001";
-// const deployedApp = "https://linkedinextension.netlify.com";
-const localApp = "http://localhost:3000";
+const deployedApp = "https://linkedinextension.netlify.com";
+// const localApp = "http://localhost:3000";
 
 class Login extends Component {
   componentDidMount() {
@@ -37,7 +37,7 @@ class Login extends Component {
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("firstName", response.data.first_name);
         localStorage.setItem("lastName", response.data.last_name);
-        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
       });
     });
   }

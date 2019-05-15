@@ -24,10 +24,10 @@ export const DELETE_FIELD_START = "DELETE_FIELD_START";
 export const DELETE_FIELD_SUCCESS = "DELETE_FIELD_SUCCESS";
 export const DELETE_FIELD_FAILURE = "DELETE_FIELD_FAILURE";
 
-export const deleteField = (userId, formId) => dispatch => {
+export const deleteField = id => dispatch => {
   dispatch({ type: DELETE_FIELD_START });
   return axios
-    .delete(`${deployedDb}/api/fields`)
+    .delete(`${deployedDb}/api/fields/field/${id}`)
     .then(res => {
       dispatch({ type: DELETE_FIELD_SUCCESS, payload: res.data });
     })
