@@ -12,12 +12,8 @@ class UpdateIndivForm extends Component {
   };
 
   async componentDidMount() {
-    console.log(this.state, "1sa");
-    console.log(this.props, "1pr");
     await this.props.getField(this.props.formToUpdate.form_id);
     this.setState({ fields: this.props.fieldsToUpdate });
-    console.log(this.state, "2sa");
-    console.log(this.props, "2pr");
   }
 
   handleChangeForm = e => {
