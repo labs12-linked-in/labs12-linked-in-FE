@@ -77,9 +77,9 @@ class UpdateIndivForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    getIndivForm: state.formReducer.getIndivForm,
-    updateForm: state.formReducer.updateForm,
-    isUpdating: state.formReducer.isUpdating,
+    // getIndivForm: state.formReducer.getIndivForm,
+    // updateForm: state.formReducer.updateForm,
+    // isUpdating: state.formReducer.isUpdating,
     formToUpdate: state.formReducer.formToUpdate.form,
     fieldsToUpdate: state.formReducer.fieldsToUpdate
   };

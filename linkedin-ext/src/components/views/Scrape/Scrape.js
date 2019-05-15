@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import classes from './Scrape.module.css';
 import NavBar from '../NavBar/NavBar';
 import SelectBox from '../../../features/select-box/index.js';
 import { getForm } from "../../../actions/formActions.js";
 import { connect } from "react-redux";
 import { getDept } from "../../../actions/deptActions.js";
+import { getField } from  '../../../actions/formFieldActions.js';
 
 
-// 1) loop through forms on state and match the name to the selected for name and grab the selected form id
 // 2) do a call with the selected form id to get the fields and set those to the selecte form fields on state
 
 
@@ -60,16 +59,17 @@ class Scrape extends Component {
     
     getSelectedFormFields = () => {
         for (let i = 0; i < this.props.forms.length; i++ ) {
-            if (this.props.forms[i].name == this.state.selectedFormName) {
+            if (this.props.forms[i].name === this.state.selectedFormName) {
                 this.setState({ selectedFormId: this.props.forms[i].form_id })
                 console.log('ss')
             }
         }
+        // this.setState({ selectedFormFields:  })
+        const selectedFields = this.props.getField(this.state.selectedFormId)
+        console.log(selectedFields);
     }
 
     handleInput = (e) => {
-        let name = e.target.name;
-        let value = e.target.value;
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -130,6 +130,6 @@ const mapStateToProps = state => {
   
   export default connect(
     mapStateToProps,
-    { getForm, getDept }
+    { getForm, getDept, getField }
   )(Scrape);
   

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
 import classes from "./Department.module.css";
 import { deleteDept, addDeptToUpdate } from '../../../../actions/deptActions.js'
 

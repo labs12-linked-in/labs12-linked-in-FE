@@ -4,9 +4,9 @@ import classes from "./NewDepartment.module.css";
 import { Link } from "react-router-dom";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
-const localDb = "http://localhost:9001";
-const deployedApp = "https://linkedinextension.netlify.com";
-const localApp = "http://localhost:3000";
+// const localDb = "http://localhost:9001";
+// const deployedApp = "https://linkedinextension.netlify.com";
+// const localApp = "http://localhost:3000";
 
 export default class newDepartment extends Component {
   state = {
