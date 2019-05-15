@@ -7,12 +7,6 @@ import { connect } from "react-redux";
 import { getDept } from "../../../actions/deptActions.js";
 import { getField } from  '../../../actions/formFieldActions.js';
 
-
-// 2) do a call with the selected form id to get the fields and set those to the selecte form fields on state
-
-
-
-
 class Scrape extends Component {
 
     state = {
@@ -31,8 +25,11 @@ class Scrape extends Component {
     
     async componentDidMount() {
         await this.props.getForm(localStorage.getItem("id"));
-        await this.props.getDept(localStorage.getItem("id"));
-
+        
+        // ****************************
+        //commented out until form rules and/or emailing is implemented and this is needed
+        // await this.props.getDept(localStorage.getItem("id"));
+        // ****************************
         
             for (let i = 0; i<this.props.forms.length; i++) {
                 this.setState({
@@ -57,16 +54,14 @@ class Scrape extends Component {
         // ****************************
     }
     
-    getSelectedFormFields = () => {
+    getSelectedFormFields = async () => {
         for (let i = 0; i < this.props.forms.length; i++ ) {
             if (this.props.forms[i].name === this.state.selectedFormName) {
-                this.setState({ selectedFormId: this.props.forms[i].form_id })
-                console.log('ss')
+                await this.setState({ selectedFormId: this.props.forms[i].form_id })
             }
         }
-        // this.setState({ selectedFormFields:  })
-        const selectedFields = this.props.getField(this.state.selectedFormId)
-        console.log(selectedFields);
+        await this.props.getField(this.state.selectedFormId)
+        this.setState({ selectedFormFields: this.props.getFields })
     }
 
     handleInput = (e) => {
@@ -119,6 +114,7 @@ const mapStateToProps = state => {
     return {
       forms: state.formReducer.forms,
       getForm: state.formReducer.getForm,
+      getFields: state.formReducer.fieldsToUpdate
       
       // ****************************
       //commented out until form rules and/or emailing is implemented and this is needed

@@ -10,13 +10,11 @@ export const GET_FIELDS_SUCCESS = "GET_FIELDS_SUCCESS";
 export const GET_FIELDS_FAILURE = "GET_FIELDS_FAILURE";
 
 export const getField = id => async dispatch => {
-  console.log(id, "start fields");
   dispatch({ type: GET_FIELDS_START });
   await axios
     .get(`${deployedDb}/api/fields/field/${id}`)
     .then(res => res.data)
     .then(fields => {
-      console.log(fields, "fields");
       dispatch({ type: GET_FIELDS_SUCCESS, payload: fields });
     })
     .catch(err => dispatch({ type: GET_FIELDS_FAILURE, ERROR: err }));
