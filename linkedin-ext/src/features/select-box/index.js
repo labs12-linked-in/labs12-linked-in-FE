@@ -10,7 +10,7 @@ const SelectBox = props => {
             id={props.name}
             name={props.name}
             defaultValue={props.defaultValue}
-            onChange={props.handleChange}
+            onChange={props.onChange}
             className="form-control"
           >
             <option value="" disabled>

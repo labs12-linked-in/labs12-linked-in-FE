@@ -8,76 +8,108 @@ import { connect } from "react-redux";
 import { getDept } from "../../../actions/deptActions.js";
 
 
+// 1) loop through forms on state and match the name to the selected for name and grab the selected form id
+// 2) do a call with the selected form id to get the fields and set those to the selecte form fields on state
+
+
+
+
 class Scrape extends Component {
 
     state = {
         formOptions:[],
-        departmentOptions: []
-    }
+        selectedFormName: '',
+        selectedFormId: '',
+        selectedFormFields: []
+        
+        // ****************************
+        //commented out until form rules and/or emailing is implemented and this is needed
 
+        // departmentOptions: [],
+        // selectedDept: ''
+        // ****************************
+    }
+    
     async componentDidMount() {
         await this.props.getForm(localStorage.getItem("id"));
         await this.props.getDept(localStorage.getItem("id"));
-        
-        for (let i = 0; i<this.props.forms.length; i++) {
-            this.setState({
-                formOptions: [
-                    ...this.state.formOptions,
-                    this.props.forms[i].name
-                ]
-            })
-        }
 
-        for (let i = 0; i<this.props.depts.length; i++) {
-            this.setState({
-                departmentOptions: [
-                    ...this.state.departmentOptions,
-                    this.props.depts[i].name
-                ]
-            })
+        
+            for (let i = 0; i<this.props.forms.length; i++) {
+                this.setState({
+                    formOptions: [
+                        ...this.state.formOptions,
+                        this.props.forms[i].name
+                    ]
+                })
+            }
+
+        // ****************************
+        //commented out until form rules and/or emailing is implemented and this is needed
+
+        // for (let i = 0; i<this.props.depts.length; i++) {
+            //     this.setState({
+                //         departmentOptions: [
+                    //             ...this.state.departmentOptions,
+                    //             this.props.depts[i].name
+                    //         ]
+                    //     })
+                    // }
+        // ****************************
+    }
+    
+    getSelectedFormFields = () => {
+        for (let i = 0; i < this.props.forms.length; i++ ) {
+            if (this.props.forms[i].name == this.state.selectedFormName) {
+                this.setState({ selectedFormId: this.props.forms[i].form_id })
+                console.log('ss')
+            }
         }
     }
 
+    handleInput = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
 
     render() {
         return (
             <div className={classes.Scrape}>
                 <NavBar />
                 <div className = {classes.bold}>Scrape</div>
-                <div className = {classes.name}>
-                    <p>Name: </p>
-                    <input 
-                        required
-                        type="text"
-                        // defaultValue={this.state.form.name}
-                        name="scrapeName"
-                        placeholder="e.g. John's Resume"
-                        // onChange={props.handleChange}
-                    />
-                </div>    
+            
                 <div className = {classes.dropDown}>
                     <p>Form: </p>
                     <SelectBox 
                         title={"Form"}
-                        name={"form"}
+                        name={"selectedFormName"}
                         options={this.state.formOptions}
-                        // defaultValue={this.state.form.form}
+                        value={this.state.selectedForm}
                         placeholder={"Select Form"}
-                        // handleChange={this.handleInput}
+                        onChange={this.handleInput}
                     />
                 </div>
-                <div className = {classes.dropDown}>
+
+                {/* **************************** */}
+                {/* commented out until form rules and/or emailing is implemented and this is needed */}
+
+                {/* <div className = {classes.dropDown}>
                     <p>Department: </p>
                     <SelectBox 
                         title={"Department"}
-                        name={"department"}
+                        name={"selectedDept"}
                         options={this.state.departmentOptions}
-                        // defaultValue={this.state.form.department}
+                        value={this.state.selectedDept}
                         placeholder={"Select Department"}
-                        // handleChange={this.handleInput}
+                        onChange={this.handleInput}
                     />
-                </div>
-                <Link to={'/edit-scrape'}><button>Scrape</button></Link>
+                </div> */}
+                {/* **************************** */}
+
+                <button onClick={() => this.getSelectedFormFields()}>Scrape</button>
             </div>
         )
     }
@@ -87,8 +119,12 @@ const mapStateToProps = state => {
     return {
       forms: state.formReducer.forms,
       getForm: state.formReducer.getForm,
-      depts: state.deptReducer.depts,
-      getDept: state.deptReducer.getDept
+      
+      // ****************************
+      //commented out until form rules and/or emailing is implemented and this is needed
+      // depts: state.deptReducer.depts,
+      // getDept: state.deptReducer.getDept
+      // ****************************
     };
   };
   
