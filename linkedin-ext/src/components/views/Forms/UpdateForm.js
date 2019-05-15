@@ -7,7 +7,8 @@ import { getField, deleteField } from "../../../actions/formFieldActions.js";
 class UpdateIndivForm extends Component {
   state = {
     form: this.props.formToUpdate,
-    fields: []
+    fields: [],
+    fieldOptions: ["Job Title", "Name", "Location"]
   };
 
   async componentDidMount() {
@@ -30,7 +31,7 @@ class UpdateIndivForm extends Component {
 
   handleChangeField = e => {
     let fields = [...this.state.fields];
-    fields[e.target.dataset.id][e.target.className] = e.target.value;
+    fields[e.target.dataset.key].name = e.target.value;
     this.setState({ fields }, () => console.log(this.state.fields));
   };
 
@@ -60,7 +61,32 @@ class UpdateIndivForm extends Component {
             return (
               <div key={idx}>
                 <label htmlFor={nameId}>{`Field #${idx + 1}`}</label>
-                <input
+                <div>
+                  <select
+                    data-key={idx}
+                    value={this.state.fields[idx].name}
+                    onChange={this.handleChangeField}
+                  >
+                    <option value="" disabled>
+                      {"Select Field"}
+                    </option>
+                    {this.state.fieldOptions.map(option => {
+                      return (
+                        <option
+                          type="text"
+                          name={nameId}
+                          data-key={idx}
+                          id={nameId}
+                          value={option}
+                          className="name"
+                        >
+                          {option}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                {/* <input
                   type="text"
                   name={nameId}
                   data-id={idx}
@@ -68,7 +94,7 @@ class UpdateIndivForm extends Component {
                   value={this.state.fields[idx].name}
                   className="name"
                   onChange={this.handleChangeField}
-                />
+                /> */}
                 <button
                   onClick={e => this.deleteField(e)}
                   value={this.state.fields[idx].id}
