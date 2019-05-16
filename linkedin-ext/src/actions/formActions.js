@@ -20,9 +20,9 @@ export const getForm = () => async dispatch => {
     .catch(err => dispatch({ type: GET_FORM_FAILURE, ERROR: err }));
 };
 
-export const GET_INDIVFORM_START = "GET_INDIVDEPT_START";
-export const GET_INDIVFORM_SUCCESS = "GET_INDIVDEPT_SUCCESS";
-export const GET_INDIVFORM_FAILURE = "GET_INDIVDEPT_FAILURE";
+export const GET_INDIVFORM_START = "GET_INDIVFORM_START";
+export const GET_INDIVFORM_SUCCESS = "GET_INDIVFORM_SUCCESS";
+export const GET_INDIVFORM_FAILURE = "GET_INDIVFORM_FAILURE";
 
 export const getIndivForm = formId => dispatch => {
   dispatch({ type: GET_INDIVFORM_START });
