@@ -1,6 +1,5 @@
 // import React, { Component } from "react";
 // import { connect } from 'react-redux'
-// import classes from "./Department.module.css";
 // import { deleteDept, addDeptToUpdate } from '../../../../actions/deptActions.js'
 
 // class Department extends Component {
@@ -15,19 +14,16 @@
 //   };
 
 //   render() {
-//     // DELETE THIS CONSOLE LOG **************************************
-//     console.log("DEPARTMENT PROPS", this.props)
-
 //     const { department_id, name, user_id } = this.props.dept ;
 //     return (    
-//     <div className={classes.Title} key={department_id}>
-//       <div className={classes.Name}>{name}</div>
-//       <div className={classes.Empty}>
-//       <button onClick={() => this.addDeptToUpdate(this.props.dept)}>
-//             edit
-//           </button>
+//     <div>
+//       <div>{name}</div>
+//       <div>
+    //       <button onClick={() => this.addDeptToUpdate(this.props.dept)}>
+    //             edit
+    //       </button>
 //       </div>
-//       <div className={classes.Delete}><button onClick={() => {
+//       <div><button onClick={() => {
 //         if (window.confirm('Are you sure you want to delete this department?'))
 //           this.deleteDepartment(
 //             user_id, 

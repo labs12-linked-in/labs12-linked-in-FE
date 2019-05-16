@@ -1,6 +1,5 @@
 // import React, { Component } from "react";
 // import axios from "axios";
-// import classes from "./NewDepartment.module.css";
 // import { Link } from "react-router-dom";
 
 // const deployedDb = "https://linkedinextension.herokuapp.com";
@@ -66,12 +65,10 @@
 
 //   render() {
 //     return (
-//       <div className={classes.NewDepartment}>
-//         <div className={classes.TopPortion}>
-//           <div className={classes.Cancle}>
-//             <Link to={"/dept"}>
-//               <button>Cancel</button>
-//             </Link>
+//       <div>
+//         <div>
+//           <div>
+//             <Link to={"/dept"}> <button>Cancel</button> </Link>
 //           </div>
 //         </div>
 
@@ -118,7 +115,7 @@
 //             onChange={this.handleChanges}
 //             placeholder="Insert Email Here"
 //           />
-//           <div className={classes.Save}>
+//           <div >
 //             <button onClick={this.tryAdd}>Save</button>
 //           </div>
 //         </form>

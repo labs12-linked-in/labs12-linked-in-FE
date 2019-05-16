@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import NavBar from "../NavBar/NavBar";
-import classes from "./Forms.module.css";
 import Form from "./Form";
 import { connect } from "react-redux";
 import { getForm } from "../../../actions/formActions.js";
@@ -19,13 +18,12 @@ class Forms extends Component {
 
     if (!this.props.fetching && this.props.forms !== null) {
       form = (
-        <div className={classes.Forms}>
+        <div>
           <NavBar />
-          <div className={classes.bold}>Forms</div>
-          <div className={classes.TopSeparation}>
-            <div className={classes.Name}>Name</div>
-            <div className={classes.Field}>Fields</div>
-            <div className={classes.Empty} />
+          <div>Forms</div>
+          <div>
+            <div>Name</div>
+            <div>Fields</div>
           </div>
           <div>
             {this.props.forms.map(form => (
@@ -37,17 +35,16 @@ class Forms extends Component {
       );
     } else if (!this.props.fetching && this.props.forms === null) {
       form = (
-        <div className={classes.Forms}>
+        <div>
           <NavBar />
           <div>Forms</div>
-          <div className={classes.Title} />
           <div>No Form was found please create a Form</div>
           <button onClick={this.newForm}>Create New</button>
         </div>
       );
     }
 
-    return <div className={classes.Forms}>{form}</div>;
+    return <div>{form}</div>;
   }
 }
 

@@ -1,10 +1,8 @@
 import React from 'react'
 
-import './styles.css'
-
 const SelectBox = props => {
     return (
-        <div className="form-group">
+        <div>
           <select
             required
             id={props.name}
