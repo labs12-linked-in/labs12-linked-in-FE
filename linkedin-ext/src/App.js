@@ -9,8 +9,6 @@ import Forms from "./components/views/Forms/Forms.js";
 import NewForm from "./components/views/Forms/NewForm.js";
 import AddField from "./components/views/FormFields/AddField.js";
 // import FormRules from "./components/views/Forms/FormRules.js";
-import Scrape from "./components/views/Scrape/Scrape.js";
-import EditScrape from "./components/views/Scrape/EditScrape.js";
 import UpdateIndivForm from './components/views/Forms/UpdateForm.js'
 
 // *************************************
@@ -33,8 +31,6 @@ class App extends Component {
           {/* <Route path="/new-dept" component={NewDepartment} /> */}
           <Route path="/add-field" component={AddField} />
           {/* <Route path="/form-rules" component={FormRules} /> */}
-          <Route path="/scrape" component={Scrape} />
-          <Route path="/edit-scrape" component={EditScrape} />
           {/* <Route path="/update-department" component={UpdateIndivDept} /> */}
           <Route path="/update-form" component={UpdateIndivForm} />
         </Switch>
