@@ -16,12 +16,6 @@ const navBar = (props) => (
           className={classes.NavLink}
           to="/dept" 
         >Departments</NavLink> */}
-
-        {/* <NavLink 
-          activeClassName={classes.active} 
-          className={classes.NavLink}
-          to="/scrape" 
-        >Scrape</NavLink> */}
     </div>
 )
 
