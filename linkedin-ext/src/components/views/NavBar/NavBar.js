@@ -11,17 +11,11 @@ const navBar = (props) => (
           to="/forms" 
         >Forms</NavLink>
   
-        <NavLink 
+        {/* <NavLink 
           activeClassName={classes.active} 
           className={classes.NavLink}
           to="/dept" 
-        >Departments</NavLink>
-
-        <NavLink 
-          activeClassName={classes.active} 
-          className={classes.NavLink}
-          to="/scrape" 
-        >Scrape</NavLink>
+        >Departments</NavLink> */}
     </div>
 )
 
