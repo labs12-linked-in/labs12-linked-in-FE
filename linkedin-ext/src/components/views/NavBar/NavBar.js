@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import logoBlue from '../../../images/logoBlue.svg';
 
 const UserWrapper = styled.div`
   width: 100%;
@@ -23,8 +24,8 @@ const NavDiv = styled.div`
   width: 100%;
   
   img {
-      width: 50px;
-      height: 50px;
+      width: 40px;
+      height: 40px;
   }
 
   h1 {
@@ -45,7 +46,7 @@ const NavDiv = styled.div`
     margin-right: 10px;
     text-decoration: none;
     &:hover {
-      color: #9f86ff;
+      color: #15a1d1;
     }
   }
 `;
@@ -53,7 +54,7 @@ const NavDiv = styled.div`
 const Left = styled.div`
     display: flex;
     align-items: center;
-    width: 180px;
+    width: 290px;
     margin-left: 5px;
 `;
 
@@ -65,7 +66,7 @@ const navBar = props => (
   <UserWrapper>
     <NavDiv>
         <Left>
-            {/* <img src={logoWhite} alt="GitHub Users logo"/> */}
+            <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
             <h1>LinkedIn Chrome Extension</h1>
         </Left>
         <Right>
