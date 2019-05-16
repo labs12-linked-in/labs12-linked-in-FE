@@ -4,7 +4,7 @@ import NavBar from "../NavBar/NavBar";
 import SelectBox from "../../../features/select-box/index.js";
 import { getForm } from "../../../actions/formActions.js";
 import { connect } from "react-redux";
-import { getDept } from "../../../actions/deptActions.js";
+// import { getDept } from "../../../actions/deptActions.js";
 import { getField } from "../../../actions/formFieldActions.js";
 
 class Scrape extends Component {
@@ -14,30 +14,18 @@ class Scrape extends Component {
     selectedFormId: "",
     selectedFormFields: []
 
-    // ****************************
-    //commented out until form rules and/or emailing is implemented and this is needed
-
     // departmentOptions: [],
     // selectedDept: ''
-    // ****************************
   };
 
   async componentDidMount() {
     await this.props.getForm(localStorage.getItem("id"));
-
-    // ****************************
-    //commented out until form rules and/or emailing is implemented and this is needed
     // await this.props.getDept(localStorage.getItem("id"));
-    // ****************************
-
     for (let i = 0; i < this.props.forms.length; i++) {
       this.setState({
         formOptions: [...this.state.formOptions, this.props.forms[i].name]
       });
     }
-
-    // ****************************
-    //commented out until form rules and/or emailing is implemented and this is needed
 
     // for (let i = 0; i<this.props.depts.length; i++) {
     //     this.setState({
@@ -47,7 +35,6 @@ class Scrape extends Component {
     //         ]
     //     })
     // }
-    // ****************************
   }
 
   getSelectedFormFields = async () => {
@@ -85,21 +72,17 @@ class Scrape extends Component {
           />
         </div>
 
-        {/* **************************** */}
-        {/* commented out until form rules and/or emailing is implemented and this is needed */}
-
         {/* <div className = {classes.dropDown}>
-                    <p>Department: </p>
-                    <SelectBox 
-                        title={"Department"}
-                        name={"selectedDept"}
-                        options={this.state.departmentOptions}
-                        value={this.state.selectedDept}
-                        placeholder={"Select Department"}
-                        onChange={this.handleInput}
-                    />
-                </div> */}
-        {/* **************************** */}
+              <p>Department: </p>
+              <SelectBox 
+                  title={"Department"}
+                  name={"selectedDept"}
+                  options={this.state.departmentOptions}
+                  value={this.state.selectedDept}
+                  placeholder={"Select Department"}
+                  onChange={this.handleInput}
+              />
+            </div> */}
 
         <button onClick={() => this.getSelectedFormFields()}>Scrape</button>
       </div>
@@ -112,16 +95,12 @@ const mapStateToProps = state => {
     forms: state.formReducer.forms,
     getForm: state.formReducer.getForm,
     getFields: state.formReducer.fieldsToUpdate
-
-    // ****************************
-    //commented out until form rules and/or emailing is implemented and this is needed
     // depts: state.deptReducer.depts,
     // getDept: state.deptReducer.getDept
-    // ****************************
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getForm, getDept, getField }
+  { getForm, getField, /* getDept */ }
 )(Scrape);
