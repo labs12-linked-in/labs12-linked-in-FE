@@ -17,9 +17,6 @@
 //       dept = (
 //         <div >
 //           <div>
-//             <NavBar />
-//           </div>
-//           <div>
 //             <divDepartments</div>
 //             <div>
 //               <div>Name</div>

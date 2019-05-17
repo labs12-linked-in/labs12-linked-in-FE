@@ -45,7 +45,7 @@ class Login extends Component {
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("firstName", response.data.first_name);
         localStorage.setItem("lastName", response.data.last_name);
-        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
       });
     });
   }
@@ -53,7 +53,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <NavBar />
         <SignInButton>
           <a href="">
             <img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" alt="LinkedIn Sign In button" onClick={this.handleClick}/>

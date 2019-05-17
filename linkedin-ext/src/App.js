@@ -7,7 +7,8 @@ import Forms from "./components/views/Forms/Forms.js";
 import NewForm from "./components/views/Forms/NewForm.js";
 import AddField from "./components/views/FormFields/AddField.js";
 // import FormRules from "./components/views/Forms/FormRules.js";
-import UpdateIndivForm from './components/views/Forms/UpdateForm.js'
+import UpdateIndivForm from './components/views/Forms/UpdateForm.js';
+import NavBar from './components/views/NavBar/NavBar.js';
 
 // *************************************
 // NOTE - everything related to departments and form rules throughout this codebase has been commented out. We decided it was out of scope but wanted to leave it for another group if they continued with the project.
@@ -21,6 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/forms" component={Forms} />
