@@ -10,20 +10,21 @@ const UserWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid black;
-  background-color: #dedfe0;
+  ${'' /* border-bottom: 2px solid black; */}
+  background-color: #283e48;
 `;
 
 const NavDiv = styled.div`
-  background-color: #24292d;
+  background-color: #283e49;
   height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1100px;
   width: 100%;
   
   img {
-      width: 40px;
+      width: 30px;
       height: 40px;
   }
 
@@ -44,8 +45,12 @@ const NavDiv = styled.div`
     cursor: pointer;
     text-decoration: none;
     &:hover {
-      color: #15a1d1;
+      color: #0284b1;
     }
+  }
+
+  div {
+    color: white;
   }
 `;
 
@@ -58,6 +63,10 @@ const Left = styled.div`
 
 const Right = styled.div`
   margin-right: 20px;
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const navBar = props => (
@@ -68,7 +77,8 @@ const navBar = props => (
             <h1>LinkedIn Chrome Extension</h1>
         </Left>
         <Right>
-            <Link to="/forms"> Forms </Link>
+            <Link to="/forms">Forms</Link>
+            <div>|</div> 
             {/* <Link to="/dept">Departments</Link> */}
             <Link to="/">Logout</Link>
         </Right>

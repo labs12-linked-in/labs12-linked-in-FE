@@ -7,6 +7,43 @@ const FormWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
   justify-content: space-between;
+
+  button {
+    ${'' /* background-color: red; */}
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 75px;
+  }
+`;
+
+const Name = styled.div`
+  ${'' /* border: 1px solid red; */}
+  width: 235px;
+`;
+
+const FieldCount = styled.div`
+  ${'' /* border: 1px solid red; */}
+  marging-left: 20px;
+  width: 130px;
+`;
+
+const Edit = styled.button`
+  ${'' /* border: 1px solid red; */}
+  margin-left: 10px;
+
+  &:hover {
+    color: white;
+    border-color: #283e48;
+    background-color: #283e48;
+  }
+`;
+
+const Delete = styled.button`
+  &:hover {
+    color: red;
+    border-color: red;
+  }
 `;
 
 class Form extends Component {
@@ -25,15 +62,15 @@ class Form extends Component {
     const { id, name, field_count } = this.props.form;
     return (
       <FormWrapper>
-        <div>Name: {name}</div>
-        <div>Field Count: {field_count}</div>
+        <Name>{name}</Name>
+        <FieldCount>Field Count: {field_count}</FieldCount>
         <div>
-          <button onClick={() => this.addFormToUpdate(this.props.form)}>
+          <Edit onClick={() => this.addFormToUpdate(this.props.form)}>
             edit
-          </button>
+          </Edit>
         </div>
         <div>
-          <button
+          <Delete
             onClick={() => {
               if (window.confirm("Are you sure you want to delete this form?"))
                 this.deleteForm(
@@ -42,8 +79,8 @@ class Form extends Component {
                 );
             }}
           >
-            X
-          </button>
+            delete
+          </Delete>
         </div>
       </FormWrapper>
     );
