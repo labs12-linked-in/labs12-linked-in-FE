@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import NavBar from './NavBar/NavBar.js';
 import { getUser } from '../../actions/userActions';
 
 class UserHome extends Component {
@@ -19,9 +18,6 @@ class UserHome extends Component {
     render() {
         return (
             <div>
-                <header>
-                    <NavBar />
-                </header>
                 {JSON.parse(localStorage.getItem('Profile')).first_name}
             </div>
         )

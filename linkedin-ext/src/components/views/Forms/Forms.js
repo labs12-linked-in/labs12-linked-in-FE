@@ -1,42 +1,34 @@
 import React, { Component } from "react";
-import NavBar from "../NavBar/NavBar";
 import Form from "./Form";
 import { connect } from "react-redux";
 import { getForm } from "../../../actions/formActions.js";
 import styled from 'styled-components';
 
 const FormsWrapper = styled.div`
-  border: 1px solid red;
+  ${'' /* border: 1px solid red; */}
   display: flex;
   flex-direction: column;
   align-items: center
 `;
 
 const H1 = styled.h1`
-  border: 1px solid red;
+  ${'' /* border: 1px solid red; */}
 `;
 
 const FormDetails = styled.div`
-  border: 1px solid red;
+  ${'' /* border: 1px solid red; */}
   display: flex;
   justify-content: space-around;
   width: 200px;
 `;
 
 const IndividualForm = styled.div`
-  border: 1px solid red;
-  ${'' /* display: flex; */}
-  ${'' /* justify-content: space-around; */}
-  width: 200px;
+  ${'' /* border: 1px solid red; */}
+  margin: 5px 0;
+  padding: 5px 0;
+  width: 500px;
+  background-color: white;
 `;
-
-const TestingThis = styled.div`
-  border: 1px solid red;
-  ${'' /* display: flex; */}
-  ${'' /* justify-content: space-around; */}
-  width: 200px;
-`;
-
 
 class Forms extends Component {
   componentDidMount() {
@@ -54,15 +46,11 @@ class Forms extends Component {
         form = (
           <FormsWrapper>
             <H1>Forms</H1>
-            <FormDetails>
-              <div>Name</div>
-              <div>Fields</div>
-            </FormDetails>
-            <IndividualForm>
               {this.props.forms.map(form => (
-                <Form form={form} history={this.props.history} />
+                <IndividualForm>
+                  <Form form={form} history={this.props.history} />
+                </IndividualForm>
               ))}
-            </IndividualForm>
             <button onClick={this.newForm}>Create New</button>
           </FormsWrapper>
         );
@@ -79,7 +67,6 @@ class Forms extends Component {
 
     return (
       <div>
-        <NavBar />
         {form}
       </div> 
     )

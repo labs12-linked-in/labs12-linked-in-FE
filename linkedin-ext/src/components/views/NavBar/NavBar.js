@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logoBlue from '../../../images/logoBlue.svg';
@@ -43,7 +42,6 @@ const NavDiv = styled.div`
     color: white;
     transition: all 0.1s ease;
     cursor: pointer;
-    margin-right: 10px;
     text-decoration: none;
     &:hover {
       color: #15a1d1;
@@ -52,14 +50,14 @@ const NavDiv = styled.div`
 `;
 
 const Left = styled.div`
-    display: flex;
-    align-items: center;
-    width: 290px;
-    margin-left: 5px;
+  display: flex;
+  align-items: center;
+  width: 290px;
+  margin-left: 20px;
 `;
 
 const Right = styled.div`
-    
+  margin-right: 20px;
 `;
 
 const navBar = props => (
@@ -80,4 +78,4 @@ const navBar = props => (
 
 
 
-export default navBar
+export default navBar;
