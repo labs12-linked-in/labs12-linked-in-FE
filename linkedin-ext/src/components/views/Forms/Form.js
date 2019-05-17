@@ -21,6 +21,7 @@ class Form extends Component {
   };
 
   render() {
+    console.log('form props',this.props)
     const { id, name, field_count } = this.props.form;
     return (
       <FormWrapper>

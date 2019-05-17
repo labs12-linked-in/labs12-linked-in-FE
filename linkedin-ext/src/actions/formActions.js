@@ -115,5 +115,6 @@ export const ADD_UPDATE_FORM_FAILURE = "ADD_UPDATE_FORM_FAILURE";
 
 export const addFormToUpdate = form => dispatch => {
   dispatch({ type: ADD_UPDATE_FORM_START });
-  dispatch({ type: ADD_UPDATE_FORM_SUCCESS, payload: { form } });
+  console.log("from formActions", form)
+  dispatch({ type: ADD_UPDATE_FORM_SUCCESS, payload: form });
 };
