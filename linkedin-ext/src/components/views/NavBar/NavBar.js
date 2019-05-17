@@ -4,17 +4,18 @@ import { Link } from 'react-router-dom';
 import logoBlue from '../../../images/logoBlue.svg';
 
 const UserWrapper = styled.div`
+  ${'' /* border: 1px solid red; */}
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  ${'' /* border-bottom: 2px solid black; */}
   background-color: #283e48;
 `;
 
 const NavDiv = styled.div`
+  ${'' /* border: 1px solid red; */}
   background-color: #283e49;
   height: 50px;
   display: flex;
@@ -44,6 +45,7 @@ const NavDiv = styled.div`
     transition: all 0.1s ease;
     cursor: pointer;
     text-decoration: none;
+
     &:hover {
       color: #0284b1;
     }
