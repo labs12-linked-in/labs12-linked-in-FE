@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addForm } from "../../../actions/formActions.js";
 
-import classes from "./NewForm.module.css";
-
 class NewForm extends Component {
   state = {
     fields: [{ name: "" }],
@@ -50,9 +48,9 @@ class NewForm extends Component {
   render() {
     let { name, fields } = this.state;
     return (
-      <div className={classes.Body}>
-        <div className={classes.Header}>
-          <div className={classes.Cancel} onClick={this.cancel}>
+      <div>
+        <div>
+          <div onClick={this.cancel}>
             Cancel
           </div>
         </div>

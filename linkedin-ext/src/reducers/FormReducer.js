@@ -11,7 +11,7 @@ import {
   UPDATE_FORM_START,
   UPDATE_FORM_SUCCESS,
   UPDATE_FORM_FAILURE,
-  // ADD_UPDATE_FORM_START,
+  ADD_UPDATE_FORM_START,
   ADD_UPDATE_FORM_SUCCESS,
   // ADD_UPDATE_FORM_FAILURE
 } from "../actions/formActions.js";
@@ -138,6 +138,11 @@ export const formReducer = (state = initialState, action) => {
         isUpdating: false,
         error: action.payload
       };
+    case ADD_UPDATE_FORM_START:
+      return {
+        ...state,
+        err: ''
+      }
     case ADD_UPDATE_FORM_SUCCESS:
       return {
         ...state,

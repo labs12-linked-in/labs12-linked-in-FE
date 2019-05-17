@@ -12,6 +12,7 @@ class UpdateIndivForm extends Component {
   };
 
   async componentDidMount() {
+    console.log("update form props", this.props)
     await this.props.getField(this.props.formToUpdate.form_id);
     this.setState({ fields: this.props.fieldsToUpdate });
   }
@@ -43,6 +44,7 @@ class UpdateIndivForm extends Component {
   };
 
   render() {
+    console.log(this.state.form)
     return (
       <div>
         <form>
@@ -111,10 +113,7 @@ class UpdateIndivForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    // getIndivForm: state.formReducer.getIndivForm,
-    // updateForm: state.formReducer.updateForm,
-    // isUpdating: state.formReducer.isUpdating,
-    formToUpdate: state.formReducer.formToUpdate.form,
+    formToUpdate: state.formReducer.formToUpdate,
     fieldsToUpdate: state.formReducer.fieldsToUpdate
   };
 };

@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import NavBar from "./NavBar/NavBar.js";
+import styled from 'styled-components';
+
+const SignInButton = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+`;
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -37,15 +45,22 @@ class Login extends Component {
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("firstName", response.data.first_name);
         localStorage.setItem("lastName", response.data.last_name);
-        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
       });
     });
   }
 
   render() {
-    console.log(this.props);
-
-    return <button onClick={this.handleClick}>Sign in with LinkedIn</button>;
+    return (
+      <div>
+        <NavBar />
+        <SignInButton>
+          <a href="">
+            <img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" alt="LinkedIn Sign In button" onClick={this.handleClick}/>
+          </a>
+        </SignInButton>
+      </div>
+    )
   }
 }
 

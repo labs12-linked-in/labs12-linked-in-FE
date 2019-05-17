@@ -4,7 +4,6 @@
 
 // import Department from "./Department/Department";
 // import NavBar from "../NavBar/NavBar";
-// import classes from "./Departments.module.css";
 // import { getDept } from "../../../actions/deptActions";
 
 // class Departments extends Component {
@@ -16,13 +15,13 @@
 //     let dept = <div>Loading</div>;
 //     if (this.props.depts) {
 //       dept = (
-//         <div className={classes.Departments}>
+//         <div >
 //           <div>
 //             <NavBar />
 //           </div>
 //           <div>
-//             <div className={classes.bold}>Departments</div>
-//             <div className={classes.TopSeparation}>
+//             <divDepartments</div>
+//             <div>
 //               <div>Name</div>
 //               <div />
 //             </div>

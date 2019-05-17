@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import classes from "./Form.module.css";
 import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
+import styled from 'styled-components';
+
+const FormWrapper = styled.div`
+  ${'' /* border: 1px solid red; */}
+  display: flex;
+  justify-content: space-between;
+`;
 
 class Form extends Component {
-  
 
   deleteForm = (userId, formId) => {
     this.props.deleteForm(userId, formId);
@@ -16,17 +21,18 @@ class Form extends Component {
   };
 
   render() {
+    console.log('form props',this.props)
     const { id, name, field_count } = this.props.form;
     return (
-      <div className={classes.Title} key={id}>
-        <div className={classes.Name}>{name}</div>
-        <div className={classes.Field}>{field_count}</div>
-        <div className={classes.Empty}>
+      <FormWrapper>
+        <div>Name: {name}</div>
+        <div>Field Count: {field_count}</div>
+        <div>
           <button onClick={() => this.addFormToUpdate(this.props.form)}>
             edit
           </button>
         </div>
-        <div className={classes.Delete}>
+        <div>
           <button
             onClick={() => {
               if (window.confirm("Are you sure you want to delete this form?"))
@@ -39,7 +45,7 @@ class Form extends Component {
             X
           </button>
         </div>
-      </div>
+      </FormWrapper>
     );
   }
 }

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import classes from "./App.module.css";
-
 import Login from "./components/views/Login.js";
 import Forms from "./components/views/Forms/Forms.js";
 import NewForm from "./components/views/Forms/NewForm.js";
@@ -22,7 +20,7 @@ import UpdateIndivForm from './components/views/Forms/UpdateForm.js'
 class App extends Component {
   render() {
     return (
-      <div className={classes.App}>
+      <div>
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/forms" component={Forms} />
