@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { getForm } from "../../../actions/formActions.js";
 import styled from 'styled-components';
 
+
+// **************** STYLED COMPONENETS ****************
 const FormsWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
@@ -51,23 +53,24 @@ const IndividualForm = styled.div`
   background-color: white;
   box-shadow: 0 0 3px 0 rgba(0,0,0,.2);
   border-radius: 5px;
+
   &:hover {
     cursor: pointer;
     box-shadow: 0 0 2px 2px #0284b1;
     transition: all .3s;
   }
 `;
-
+// ****************************************************
 
 class Forms extends Component {
   componentDidMount() {
     this.props.getForm(localStorage.getItem("id"));
   }
-
+  
   newForm = () => {
     this.props.history.push("/new-form");
   };
-
+  
   render() {
     let form = <div>loading</div>;
 

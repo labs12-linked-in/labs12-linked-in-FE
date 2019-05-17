@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
 import styled from 'styled-components';
 
+// **************** STYLED COMPONENETS ****************
 const FormWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
@@ -45,6 +46,7 @@ const Delete = styled.button`
     border-color: red;
   }
 `;
+// ****************************************************
 
 class Form extends Component {
 
