@@ -20,13 +20,13 @@ const localApp = "http://localhost:3000";
 
 class Login extends Component {
   componentDidMount() {
-    console.log("mounted");
+    // console.log("mounted");
     const oauthScript = document.createElement("script");
     oauthScript.src =
       "https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js";
 
     document.body.appendChild(oauthScript);
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   handleClick(e) {
@@ -45,7 +45,7 @@ class Login extends Component {
         localStorage.setItem("id", response.data.id);
         localStorage.setItem("firstName", response.data.first_name);
         localStorage.setItem("lastName", response.data.last_name);
-        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
       });
     });
   }

@@ -8,6 +8,7 @@ import styled from 'styled-components';
 // **************** STYLED COMPONENETS ****************
 const FormsWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
