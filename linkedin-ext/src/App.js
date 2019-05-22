@@ -7,6 +7,7 @@ import Forms from "./components/views/Forms/Forms.js";
 import NewForm from "./components/views/Forms/NewForm.js";
 import AddField from "./components/views/FormFields/AddField.js";
 // import FormRules from "./components/views/Forms/FormRules.js";
+import Checkout from './components/views/Checkouts/Checkout.js';
 import UpdateIndivForm from './components/views/Forms/UpdateForm.js';
 import NavBar from './components/views/NavBar/NavBar.js';
 
@@ -33,6 +34,7 @@ class App extends Component {
           {/* <Route path="/form-rules" component={FormRules} /> */}
           {/* <Route path="/update-department" component={UpdateIndivDept} /> */}
           <Route path="/update-form" component={UpdateIndivForm} />
+          <Route path='/vip' component={Checkout} />
         </Switch>
       </div>
     );
