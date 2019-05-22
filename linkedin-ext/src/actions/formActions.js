@@ -113,15 +113,11 @@ export const UPDATE_FORM_FAILURE = "UPDATE_FORM_FAILURE";
 export const updateForm = (newForm, newField) => dispatch => {
   dispatch({ type: UPDATE_FORM_START });
   axios
-    .put(
-      `${deployedDb}/api/forms/${newForm.user_id}/${newForm.form_id}`,
-      newForm,
-      {
-        headers: {
-          Authorization: window.localStorage.token
-        }
+    .put(`${deployedDb}/api/forms/${newForm.user_id}/${newForm.id}`, newForm, {
+      headers: {
+        Authorization: window.localStorage.token
       }
-    )
+    })
     .then(res => res.data)
     .then(form => {
       dispatch({ type: UPDATE_FORM_SUCCESS, payload: { ...form } });

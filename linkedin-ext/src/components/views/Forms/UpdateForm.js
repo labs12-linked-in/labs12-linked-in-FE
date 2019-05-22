@@ -200,6 +200,7 @@ class UpdateIndivForm extends Component {
 
   updateForm = async (e, id) => {
     e.preventDefault();
+    console.log("form", this.state.form);
     await this.props.updateForm(this.state.form, this.state.fields);
     this.props.history.push("/forms");
   };
