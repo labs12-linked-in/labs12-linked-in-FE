@@ -12,7 +12,11 @@ export const GET_FIELDS_FAILURE = "GET_FIELDS_FAILURE";
 export const getField = id => async dispatch => {
   dispatch({ type: GET_FIELDS_START });
   await axios
-    .get(`${deployedDb}/api/fields/field/${id}`)
+    .get(`${deployedDb}/api/fields/field/${id}`, {
+      headers: {
+        Authorization: window.localStorage.token
+      }
+    })
     .then(res => res.data)
     .then(fields => {
       dispatch({ type: GET_FIELDS_SUCCESS, payload: fields });
@@ -27,7 +31,11 @@ export const DELETE_FIELD_FAILURE = "DELETE_FIELD_FAILURE";
 export const deleteField = id => dispatch => {
   dispatch({ type: DELETE_FIELD_START });
   return axios
-    .delete(`${deployedDb}/api/fields/field/${id}`)
+    .delete(`${deployedDb}/api/fields/field/${id}`, {
+      headers: {
+        Authorization: window.localStorage.token
+      }
+    })
     .then(res => {
       dispatch({ type: DELETE_FIELD_SUCCESS, payload: res.data });
     })

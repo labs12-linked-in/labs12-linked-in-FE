@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NavBar from "./NavBar/NavBar.js";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const SignInButton = styled.div`
   display: flex;
@@ -42,9 +42,10 @@ class Login extends Component {
     window.OAuth.popup("linkedin2").done(function(token) {
       axios.post(`${deployedDb}/api/users/user`, token).then(response => {
         console.log(response, "res");
-        localStorage.setItem("id", response.data.id);
-        localStorage.setItem("firstName", response.data.first_name);
-        localStorage.setItem("lastName", response.data.last_name);
+        localStorage.setItem("id", response.data.userInfo.id);
+        localStorage.setItem("firstName", response.data.userInfo.first_name);
+        localStorage.setItem("lastName", response.data.userInfo.last_name);
+        localStorage.setItem("token", response.data.token);
         window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
       });
     });
@@ -55,11 +56,15 @@ class Login extends Component {
       <div>
         <SignInButton>
           <a href="">
-            <img src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png" alt="LinkedIn Sign In button" onClick={this.handleClick}/>
+            <img
+              src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png"
+              alt="LinkedIn Sign In button"
+              onClick={this.handleClick}
+            />
           </a>
         </SignInButton>
       </div>
-    )
+    );
   }
 }
 
