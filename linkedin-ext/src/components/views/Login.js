@@ -47,6 +47,7 @@ class Login extends Component {
       axios.post(`${deployedDb}/api/users/user`, token).then(response => {
         console.log(response, "res");
         localStorage.setItem("id", response.data.userInfo.id);
+        localStorage.setItem("user_id", response.data.userInfo.user_id);
         localStorage.setItem("firstName", response.data.userInfo.first_name);
         localStorage.setItem("lastName", response.data.userInfo.last_name);
         localStorage.setItem("token", response.data.token);

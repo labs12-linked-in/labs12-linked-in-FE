@@ -7,6 +7,7 @@ import Login from "./components/views/Login.js";
 import Forms from "./components/views/Forms/Forms.js";
 import NewForm from "./components/views/Forms/NewForm.js";
 import AddField from "./components/views/FormFields/AddField.js";
+import Checkout from './components/views/Checkouts/Checkout.js';
 import UpdateIndivForm from './components/views/Forms/UpdateForm.js';
 import NavBar from './components/views/NavBar/NavBar.js';
 import Footer from './components/views/Footer.js';
@@ -21,6 +22,7 @@ import Footer from './components/views/Footer.js';
 // import UpdateIndivDept from "./components/views/Departments/Department/UpdateDept.js";
 
 class App extends Component {
+<<<<<<< HEAD
     render() {
       return (
         <div>
@@ -40,6 +42,25 @@ class App extends Component {
           </Switch>
           <Footer />
         </div>
+=======
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact component={Login} />
+          <Route path="/forms" component={Forms} />
+          <Route path='/new-form' component={NewForm} />
+          {/* <Route path="/dept" component={Departments} /> */}
+          {/* <Route path="/new-dept" component={NewDepartment} /> */}
+          <Route path="/add-field" component={AddField} />
+          {/* <Route path="/form-rules" component={FormRules} /> */}
+          {/* <Route path="/update-department" component={UpdateIndivDept} /> */}
+          <Route path="/update-form" component={UpdateIndivForm} />
+          <Route path='/vip' component={Checkout} />
+        </Switch>
+      </div>
+>>>>>>> ca291175006bb738d31db9fe9c07c52a2415a673
     );
   }
 }
