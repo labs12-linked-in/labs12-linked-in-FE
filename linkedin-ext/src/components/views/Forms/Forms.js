@@ -48,7 +48,7 @@ const IndividualForm = styled.div`
   ${'' /* border: 1px solid red; */}
   margin: 5px 20px;
   margin-right: 20px;
-  padding: 10px;
+  ${'' /* padding: 10px; */}
   width: 600px;
   max-width: 90%
   background-color: white;

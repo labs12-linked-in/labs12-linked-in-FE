@@ -6,6 +6,8 @@ import styled from 'styled-components';
 // **************** STYLED COMPONENETS ****************
 const FormWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
+  padding: 10px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 
@@ -14,7 +16,6 @@ const FormWrapper = styled.div`
     border-radius: 5px;
     font-size: 13px;
     cursor: pointer;
-    width: 75px;
   }
 `;
 
@@ -41,9 +42,13 @@ const Edit = styled.button`
 `;
 
 const Delete = styled.button`
+  color: #b50707;
+  border-color: #b50707;
+  
   &:hover {
-    color: red;
-    border-color: red;
+    background-color: #b50707;
+    color: white
+    font-weight: bold;
   }
 `;
 // ****************************************************
@@ -63,14 +68,9 @@ class Form extends Component {
     console.log('form props',this.props)
     const { id, name, field_count } = this.props.form;
     return (
-      <FormWrapper>
+      <FormWrapper onClick={() => this.addFormToUpdate(this.props.form)}>
         <Name>{name}</Name>
         <FieldCount>Field Count: {field_count}</FieldCount>
-        <div>
-          <Edit onClick={() => this.addFormToUpdate(this.props.form)}>
-            edit
-          </Edit>
-        </div>
         <div>
           <Delete
             onClick={() => {
