@@ -14,10 +14,18 @@ export const getUser = () => dispatch => {
   const userData = JSON.parse(localStorage.getItem("Profile"));
   const { first_name, last_name } = userData;
   axios
-    .get("https://linkedinextension.herokuapp.com/api/user", {
-      first_name,
-      last_name
-    })
+    .get(
+      "https://linkedinextension.herokuapp.com/api/user",
+      {
+        first_name,
+        last_name
+      },
+      {
+        headers: {
+          Authorization: window.localStorage.token
+        }
+      }
+    )
     .then(res => res.data)
     .then(users => {
       console.log("data", users);
