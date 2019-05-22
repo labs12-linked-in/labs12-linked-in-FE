@@ -22,23 +22,26 @@ import Footer from './components/views/Footer.js';
 // import UpdateIndivDept from "./components/views/Departments/Department/UpdateDept.js";
 
 class App extends Component {
-  render() {
-    return (
-      <div>
-        <NavBar />
-        <Switch>
-          <Route path="/" exact component={Login} />
-          <Route path="/forms" component={Forms} />
-          <Route path='/new-form' component={NewForm} />
-          <Route path="/add-field" component={AddField} />
-          <Route path="/update-form" component={UpdateIndivForm} />
-          <Route path='/vip' component={Checkout} />
-          {/* <Route path="/form-rules" component={FormRules} /> */}
-          {/* <Route path="/update-department" component={UpdateIndivDept} /> */}
-          {/* <Route path="/new-dept" component={NewDepartment} /> */}
-          {/* <Route path="/dept" component={Departments} /> */}
-        </Switch>
-      </div>
+    render() {
+      return (
+        <div>
+          <NavBar />
+          <Switch>
+            <Route exact path="/" component={Homepage} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/forms" component={Forms} />
+            <Route path='/new-form' component={NewForm} />
+            <Route path="/update-form" component={UpdateIndivForm} />
+            <Route path="/add-field" component={AddField} />
+            <Route path='/vip' component={Checkout} />
+            {/* <Route path="/account-type" component={Stripe} /> */}
+            {/* <Route path="/dept" component={Departments} /> */}
+            {/* <Route path="/new-dept" component={NewDepartment} /> */}
+            {/* <Route path="/form-rules" component={FormRules} /> */}
+            {/* <Route path="/update-department" component={UpdateIndivDept} /> */}
+          </Switch>
+          <Footer />
+        </div>
     );
   }
 }
