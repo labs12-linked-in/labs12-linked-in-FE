@@ -12,7 +12,11 @@ export const GET_FORM_FAILURE = "GET_FORM_FAILURE";
 export const getForm = () => async dispatch => {
   dispatch({ type: GET_FORM_START });
   await axios
-    .get(`${deployedDb}/api/forms/${localStorage.getItem("id")}`)
+    .get(`${deployedDb}/api/forms/${localStorage.getItem("id")}`, {
+      headers: {
+        Authorization: window.localStorage.token
+      }
+    })
     .then(res => res.data)
     .then(forms => {
       dispatch({ type: GET_FORM_SUCCESS, payload: forms });
@@ -27,7 +31,11 @@ export const GET_INDIVFORM_FAILURE = "GET_INDIVFORM_FAILURE";
 export const getIndivForm = formId => dispatch => {
   dispatch({ type: GET_INDIVFORM_START });
   axios
-    .get(`${deployedDb}/api/forms/${localStorage.getItem("id")}/${formId}`)
+    .get(`${deployedDb}/api/forms/${localStorage.getItem("id")}/${formId}`, {
+      headers: {
+        Authorization: window.localStorage.token
+      }
+    })
     .then(res => res.data)
     .then(form => {
       dispatch({ type: GET_INDIVFORM_SUCCESS, payload: form });
@@ -44,7 +52,11 @@ export const DELETE_FORM_FAILURE = "DELETE_FORM_FAILURE";
 export const deleteForm = (userId, formId) => dispatch => {
   dispatch({ type: DELETE_FORM_START });
   return axios
-    .delete(`${deployedDb}/api/forms/${userId}/${formId}`)
+    .delete(`${deployedDb}/api/forms/${userId}/${formId}`, {
+      headers: {
+        Authorization: window.localStorage.token
+      }
+    })
     .then(res => {
       dispatch({ type: DELETE_FORM_SUCCESS, payload: res.data });
     })
@@ -56,17 +68,33 @@ export const deleteForm = (userId, formId) => dispatch => {
 
 export const addForm = newForm => async dispatch => {
   await axios
-    .post(`${deployedDb}/api/forms/${localStorage.getItem("id")}`, {
-      name: newForm.name
-    })
+    .post(
+      `${deployedDb}/api/forms/${localStorage.getItem("id")}`,
+      {
+        name: newForm.name
+      },
+      {
+        headers: {
+          Authorization: window.localStorage.token
+        }
+      }
+    )
     .then(async id => {
       console.log(id, "id");
       for (let i = 0; i < newForm.fields.length; i++) {
         await axios
-          .post(`${deployedDb}/api/fields/field`, {
-            form_id: id.data,
-            name: newForm.fields[i].name
-          })
+          .post(
+            `${deployedDb}/api/fields/field`,
+            {
+              form_id: id.data,
+              name: newForm.fields[i].name
+            },
+            {
+              headers: {
+                Authorization: window.localStorage.token
+              }
+            }
+          )
           .then(res => {
             console.log(res, "field res");
           })
@@ -87,7 +115,12 @@ export const updateForm = (newForm, newField) => dispatch => {
   axios
     .put(
       `${deployedDb}/api/forms/${newForm.user_id}/${newForm.form_id}`,
-      newForm
+      newForm,
+      {
+        headers: {
+          Authorization: window.localStorage.token
+        }
+      }
     )
     .then(res => res.data)
     .then(form => {
@@ -99,7 +132,11 @@ export const updateForm = (newForm, newField) => dispatch => {
 
   for (let i = 0; i < newField.length; i++) {
     axios
-      .put(`${deployedDb}/api/fields/field`, newField[i])
+      .put(`${deployedDb}/api/fields/field`, newField[i], {
+        headers: {
+          Authorization: window.localStorage.token
+        }
+      })
       .then(res => {
         console.log(res);
       })
@@ -115,6 +152,6 @@ export const ADD_UPDATE_FORM_FAILURE = "ADD_UPDATE_FORM_FAILURE";
 
 export const addFormToUpdate = form => dispatch => {
   dispatch({ type: ADD_UPDATE_FORM_START });
-  console.log("from formActions", form)
+  console.log("from formActions", form);
   dispatch({ type: ADD_UPDATE_FORM_SUCCESS, payload: form });
 };

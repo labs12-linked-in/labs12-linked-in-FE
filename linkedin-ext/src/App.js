@@ -10,7 +10,6 @@ import AddField from "./components/views/FormFields/AddField.js";
 import UpdateIndivForm from './components/views/Forms/UpdateForm.js';
 import NavBar from './components/views/NavBar/NavBar.js';
 import Footer from './components/views/Footer.js';
-import Stripe from './components/stripe/stripe.js';
 
 // *************************************
 // NOTE - everything related to departments and form rules throughout this codebase has been commented out. We decided it was out of scope but wanted to leave it for another group if they continued with the project.
