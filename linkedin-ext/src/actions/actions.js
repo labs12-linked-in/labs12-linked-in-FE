@@ -29,40 +29,70 @@ export const getUser = () => dispatch => {
     .catch(err => dispatch({ type: GET_USER_FAILURE, ERROR: err }));
 };
 
-export const getForm = (id) => dispatch => {
-    dispatch({type: GET_FORM_START});
-    axios.get(`https://linkedinextension.herokuapp.com/api/forms/${id}`)
-        .then(res => res.data)
-        .then(forms => {
-            dispatch({type: GET_FORM_SUCCESS, payload: forms})
-        })
-        .catch(err => dispatch({type: GET_FORM_FAILURE, ERROR: err, payload: null}))
-}
+export const getForm = id => dispatch => {
+  dispatch({ type: GET_FORM_START });
+  axios
+    .get(`https://linkedinextension.herokuapp.com/api/forms/${id}`, {
+      headers: {
+        Authorization: window.localStorage.token
+      }
+    })
+    .then(res => res.data)
+    .then(forms => {
+      dispatch({ type: GET_FORM_SUCCESS, payload: forms });
+    })
+    .catch(err =>
+      dispatch({ type: GET_FORM_FAILURE, ERROR: err, payload: null })
+    );
+};
 
-export const addForm = (newForm) => async dispatch  => {
-    console.log(newForm.name)
-    await axios.post(`https://linkedinextension.herokuapp.com/api/forms/${newForm.id}`, {
-        name: newForm.name,
-    })
+export const addForm = newForm => async dispatch => {
+  console.log(newForm.name);
+  await axios
+    .post(
+      `https://linkedinextension.herokuapp.com/api/forms/${newForm.id}`,
+      {
+        name: newForm.name
+      },
+      {
+        headers: {
+          Authorization: window.localStorage.token
+        }
+      }
+    )
     .then(form => {
-        console.log(form)
+      console.log(form);
     })
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
 export const editForm = (userId, formId, name) => dispatch => {
-    axios.post(`https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`, {
+  axios
+    .post(
+      `https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`,
+      {
         name: name
-    })
+      },
+      {
+        headers: {
+          Authorization: window.localStorage.token
+        }
+      }
+    )
     .then(form => {
-        console.log(form)
+      console.log(form);
     })
-    .catch(err => console.log(err))
-}
+    .catch(err => console.log(err));
+};
 
 export const deleteForm = (userId, formId) => {
   const deletedForm = axios.delete(
-    `https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`
+    `https://linkedinextension.herokuapp.com/api/forms/${userId}/${formId}`,
+    {
+      headers: {
+        Authorization: window.localStorage.token
+      }
+    }
   );
   return dispatch => {
     dispatch({ type: DELETE_FORM_START });
