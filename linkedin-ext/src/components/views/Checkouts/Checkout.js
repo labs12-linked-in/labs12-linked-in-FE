@@ -25,8 +25,9 @@ class Checkout extends Component {
         console.log('Response:', response.data)
 
         if(status === 'success') {
-            toast('success! Check are VIP Now', {type: 'success'})
-            axios.post('https://linkedinextension.herokuapp.com/api/users/upgrade', {})
+            await axios.post('https://linkedinextension.herokuapp.com/api/users/upgrade', {user_id: window.localStorage.getItem("user_id")})
+            toast('success! Check U are VIP Now', {type: 'success'})
+            
         } else {
             toast('Something Went Wrong, Please try again later', {type: 'error'})
         }
