@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // **************** STYLED COMPONENETS ****************
 const FormWrapper = styled.div`
-  ${'' /* border: 1px solid red; */}
+  ${"" /* border: 1px solid red; */}
   padding: 10px;
   width: 100%;
   display: flex;
   justify-content: space-between;
 
   button {
-    ${'' /* background-color: red; */}
+    ${"" /* background-color: red; */}
     border-radius: 5px;
     font-size: 13px;
     cursor: pointer;
@@ -20,12 +20,12 @@ const FormWrapper = styled.div`
 `;
 
 const Name = styled.div`
-  ${'' /* border: 1px solid red; */}
+  ${"" /* border: 1px solid red; */}
   width: 150px;
 `;
 
 const FieldCount = styled.div`
-  ${'' /* border: 1px solid red; */}
+  ${"" /* border: 1px solid red; */}
   width: 150px;
 `;
 
@@ -33,27 +33,28 @@ const Delete = styled.button`
   color: #b50707;
   border-color: #b50707;
   width: 100px;
-  
+
   &:hover {
     background-color: #b50707;
-    color: white
+    color: white;
   }
 `;
 // ****************************************************
 
 class Form extends Component {
-
   deleteForm = (userId, formId) => {
     this.props.deleteForm(userId, formId);
   };
 
-  addFormToUpdate = form => {
-    this.props.addFormToUpdate(form);
-    this.props.history.push("/update-form");
+  addFormToUpdate = async form => {
+    await this.props.addFormToUpdate(form);
+    this.props.history.push(
+      `/update-form/?id=${this.props.formToUpdate.form_id}`
+    );
   };
 
   render() {
-    console.log('form props',this.props)
+    console.log("form props", this.props);
     const { id, name, field_count } = this.props.form;
     return (
       <FormWrapper onClick={() => this.addFormToUpdate(this.props.form)}>
@@ -61,12 +62,12 @@ class Form extends Component {
         <FieldCount>Field Count: {field_count}</FieldCount>
         <div>
           <Delete
-            onClick={(e) => {
+            onClick={e => {
               if (window.confirm("Are you sure you want to delete this form?"))
                 this.deleteForm(
                   this.props.form.user_id,
                   this.props.form.form_id,
-                  e.stopPropagation(),
+                  e.stopPropagation()
                 );
             }}
           >
@@ -78,7 +79,13 @@ class Form extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    formToUpdate: state.formReducer.formToUpdate
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { deleteForm, addFormToUpdate }
 )(Form);
