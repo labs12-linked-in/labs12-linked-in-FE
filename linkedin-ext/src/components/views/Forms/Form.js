@@ -6,6 +6,8 @@ import styled from 'styled-components';
 // **************** STYLED COMPONENETS ****************
 const FormWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
+  padding: 10px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 
@@ -14,36 +16,27 @@ const FormWrapper = styled.div`
     border-radius: 5px;
     font-size: 13px;
     cursor: pointer;
-    width: 75px;
   }
 `;
 
 const Name = styled.div`
   ${'' /* border: 1px solid red; */}
-  width: 235px;
+  width: 150px;
 `;
 
 const FieldCount = styled.div`
   ${'' /* border: 1px solid red; */}
-  marging-left: 20px;
-  width: 130px;
-`;
-
-const Edit = styled.button`
-  ${'' /* border: 1px solid red; */}
-  margin-left: 10px;
-
-  &:hover {
-    color: white;
-    border-color: #283e48;
-    background-color: #283e48;
-  }
+  width: 150px;
 `;
 
 const Delete = styled.button`
+  color: #b50707;
+  border-color: #b50707;
+  width: 100px;
+  
   &:hover {
-    color: red;
-    border-color: red;
+    background-color: #b50707;
+    color: white
   }
 `;
 // ****************************************************
@@ -63,21 +56,17 @@ class Form extends Component {
     console.log('form props',this.props)
     const { id, name, field_count } = this.props.form;
     return (
-      <FormWrapper>
+      <FormWrapper onClick={() => this.addFormToUpdate(this.props.form)}>
         <Name>{name}</Name>
         <FieldCount>Field Count: {field_count}</FieldCount>
         <div>
-          <Edit onClick={() => this.addFormToUpdate(this.props.form)}>
-            edit
-          </Edit>
-        </div>
-        <div>
           <Delete
-            onClick={() => {
+            onClick={(e) => {
               if (window.confirm("Are you sure you want to delete this form?"))
                 this.deleteForm(
                   this.props.form.user_id,
-                  this.props.form.form_id
+                  this.props.form.form_id,
+                  e.stopPropagation(),
                 );
             }}
           >

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logoBlue from '../../../images/logoBlue.svg';
 
-const UserWrapper = styled.div`
+const NavWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   width: 100%;
   margin: 0 auto;
@@ -71,8 +71,16 @@ const Right = styled.div`
   align-items: center;
 `;
 
+let link
+
+if (localStorage.getItem("id")) {
+  link = <Link to="/">Logout</Link>
+} else {
+  link = <Link to="/login">Login</Link>
+}
+
 const navBar = props => (
-  <UserWrapper>
+  <NavWrapper>
     <NavDiv>
         <Left>
             <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
@@ -81,13 +89,11 @@ const navBar = props => (
         <Right>
             <Link to="/forms">Forms</Link>
             <div>|</div> 
-            {/* <Link to="/dept">Departments</Link> */}
-            <Link to="/">Logout</Link>
+            {link}
+            
         </Right>
     </NavDiv>
-  </UserWrapper>
+  </NavWrapper>
 )
-
-
 
 export default navBar;

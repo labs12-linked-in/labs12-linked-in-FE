@@ -3,6 +3,10 @@ import axios from "axios";
 import NavBar from "./NavBar/NavBar.js";
 import styled from "styled-components";
 
+const PageWrapper = styled.div`
+  height: 90vh;
+`;
+
 const SignInButton = styled.div`
   display: flex;
   justify-content: center;
@@ -20,13 +24,13 @@ const localApp = "http://localhost:3000";
 
 class Login extends Component {
   componentDidMount() {
-    console.log("mounted");
+    // console.log("mounted");
     const oauthScript = document.createElement("script");
     oauthScript.src =
       "https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js";
 
     document.body.appendChild(oauthScript);
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   handleClick(e) {
@@ -47,14 +51,14 @@ class Login extends Component {
         localStorage.setItem("firstName", response.data.userInfo.first_name);
         localStorage.setItem("lastName", response.data.userInfo.last_name);
         localStorage.setItem("token", response.data.token);
-        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
       });
     });
   }
 
   render() {
     return (
-      <div>
+      <PageWrapper>
         <SignInButton>
           <a href="">
             <img
@@ -64,7 +68,7 @@ class Login extends Component {
             />
           </a>
         </SignInButton>
-      </div>
+      </PageWrapper>
     );
   }
 }

@@ -8,6 +8,7 @@ import styled from 'styled-components';
 // **************** STYLED COMPONENETS ****************
 const FormsWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,18 +37,10 @@ const H1 = styled.h1`
   font-weight: normal;
 `;
 
-const FormDetails = styled.div`
-  ${'' /* border: 1px solid red; */}
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-`;
-
 const IndividualForm = styled.div`
   ${'' /* border: 1px solid red; */}
   margin: 5px 20px;
   margin-right: 20px;
-  padding: 10px;
   width: 600px;
   max-width: 90%
   background-color: white;
@@ -73,7 +66,7 @@ class Forms extends Component {
   
   render() {
     let form = <div>loading</div>;
-
+    
     if (!this.props.fetching && this.props.forms !== null) {
         form = (
           <FormsWrapper>
@@ -86,16 +79,7 @@ class Forms extends Component {
             <CreateFormBtn onClick={this.newForm}>Create new form</CreateFormBtn>
           </FormsWrapper>
         );
-      
-    } else if (!this.props.fetching && this.props.forms === null) {
-      form = (
-        <FormsWrapper>
-          <H1>Forms</H1>
-          <FormDetails>No Form was found please create a Form</FormDetails>
-          <CreateFormBtn onClick={this.newForm}>Create New</CreateFormBtn>
-        </FormsWrapper>
-      );
-    }
+    } 
 
     return (
       <div>
