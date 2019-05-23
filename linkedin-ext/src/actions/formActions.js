@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
-// const localDb = "http://localhost:9001";
+const localDb = "http://localhost:9001";
 // const deployedApp = "https://linkedinextension.netlify.com";
 // const localApp = "http://localhost:3000";
 
@@ -28,17 +28,17 @@ export const GET_INDIVFORM_START = "GET_INDIVFORM_START";
 export const GET_INDIVFORM_SUCCESS = "GET_INDIVFORM_SUCCESS";
 export const GET_INDIVFORM_FAILURE = "GET_INDIVFORM_FAILURE";
 
-export const getIndivForm = formId => dispatch => {
+export const getIndivForm = formId => async dispatch => {
   dispatch({ type: GET_INDIVFORM_START });
-  axios
+  console.log("after start");
+  await axios
     .get(`${deployedDb}/api/forms/${localStorage.getItem("id")}/${formId}`, {
       headers: {
         Authorization: window.localStorage.token
       }
     })
-    .then(res => res.data)
     .then(form => {
-      dispatch({ type: GET_INDIVFORM_SUCCESS, payload: form });
+      dispatch({ type: ADD_UPDATE_FORM_SUCCESS, payload: form.data });
     })
     .catch(err => {
       dispatch({ type: GET_INDIVFORM_FAILURE, payload: err });
@@ -113,15 +113,11 @@ export const UPDATE_FORM_FAILURE = "UPDATE_FORM_FAILURE";
 export const updateForm = (newForm, newField) => dispatch => {
   dispatch({ type: UPDATE_FORM_START });
   axios
-    .put(
-      `${deployedDb}/api/forms/${newForm.user_id}/${newForm.form_id}`,
-      newForm,
-      {
-        headers: {
-          Authorization: window.localStorage.token
-        }
+    .put(`${deployedDb}/api/forms/${newForm.user_id}/${newForm.id}`, newForm, {
+      headers: {
+        Authorization: window.localStorage.token
       }
-    )
+    })
     .then(res => res.data)
     .then(form => {
       dispatch({ type: UPDATE_FORM_SUCCESS, payload: { ...form } });

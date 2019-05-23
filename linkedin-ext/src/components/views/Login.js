@@ -140,7 +140,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
-// const localDb = "http://localhost:9001";
+const localDb = "http://localhost:9001";
 const deployedApp = "https://linkedinextension.netlify.com";
 const localApp = "http://localhost:3000";
 
@@ -173,7 +173,7 @@ class Login extends Component {
         localStorage.setItem("firstName", response.data.userInfo.first_name);
         localStorage.setItem("lastName", response.data.userInfo.last_name);
         localStorage.setItem("token", response.data.token);
-        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
       });
     });
   }
