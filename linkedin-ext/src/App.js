@@ -9,7 +9,7 @@ import NewForm from "./components/views/Forms/NewForm.js";
 import AddField from "./components/views/FormFields/AddField.js";
 import Checkout from './components/views/Checkouts/Checkout.js';
 import UpdateIndivForm from './components/views/Forms/UpdateForm.js';
-import NavBar from './components/views/NavBar/NavBar.js';
+import NavBar from './components/views/NavBar.js';
 import Footer from './components/views/Footer.js';
 
 // *************************************

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import logoBlue from '../../../images/logoBlue.svg';
+import logoBlue from '../../images/logoBlue.svg';
 
 const NavWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
