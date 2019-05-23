@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import Form from "./Form";
 import { connect } from "react-redux";
 import { getForm } from "../../../actions/formActions.js";
-import styled from 'styled-components';
+import styled from "styled-components";
+import axios from "axios";
 
+const deployedDb = "https://linkedinextension.herokuapp.com";
+const localDb = "http://localhost:9001";
 
 // **************** STYLED COMPONENETS ****************
 const FormsWrapper = styled.div`
-  ${'' /* border: 1px solid red; */}
+  ${"" /* border: 1px solid red; */}
   height: 90vh;
   display: flex;
   flex-direction: column;
@@ -32,13 +35,13 @@ const CreateFormBtn = styled.button`
 `;
 
 const H1 = styled.h1`
-  ${'' /* border: 1px solid red; */}
+  ${"" /* border: 1px solid red; */}
   font-size: 24px;
   font-weight: normal;
 `;
 
 const IndividualForm = styled.div`
-  ${'' /* border: 1px solid red; */}
+  ${"" /* border: 1px solid red; */}
   margin: 5px 20px;
   margin-right: 20px;
   width: 600px;
@@ -59,33 +62,52 @@ class Forms extends Component {
   componentDidMount() {
     this.props.getForm(localStorage.getItem("id"));
   }
-  
-  newForm = () => {
-    this.props.history.push("/new-form");
+
+  newForm = async () => {
+    await axios
+      .get(`${deployedDb}/api/users/upgrade/${localStorage.getItem("id")}`, {
+        headers: {
+          Authorization: window.localStorage.token
+        }
+      })
+      .then(res => {
+        if (res.data.pro == false && res.data.form_count >= 3) {
+          if (
+            window.confirm(
+              "You have to have a pro account to make more than 3 form! \nWould you like to purchase a pro account?"
+            )
+          ) {
+            this.props.history.push("/vip");
+          } else {
+            this.props.history.push("/forms");
+          }
+        } else {
+          this.props.history.push("/new-form");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
-  
+
   render() {
     let form = <div>loading</div>;
-    
-    if (!this.props.fetching && this.props.forms !== null) {
-        form = (
-          <FormsWrapper>
-            <H1>Create forms to customize the fields you scrape</H1>
-              {this.props.forms.map(form => (
-                <IndividualForm>
-                  <Form form={form} history={this.props.history} />
-                </IndividualForm>
-              ))}
-            <CreateFormBtn onClick={this.newForm}>Create new form</CreateFormBtn>
-          </FormsWrapper>
-        );
-    } 
 
-    return (
-      <div>
-        {form}
-      </div> 
-    )
+    if (!this.props.fetching && this.props.forms !== null) {
+      form = (
+        <FormsWrapper>
+          <H1>Create forms to customize the fields you scrape</H1>
+          {this.props.forms.map(form => (
+            <IndividualForm>
+              <Form form={form} history={this.props.history} />
+            </IndividualForm>
+          ))}
+          <CreateFormBtn onClick={this.newForm}>Create new form</CreateFormBtn>
+        </FormsWrapper>
+      );
+    }
+
+    return <div>{form}</div>;
   }
 }
 
