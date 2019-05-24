@@ -34,13 +34,7 @@ const H1 = styled.h1`
     font-size: 26px;
 `;
 
-const P = styled.p`
-    ${'' /* border: 1px solid red; */}
-    display: flex;
-    justify-content: center;
-`;
-
-const PlansWrapper = styled.form`
+const PlansWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
     display: flex;
     justify-content: center;
@@ -63,7 +57,7 @@ const FreePlan = styled.div`
     background-color: white;
     margin-right: 10px;
     width: 350px;
-    height: 300px;
+    height: 350px;
 `;
 
 const FreePrice = styled.div`
@@ -81,6 +75,11 @@ const FreePrice = styled.div`
     }
 `;
 
+const Features = styled.div`
+    border: 1px solid red;
+    ${'' /* height: 80px; */}
+`;
+
 const PremiumPlan = styled.div`
     ${'' /* border: 1px solid red; */}
     display: flex;
@@ -92,7 +91,7 @@ const PremiumPlan = styled.div`
     background-color: white;
     margin-left: 10px;
     width: 350px;
-    height: 300px;
+    height: 350px;
 
     h3 {
         color: #ff6d66;
@@ -130,7 +129,7 @@ toast.configure()
 class Checkout extends Component {
 
     state = {
-        name: 'Premium',
+        name: 'Pro Account',
         price: 9.99,
         description: 'Full feature on the extension'
     }
@@ -166,6 +165,11 @@ class Checkout extends Component {
                             <Amount>FREE</Amount>
                             <p>No credit card needed.</p>
                         </FreePrice>
+                        <Features>
+                            <p>Access to scraping tool</p>
+                            <p>Unlimited scraping</p>
+                            <p>Create and save 1 form</p>
+                        </Features>
                     </FreePlan>
                     <PremiumPlan>
                         <h3>{this.state.name}</h3>
@@ -173,12 +177,17 @@ class Checkout extends Component {
                             <Amount>{this.state.price} USD</Amount>
                             <p>One time payment.</p>
                         </PremiumPrice>
-                    <StripeCheckout
-                        stripeKey='pk_test_Uj7Gbd2xnQex3TDz8Z1haSDX0007YMEyvm'
-                        token={this.handleToken}
-                        amount={this.state.price * 100}
-                        name='Pro Account'
-                    />
+                        <Features>
+                            <p>Access to scraping tool</p>
+                            <p>Unlimited scraping</p>
+                            <p>Create and save 1 form</p>
+                        </Features>
+                        <StripeCheckout
+                            stripeKey='pk_test_Uj7Gbd2xnQex3TDz8Z1haSDX0007YMEyvm'
+                            token={this.handleToken}
+                            amount={this.state.price * 100}
+                            name='Pro Account'
+                        />
                     </PremiumPlan>
                 </PlansWrapper>
             </PageWrapper>
