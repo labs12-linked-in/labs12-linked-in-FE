@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logoBlue from '../../images/logoBlue.svg';
 
+// **************** STYLED COMPONENETS ****************
 const NavWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   width: 100%;
@@ -76,6 +77,9 @@ const Right = styled.div`
   }
 `;
 
+const StyledLink = styled(Link)
+// ****************************************************
+
 let pricingLink
 let line1
 let formsLink
@@ -101,7 +105,7 @@ const navBar = props => (
     <NavDiv>
         <Left>
             <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
-            <h1>LinkedIn Chrome Extension</h1>
+            <h1><NavLink className="headerHome" to="/">LinkedIn Chrome Extension</NavLink></h1>
         </Left>
         <Right>
             <p>{formsLink}</p>
