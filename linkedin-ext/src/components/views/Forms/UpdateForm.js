@@ -164,7 +164,7 @@ class UpdateIndivForm extends Component {
   state = {
     form: [],
     fields: [],
-    fieldOptions: ["Job Title", "Name", "Location"]
+    fieldOptions: ["Job Title", "Name", "Location", "Skills", "Jobs", "Degrees"]
   };
 
   async componentDidMount() {
