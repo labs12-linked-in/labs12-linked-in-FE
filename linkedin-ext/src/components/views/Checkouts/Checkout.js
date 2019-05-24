@@ -10,7 +10,7 @@ import reducers from '../../../reducers';
 // **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
-    height: 90vh;
+    height: 100%;
     max-width: 90%
     display: flex;
     flex-direction: column;
