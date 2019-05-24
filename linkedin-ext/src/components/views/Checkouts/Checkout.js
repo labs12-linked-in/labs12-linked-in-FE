@@ -132,6 +132,37 @@ const FormExplanation = styled.p`
     font-size: 14px;
     margin-top: 30px;
 `;
+
+const Purchase = styled.button`
+    overflow: hidden; 
+    display: inline-block; 
+    background: linear-gradient(rgb(40, 160, 229), rgb(1, 94, 148)); 
+    border: 0px; 
+    padding: 1px; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px; 
+    cursor: pointer; 
+    visibility: visible; 
+    user-select: none;
+`
+
+const Span = styled.span`
+    background-image: linear-gradient(rgb(125, 197, 238), rgb(0, 140, 221) 85%, rgb(48, 162, 228)); 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+    font-size: 14px; position: relative; 
+    padding: 0px 12px; 
+    display: block; 
+    height: 30px; 
+    line-height: 30px; 
+    color: rgb(255, 255, 255); 
+    font-weight: bold; 
+    box-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0px inset; 
+    text-shadow: rgba(0, 0, 0, 0.25) 0px -1px 0px; 
+    border-radius: 4px;
+
+`
+
 // ****************************************************
 
 toast.configure()
@@ -162,7 +193,28 @@ class Checkout extends Component {
         }
     }
 
+    toLogin = () => {
+        this.props.history.push('/login')
+    }
+
     render() {
+
+        let login = null;
+
+        if (localStorage.getItem('id')) {
+            login = (
+                <StripeCheckout 
+                            stripeKey='pk_test_Uj7Gbd2xnQex3TDz8Z1haSDX0007YMEyvm'
+                            token={this.handleToken}
+                            amount={this.state.price * 100}
+                            name='Premium'
+                />
+            )
+        } else {
+            login = (
+                <Purchase onClick={this.toLogin}><Span>Login To Purchase</Span></Purchase>
+            )
+        }
 
         return(
             <PageWrapper>
@@ -192,12 +244,7 @@ class Checkout extends Component {
                             <p>Unlimited scraping</p>
                             <PremiumFeature>Create unlimited forms</PremiumFeature>
                         </Features>
-                        <StripeCheckout 
-                            stripeKey='pk_test_Uj7Gbd2xnQex3TDz8Z1haSDX0007YMEyvm'
-                            token={this.handleToken}
-                            amount={this.state.price * 100}
-                            name='Premium'
-                        />
+                        {login}
                     </PremiumPlan>
                 </PlansWrapper>
                 <FormExplanation>*Form = a grouping of profile fields to scrape</FormExplanation>

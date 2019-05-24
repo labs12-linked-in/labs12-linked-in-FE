@@ -209,12 +209,6 @@ class Login extends Component {
           </SignInButton>
           <Text>
             <h1>LinkedIn scraping made easy!</h1>
-            <ul>
-              <li>This is a list item</li>
-              <li>This is a list item</li>
-              <li>This is a list item</li>
-              <li>This is a list item</li>
-            </ul>
           </Text>
         </MainContent>
       </PageWrapper>
