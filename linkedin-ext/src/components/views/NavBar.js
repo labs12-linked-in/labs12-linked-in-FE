@@ -64,19 +64,36 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
+  ${'' /* border: 1px solid red; */}
   margin-right: 20px;
-  width: 130px;
+  min-width: 210px;;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+
+  p {
+    padding-left: 8px
+  }
 `;
 
-let link
+let pricingLink
+let line1
+let formsLink
+let line2
+let loginLink
 
 if (localStorage.getItem("id")) {
-  link = <Link to="/">Logout</Link>
+  pricingLink = <Link to="/pricing">Pricing</Link>
+  line1 = <div>|</div>
+  formsLink = <Link to="/forms">Forms</Link>
+  line2 = <div>|</div>
+  loginLink = <Link to="/">Logout</Link>
 } else {
-  link = <Link to="/login">Login</Link>
+  pricingLink = <Link to="/pricing">Pricing</Link>
+  line1 = null
+  formsLink = null
+  line2 = <div>|</div>
+  loginLink = <Link to="/login">Login</Link>
 }
 
 const navBar = props => (
@@ -87,10 +104,11 @@ const navBar = props => (
             <h1>LinkedIn Chrome Extension</h1>
         </Left>
         <Right>
-            <Link to="/forms">Forms</Link>
-            <div>|</div> 
-            {link}
-            
+            <p>{formsLink}</p>
+            <p>{line1}</p>
+            <p>{pricingLink}</p>
+            <p>{line2}</p>
+            <p>{loginLink}</p>
         </Right>
     </NavDiv>
   </NavWrapper>

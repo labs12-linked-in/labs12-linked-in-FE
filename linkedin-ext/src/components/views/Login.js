@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
+// **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
@@ -126,7 +127,7 @@ const Text = styled.div`
 
   ul {
     ${'' /* border: 1px solid red; */}
-    padding-left: 20px;
+    padding-left: 30px;
 
     li {
       ${'' /* border: 1px solid red; */}
@@ -134,6 +135,7 @@ const Text = styled.div`
     }
   }
 `;
+// ****************************************************
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";

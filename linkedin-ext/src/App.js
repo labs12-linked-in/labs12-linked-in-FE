@@ -33,7 +33,7 @@ class App extends Component {
             <Route path='/new-form' component={NewForm} />
             <Route path="/update-form" component={UpdateIndivForm} />
             <Route path="/add-field" component={AddField} />
-            <Route path='/vip' component={Checkout} />
+            <Route path='/pricing' component={Checkout} />
             {/* <Route path="/account-type" component={Stripe} /> */}
             {/* <Route path="/dept" component={Departments} /> */}
             {/* <Route path="/new-dept" component={NewDepartment} /> */}
