@@ -6,6 +6,12 @@
 	color: #383a41
 }
 
+html, body, #root {
+	height: 100%;
+	min-height: 100%;
+	width: 100%;
+}
+
 body {
 	/* border: 1px solid red; */
 	margin: 0;

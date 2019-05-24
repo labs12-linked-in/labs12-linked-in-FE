@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { TweenMax } from "gsap/TweenMax";
+import homepageHero from '../../images/homepageHero.svg';
+// import { TweenMax } from "gsap/TweenMax";
 
 // **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
@@ -13,7 +14,7 @@ const PageWrapper = styled.div`
 
 const TopWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
-    height: 500px;
+    height: 100%;
     background: url("https://i.imgur.com/9cMSTU1.jpg");
     background-size: cover;
     width: 100%;
@@ -32,7 +33,7 @@ const ContentWrapper = styled.div`
 const HeroText = styled.div`
     ${'' /* border: 1px solid red; */}
     width: 100%;
-    padding: 0px 150px 0 0;
+    padding: 0px 10px 0 0;
     color: white;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
     margin: auto 0;
@@ -75,7 +76,7 @@ const AddExtensionBtn = styled.button`
 
 const HeroPic = styled.div`
     ${'' /* border: 1px solid red; */}
-    width: 70%;
+    width: 100%;
     margin-top: 46px;
 
     img {
@@ -214,11 +215,11 @@ const Homepage = (props) => {
                         <AddExtensionBtn>Add to Chrome for free</AddExtensionBtn>
                     </HeroText>
                     <HeroPic>
-                        <img src="https://i.imgur.com/3J6eRNG.png" alt=""/>
+                        <img src={homepageHero} alt=""/>
                     </HeroPic>
                 </ContentWrapper>
             </TopWrapper>
-            <BottomWrapper>
+            {/* <BottomWrapper>
                 <BounceArrowWrapper class = 'arrow bounce'>
                     <a class = 'fa fa-chevron-down' href="#scroll"></a>
                 </BounceArrowWrapper>
@@ -253,7 +254,7 @@ const Homepage = (props) => {
                     <h3>Subheader</h3>
                     <AddExtensionBtn>Add to Chrome for free</AddExtensionBtn>
                 </BottomCTA>
-            </BottomWrapper>
+            </BottomWrapper> */}
         </PageWrapper>
     )
 }
