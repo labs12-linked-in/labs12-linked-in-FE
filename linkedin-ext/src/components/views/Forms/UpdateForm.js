@@ -126,7 +126,6 @@ const SubmitBtn = styled.button`
     background-image: linear-gradient(-180deg, #0284b1, #02659e 90%);
   }
 `;
-
 // ****************************************************
 
 class UpdateIndivForm extends Component {

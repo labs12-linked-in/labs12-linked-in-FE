@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import logoBlue from '../../../images/logoBlue.svg';
+import { Link, NavLink, connect } from 'react-router-dom';
+import logoBlue from '../../images/logoBlue.svg';
 
-const UserWrapper = styled.div`
+// **************** STYLED COMPONENETS ****************
+const NavWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   width: 100%;
   margin: 0 auto;
@@ -64,30 +65,71 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
+  ${'' /* border: 1px solid red; */}
   margin-right: 20px;
-  width: 130px;
+  min-width: 210px;;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+
+  p {
+    padding-left: 8px
+  }
 `;
 
-const navBar = props => (
-  <UserWrapper>
-    <NavDiv>
-        <Left>
-            <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
-            <h1>LinkedIn Chrome Extension</h1>
-        </Left>
-        <Right>
-            <Link to="/forms">Forms</Link>
-            <div>|</div> 
-            {/* <Link to="/dept">Departments</Link> */}
-            <Link to="/">Logout</Link>
-        </Right>
-    </NavDiv>
-  </UserWrapper>
-)
 
 
+class NavBar extends Component {
 
-export default navBar;
+  logout = () => {
+    localStorage.clear()
+    this.props.history.push('/')
+  }
+  
+  render() {
+    
+    const StyledLink = styled(Link)
+    // ****************************************************
+
+    let pricingLink
+    let line1
+    let formsLink
+    let line2
+    let loginLink
+    if (localStorage.getItem("id")) {
+      pricingLink = <Link to="/pricing">Pricing</Link>
+      line1 = <div>|</div>
+      formsLink = <Link to="/forms">Forms</Link>
+      line2 = <div>|</div>
+      loginLink = <Link to="/" onClick={this.logout} >Logout</Link>
+    } else {
+      pricingLink = <Link to="/pricing">Pricing</Link>
+      line1 = null
+      formsLink = null
+      line2 = <div>|</div>
+      loginLink = <Link to="/login">Login</Link>
+    }
+
+
+    
+    return (
+      <NavWrapper>
+        <NavDiv>
+            <Left>
+                <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
+                <h1><NavLink className="headerHome" to="/">LinkedIn Chrome Extension</NavLink></h1>
+            </Left>
+            <Right>
+                <p>{formsLink}</p>
+                <p>{line1}</p>
+                <p>{pricingLink}</p>
+                <p>{line2}</p>
+                <p>{loginLink}</p>
+            </Right>
+        </NavDiv>
+      </NavWrapper>
+    )
+  }
+}
+
+export default connect(null)(NavBar);

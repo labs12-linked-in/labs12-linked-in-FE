@@ -1,5 +1,9 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	letter-spacing: .3px;
+	color: #383a41
 }
 
 body {
