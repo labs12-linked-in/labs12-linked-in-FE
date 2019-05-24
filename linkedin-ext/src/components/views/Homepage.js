@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { TweenMax } from "gsap/TweenMax";
 
+// **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
     width: 100%;
@@ -199,6 +200,7 @@ const BottomCTA = styled.div`
         margin-top: 10px;
     }
 `;
+// ****************************************************
 
 const Homepage = (props) => {
     
