@@ -5,12 +5,11 @@ import logoBlue from '../../images/logoBlue.svg';
 
 const FooterWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
+    position:absolute;
+    bottom:0;
+    height: 60px;
     width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background-color: #283e48;
-    align-items: center;
+    margin: 0;
 `;
 
 const FooterContent = styled.div`
@@ -18,10 +17,8 @@ const FooterContent = styled.div`
     background-color: #283e49;
     display: flex;
     flex-direction: column;
-    max-width: 1100px;
     width: 100%;
     color: white;
-    margin-top: 20px;
   
   img {
       width: 30px;
