@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import NavBar from "./NavBar/NavBar.js";
 import styled from "styled-components";
 
 // **************** STYLED COMPONENETS ****************
@@ -101,6 +100,7 @@ const MainContent = styled.div`
 `;
 
 const SignInButton = styled.div`
+  ${'' /* border: 1px solid red; */}
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -142,19 +142,19 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
-// const localDb = "http://localhost:9001";
+const localDb = "http://localhost:9001";
 const deployedApp = "https://linkedinextension.netlify.com";
 const localApp = "http://localhost:3000";
 
 class Login extends Component {
   componentDidMount() {
-    console.log("mounted");
+    // console.log("mounted");
     const oauthScript = document.createElement("script");
     oauthScript.src =
       "https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js";
 
     document.body.appendChild(oauthScript);
-    console.log(this.props);
+    // console.log(this.props);
   }
 
   handleClick(e) {
@@ -182,17 +182,42 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <SignInButton>
-          <a href="">
-            <img
-              src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png"
-              alt="LinkedIn Sign In button"
-              onClick={this.handleClick}
-            />
-          </a>
-        </SignInButton>
-      </div>
+      <PageWrapper>
+        <Steps>
+          <Install>1</Install>
+          <Line />
+          <SignIn>2</SignIn>
+          <Line />
+          <Scrape>3</Scrape>
+        </Steps>
+        <StepsText>
+          <InstallText>Download</InstallText>
+          <SignInText>Sign in</SignInText>
+          <ScrapeText>Scrape</ScrapeText>
+        </StepsText>
+        <MainContent>
+          <SignInButton>
+            <a href="">
+              <img
+                src="https://content.linkedin.com/content/dam/developer/global/en_US/site/img/signin-button.png"
+                alt="LinkedIn Sign In button"
+                onClick={this.handleClick}
+              />
+            </a>
+            <p>LinkedIn Chrome Extension</p>
+            <p>only sees your name and email.</p>
+          </SignInButton>
+          <Text>
+            <h1>LinkedIn scraping made easy!</h1>
+            <ul>
+              <li>This is a list item</li>
+              <li>This is a list item</li>
+              <li>This is a list item</li>
+              <li>This is a list item</li>
+            </ul>
+          </Text>
+        </MainContent>
+      </PageWrapper>
     );
   }
 }

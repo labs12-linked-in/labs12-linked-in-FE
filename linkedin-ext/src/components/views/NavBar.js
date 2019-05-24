@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import { Link, NavLink, connect } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import {connect} from 'react-redux'
 import logoBlue from '../../images/logoBlue.svg';
 
 // **************** STYLED COMPONENETS ****************
