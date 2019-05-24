@@ -32,28 +32,8 @@ const FooterContent = styled.div`
     font-size: 14px;
     font-weight: 600;
     margin-left: 10px;
+    color: white;
   }
-`;
-
-const Links = styled.div`
-    ${'' /* border: 1px solid red; */}
-    margin: 20px 20px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-`;
-
-const Contact = styled.div`
-
-`;
-const Features = styled.div`
-
-`;
-const Account = styled.div`
-
-`;
-const Company = styled.div`
-
 `;
 
 const Copyright = styled.div`
@@ -66,20 +46,6 @@ const Copyright = styled.div`
 const footer = props => (
     <FooterWrapper>
         <FooterContent>
-            <Links>
-                <Contact>
-                    Contact
-                </Contact>
-                <Features>
-                    Features
-                </Features>
-                <Account>
-                    Account
-                </Account>
-                <Company>
-                    Company
-                </Company>
-            </Links>
             <Copyright>
                 <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
                 <p>LinkedIn Chrome Extension © 2019 </p>

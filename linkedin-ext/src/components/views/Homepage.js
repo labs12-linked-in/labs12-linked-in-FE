@@ -39,7 +39,8 @@ const HeroText = styled.div`
     h1 {
         line-height: 35px;
         letter-spacing 2px;
-        font-size: 40px; 
+        font-size: 40px;
+        color: white;
     }
 
     p {
@@ -47,6 +48,7 @@ const HeroText = styled.div`
         line-height: 25px;
         margin-top: 30px;
         font-size: 24px;
+        color: white;
     }
 `;
 
