@@ -261,7 +261,9 @@ class UpdateIndivForm extends Component {
                       </select>
                     </SelectField>
                     <DeleteField
-                      onClick={e => this.deleteField(e)}
+                      onClick={e => {
+                        if (window.confirm("Are you sure you want to delete this field?"))
+                        this.deleteField(e)}}
                       value={this.state.fields[idx].id}
                     >
                       Delete
