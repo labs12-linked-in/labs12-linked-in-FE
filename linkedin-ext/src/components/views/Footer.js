@@ -7,7 +7,7 @@ const FooterWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
     position: absolute;
     bottom:0;
-    height: 40px;
+    ${'' /* height: 40px; */}
     width: 100%;
 `;
 

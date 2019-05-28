@@ -11,7 +11,6 @@ const localDb = "http://localhost:9001";
 // **************** STYLED COMPONENETS ****************
 const FormsWrapper = styled.div`
   ${"" /* border: 1px solid red; */}
-  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +20,7 @@ const CreateFormBtn = styled.button`
   border: 1px solid #0284b1;
   padding: 10px;
   margin-top: 20px;
+  margin-bottom: 120px;
   border-radius: 5px;
   cursor: pointer;
   background-color: #0284b1;

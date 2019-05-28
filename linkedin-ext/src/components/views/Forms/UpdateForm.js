@@ -11,7 +11,6 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 140vh;
 `;
 
 const Cancel = styled.a`
@@ -34,20 +33,19 @@ const Cancel = styled.a`
 `;
 
 const Form = styled.form`
-  ${"" /* border: 1px solid red; */}
+  border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
   background-color: white;
-  margin: 0 20px;
+  margin: 0 20px 120px 20px;
   max-width: 90%;
   width: 600px;
-  ${"" /* max-height: 85%; */}
 
   input {
-    ${"" /* border: 1px solid red; */}
+    ${'' /* border: 1px solid red; */}
     color: #0284b1;
     padding-left: 10px;
     width: 400px;

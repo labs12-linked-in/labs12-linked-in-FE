@@ -129,7 +129,7 @@ const FormExplanation = styled.p`
     ${'' /* border: 1px solid red; */}
     color: #848484;
     font-size: 14px;
-    margin: 30px 0 50px 0;
+    margin: 20px 0 120px 0;
 `;
 // ****************************************************
 

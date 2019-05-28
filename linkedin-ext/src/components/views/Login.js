@@ -95,7 +95,7 @@ const MainContent = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
   justify-content: center;
-  margin: 30px 20px 40px 0;
+  margin: 30px 20px 120px 0;
   padding-top: 30px;
 `;
 
