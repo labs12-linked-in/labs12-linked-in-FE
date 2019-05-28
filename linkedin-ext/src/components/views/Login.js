@@ -7,7 +7,6 @@ const PageWrapper = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
   flex-direction: column;
-  height: 90vh;
   max-width: 90%
   margin: 0 auto;
 `;
@@ -96,7 +95,8 @@ const MainContent = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin: 30px 20px 40px 0;
+  padding-top: 30px;
 `;
 
 const SignInButton = styled.div`
@@ -104,9 +104,8 @@ const SignInButton = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 60px 0 0 0;
-  padding-left: 10%;
-  width: 450px;
+  padding-top: 50px;
+  margin-left: 20px;
 
   p {
     margin: 10px 0 0 0;
@@ -117,9 +116,9 @@ const SignInButton = styled.div`
 
 const Text = styled.div`
   ${'' /* border: 1px solid red; */}
-  margin: 50px 50px 0 50px;
-  width: 350px;
-  padding-right: 5%;
+  width: 225px;
+  margin-left: 100px;
+  padding-left: 20px;
 
   h1 {
     margin: 0;
@@ -175,7 +174,7 @@ class Login extends Component {
         localStorage.setItem("firstName", response.data.userInfo.first_name);
         localStorage.setItem("lastName", response.data.userInfo.last_name);
         localStorage.setItem("token", response.data.token);
-        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
       });
     });
   }

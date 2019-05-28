@@ -6,7 +6,6 @@ import homepageHero from '../../images/homepageHero.svg';
 // **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
-    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -86,7 +85,7 @@ const HeroPic = styled.div`
 `;
 
 const BottomWrapper = styled.div`
-
+    ${'' /* border: 1px solid red; */}
 `;
 
 const BounceArrowWrapper = styled.div`
@@ -191,6 +190,7 @@ const BottomCTA = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 50px;
 
     h3 {
         font-size: 24px;
@@ -219,7 +219,7 @@ const Homepage = (props) => {
                     </HeroPic>
                 </ContentWrapper>
             </TopWrapper>
-            {/* <BottomWrapper>
+            <BottomWrapper>
                 <BounceArrowWrapper class = 'arrow bounce'>
                     <a class = 'fa fa-chevron-down' href="#scroll"></a>
                 </BounceArrowWrapper>
@@ -254,7 +254,7 @@ const Homepage = (props) => {
                     <h3>Subheader</h3>
                     <AddExtensionBtn>Add to Chrome for free</AddExtensionBtn>
                 </BottomCTA>
-            </BottomWrapper> */}
+            </BottomWrapper>
         </PageWrapper>
     )
 }

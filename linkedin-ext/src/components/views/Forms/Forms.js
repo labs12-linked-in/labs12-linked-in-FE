@@ -35,15 +35,16 @@ const CreateFormBtn = styled.button`
 `;
 
 const H1 = styled.h1`
-  ${"" /* border: 1px solid red; */}
+  ${'' /* border: 1px solid red; */}
   font-size: 24px;
   font-weight: normal;
+  margin: 20px;
+  text-align: center;
 `;
 
 const IndividualForm = styled.div`
-  ${"" /* border: 1px solid red; */}
+  ${'' /* border: 1px solid red; */}
   margin: 5px 20px;
-  margin-right: 20px;
   width: 600px;
   max-width: 90%
   background-color: white;
@@ -96,13 +97,13 @@ class Forms extends Component {
     if (!this.props.fetching && this.props.forms !== null) {
       form = (
         <FormsWrapper>
-          <H1>Create forms to customize the fields you scrape</H1>
+          <H1>Create scraping templates to customize the fields you scrape</H1>
           {this.props.forms.map(form => (
             <IndividualForm>
               <Form form={form} history={this.props.history} />
             </IndividualForm>
           ))}
-          <CreateFormBtn onClick={this.newForm}>Create new form</CreateFormBtn>
+          <CreateFormBtn onClick={this.newForm}>Create new template</CreateFormBtn>
         </FormsWrapper>
       );
     }

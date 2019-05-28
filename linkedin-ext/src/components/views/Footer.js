@@ -5,11 +5,10 @@ import logoBlue from '../../images/logoBlue.svg';
 
 const FooterWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
-    position:absolute;
+    position: absolute;
     bottom:0;
-    height: 60px;
+    height: 40px;
     width: 100%;
-    margin: 0;
 `;
 
 const FooterContent = styled.div`

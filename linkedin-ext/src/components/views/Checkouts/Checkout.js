@@ -10,19 +10,18 @@ import reducers from '../../../reducers';
 // **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
-    height: 100%;
-    max-width: 90%
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
 
     h2 {
         ${'' /* border: 1px solid red; */}
         font-size: 18px;
         font-weight: 400;
-        margin: 0 40px 40px 40px;
+        margin-bottom: 40px;
+        padding: 0 20px;
         text-align: center;
+        max-width: 1100px;
     }
 `;
 
@@ -62,7 +61,7 @@ const FreePlan = styled.div`
 `;
 
 const FreePrice = styled.div`
-    ${'' /* border: 1px s olid red; */}
+    ${'' /* border: 1px solid red; */}
     width: 100%;
     background-color: #273e49;
     padding: 10px 0;
@@ -96,7 +95,7 @@ const PremiumPlan = styled.div`
 `;
 
 const PremiumPrice = styled.div`
-    ${'' /* border: 1px s olid red; */}
+    ${'' /* border: 1px solid red; */}
     width: 100%;
     background-color: #ff6d66;
     padding: 10px 0;
@@ -130,7 +129,7 @@ const FormExplanation = styled.p`
     ${'' /* border: 1px solid red; */}
     color: #848484;
     font-size: 14px;
-    margin-top: 30px;
+    margin: 30px 0 50px 0;
 `;
 // ****************************************************
 
@@ -200,7 +199,9 @@ class Checkout extends Component {
                         />
                     </PremiumPlan>
                 </PlansWrapper>
-                <FormExplanation>*Form = a grouping of profile fields to scrape</FormExplanation>
+                <FormExplanation>
+                    <p>*Form = a grouping of profile fields to scrape</p>
+                </FormExplanation>
             </PageWrapper>
         )
     }

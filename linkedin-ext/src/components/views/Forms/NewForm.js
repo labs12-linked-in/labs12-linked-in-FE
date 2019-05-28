@@ -206,13 +206,13 @@ class NewForm extends Component {
     return (
       <PageWrapper>
         <Cancel href="" onClick={this.cancel}>
-          &lt; back to Forms
+          &lt; back to Templates
         </Cancel>
         <Form>
-          <h1>New Form</h1>
+          <h1>New Template</h1>
           <input
             type="text"
-            placeholder="Name your form..."
+            placeholder="Name your template..."
             name="name"
             id="name"
             value={name}
