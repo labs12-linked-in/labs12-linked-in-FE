@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import homepageHero from '../../images/homepageHero.svg';
+import homepageHero from '../../images/homepage-hero.svg';
+import linkedinLogo from '../../images/homepage-linkedin-logo.jpg';
+import scrape from '../../images/homepageScrape.svg';
+import template from '../../images/homepageTemplates.svg';
 // import { TweenMax } from "gsap/TweenMax";
 
 // **************** STYLED COMPONENETS ****************
@@ -35,7 +38,7 @@ const HeroText = styled.div`
     padding: 0px 10px 0 0;
     color: white;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-    margin: auto 0;
+    margin: auto 50px auto 0;
 
     h1 {
         line-height: 35px;
@@ -75,12 +78,11 @@ const AddExtensionBtn = styled.button`
 
 const HeroPic = styled.div`
     ${'' /* border: 1px solid red; */}
-    width: 100%;
     margin-top: 46px;
 
     img {
         ${'' /* border: 1px solid red; */}
-        width: 100%;
+        width: 300px;
     }
 `;
 
@@ -92,7 +94,7 @@ const BounceArrowWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
     display: flex;
     justify-content: center;
-    margin-top: -15px;
+    margin-top: -20px;
 
     a {
         text-decoration: none;
@@ -132,21 +134,22 @@ const FirstAndThird = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 80px;
+    padding: 0 20px;
 `;
 
 const FirstAndThirdText = styled.div`
     ${'' /* border: 1px solid red; */}
-    padding: 0 50px 0 0;
-    width: 50%;
+    width: 300px;
     margin: auto 0;
     max-width: 350px;
+    padding-right: 55px;
 `;
 
 const FirstAndThirdPic = styled.div`
     ${'' /* border: 1px solid red; */}
-    max-width: 350px;
-    min-width: 300px;
-    padding: 0 0 0 50px;
+    max-width: 250px;
+    min-width: 200px;
+    padding-left: 40px;
     display: flex;
     align-items: center;
 
@@ -164,10 +167,10 @@ const Second = styled.div`
 `;
 
 const SecondText = styled.div`
-    ${'' /* border: 1px solid red; */}
-    padding: 0 0 0 50px;
+    border: 1px solid red;
+    padding: 0 0 0 25px;
     width: 50%;
-    margin: auto 0;
+    margin: auto 50px auto 0;
     max-width: 350px;
 `;
 
@@ -229,12 +232,12 @@ const Homepage = (props) => {
                         <p>LinkedIn Chrome Extension was made solely for LinkedIn and nothing else. This means you can always count on it to be the most reliable and easy-to-use scraper for LinkedIn.</p>
                     </FirstAndThirdText>
                     <FirstAndThirdPic> 
-                        <img src="https://i.imgur.com/3J6eRNG.png" alt="" />
+                        <img src={linkedinLogo} alt="" />
                     </FirstAndThirdPic>
                 </FirstAndThird>
                 <Second>
                     <SecondPic> 
-                        <img src="https://i.imgur.com/3J6eRNG.png" alt="" />
+                        <img src={scrape} alt="" />
                     </SecondPic>
                     <SecondText>
                         <h2>Effortlessly scrape</h2>
@@ -247,7 +250,7 @@ const Homepage = (props) => {
                         <p>Save groups of fields you commonly scrape into templates and then choose which template you'd like to use as you scrape different profiles. You get one template for free and can create unlimited templates as a premium member.</p>
                     </FirstAndThirdText>
                     <FirstAndThirdPic> 
-                        <img src="https://i.imgur.com/3J6eRNG.png" alt="" />
+                        <img src={template} alt="" />
                     </FirstAndThirdPic>
                 </FirstAndThird>
                 <BottomCTA>
