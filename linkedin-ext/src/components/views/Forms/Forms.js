@@ -72,13 +72,13 @@ class Forms extends Component {
         }
       })
       .then(res => {
-        if (res.data.pro == false && res.data.form_count >= 3) {
+        if (res.data.pro == false && res.data.form_count >= 1) {
           if (
             window.confirm(
-              "You have to have a pro account to make more than 3 form! \nWould you like to purchase a pro account?"
+              "You have to have a premium account to make more than 1 form! \nWould you like to upgrade to a premium account?"
             )
           ) {
-            this.props.history.push("/vip");
+            this.props.history.push("/pricing");
           } else {
             this.props.history.push("/forms");
           }
