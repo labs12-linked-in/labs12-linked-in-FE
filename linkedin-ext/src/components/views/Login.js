@@ -174,7 +174,7 @@ class Login extends Component {
         localStorage.setItem("firstName", response.data.userInfo.first_name);
         localStorage.setItem("lastName", response.data.userInfo.last_name);
         localStorage.setItem("token", response.data.token);
-        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
       });
     });
   }
@@ -208,12 +208,6 @@ class Login extends Component {
           </SignInButton>
           <Text>
             <h1>LinkedIn scraping made easy!</h1>
-            <ul>
-              <li>This is a list item</li>
-              <li>This is a list item</li>
-              <li>This is a list item</li>
-              <li>This is a list item</li>
-            </ul>
           </Text>
         </MainContent>
       </PageWrapper>
