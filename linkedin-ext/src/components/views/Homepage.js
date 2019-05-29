@@ -225,8 +225,8 @@ const Homepage = (props) => {
                 </BounceArrowWrapper>
                 <FirstAndThird className = 'scroll'>
                     <FirstAndThirdText>
-                        <h2> Subheader </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <h2>Made for LinkedIn</h2>
+                        <p>LinkedIn Chrome Extension was made solely for LinkedIn and nothing else. This means you can always count on it to be the most reliable and easy-to-use scraper for LinkedIn.</p>
                     </FirstAndThirdText>
                     <FirstAndThirdPic> 
                         <img src="https://i.imgur.com/3J6eRNG.png" alt="" />
@@ -237,14 +237,14 @@ const Homepage = (props) => {
                         <img src="https://i.imgur.com/3J6eRNG.png" alt="" />
                     </SecondPic>
                     <SecondText>
-                        <h2> Subheader </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <h2>Effortlessly scrape</h2>
+                        <p>We've done all the work for you. All info you'd want to scrape from a LinkedIn profile is available - all you need to do is choose what you want from a list of options. No messing around with selectors and trying to identify what makes them unique.</p>
                     </SecondText>
                 </Second>
                 <FirstAndThird>
                     <FirstAndThirdText>
-                        <h2> Subheader </h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <h2>Create templates</h2>
+                        <p>Save groups of fields you commonly scrape into templates and then choose which template you'd like to use as you scrape different profiles. You get one template for free and can create unlimited templates as a premium member.</p>
                     </FirstAndThirdText>
                     <FirstAndThirdPic> 
                         <img src="https://i.imgur.com/3J6eRNG.png" alt="" />
