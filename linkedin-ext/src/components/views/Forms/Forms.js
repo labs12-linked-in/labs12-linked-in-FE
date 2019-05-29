@@ -11,7 +11,6 @@ const localDb = "http://localhost:9001";
 // **************** STYLED COMPONENETS ****************
 const FormsWrapper = styled.div`
   ${"" /* border: 1px solid red; */}
-  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +20,7 @@ const CreateFormBtn = styled.button`
   border: 1px solid #0284b1;
   padding: 10px;
   margin-top: 20px;
+  margin-bottom: 120px;
   border-radius: 5px;
   cursor: pointer;
   background-color: #0284b1;
@@ -35,15 +35,16 @@ const CreateFormBtn = styled.button`
 `;
 
 const H1 = styled.h1`
-  ${"" /* border: 1px solid red; */}
+  ${'' /* border: 1px solid red; */}
   font-size: 24px;
   font-weight: normal;
+  margin: 20px;
+  text-align: center;
 `;
 
 const IndividualForm = styled.div`
-  ${"" /* border: 1px solid red; */}
+  ${'' /* border: 1px solid red; */}
   margin: 5px 20px;
-  margin-right: 20px;
   width: 600px;
   max-width: 90%
   background-color: white;
@@ -71,13 +72,13 @@ class Forms extends Component {
         }
       })
       .then(res => {
-        if (res.data.pro == false && res.data.form_count >= 3) {
+        if (res.data.pro == false && res.data.form_count >= 1) {
           if (
             window.confirm(
-              "You have to have a pro account to make more than 3 form! \nWould you like to purchase a pro account?"
+              "You have to have a premium account to make more than 1 form! \nWould you like to upgrade to a premium account?"
             )
           ) {
-            this.props.history.push("/vip");
+            this.props.history.push("/pricing");
           } else {
             this.props.history.push("/forms");
           }
@@ -96,13 +97,13 @@ class Forms extends Component {
     if (!this.props.fetching && this.props.forms !== null) {
       form = (
         <FormsWrapper>
-          <H1>Create forms to customize the fields you scrape</H1>
+          <H1>Create scraping templates to customize the fields you scrape</H1>
           {this.props.forms.map(form => (
             <IndividualForm>
               <Form form={form} history={this.props.history} />
             </IndividualForm>
           ))}
-          <CreateFormBtn onClick={this.newForm}>Create new form</CreateFormBtn>
+          <CreateFormBtn onClick={this.newForm}>Create new template</CreateFormBtn>
         </FormsWrapper>
       );
     }

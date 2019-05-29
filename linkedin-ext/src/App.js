@@ -34,7 +34,6 @@ class App extends Component {
         <AppWrapper>
           <NavBar />
           
-
           <Switch>
             <Route exact path="/" component={Homepage} />
             <Route path="/login" exact component={Login} />

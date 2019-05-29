@@ -100,7 +100,7 @@ class NavBar extends Component {
     if (localStorage.getItem("id")) {
       pricingLink = <Link to="/pricing">Pricing</Link>
       line1 = <div>|</div>
-      formsLink = <Link to="/forms">Forms</Link>
+      formsLink = <Link to="/forms">Templates</Link>
       line2 = <div>|</div>
       loginLink = <Link to="/" onClick={this.logout} >Logout</Link>
     } else {
