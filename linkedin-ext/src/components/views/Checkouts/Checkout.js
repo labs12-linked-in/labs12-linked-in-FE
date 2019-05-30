@@ -218,7 +218,7 @@ class Checkout extends Component {
         return(
             <PageWrapper>
                 <H1>Start scraping LinkedIn profiles for Free</H1>
-                <h2>We offer two different plans: a free and a paid version. The free version has all the features of the paid version except the number of *forms you can create and save. The free plan lets you create a single form while the paid version lets you create an unlimited amount of forms for a one time payment of $9.99.</h2>
+                <h2>We offer two different plans: a free and a paid version. The free version has all the features of the paid version except the number of scraping *templates you can create and save. The free plan lets you create a single template while the paid version lets you create an unlimited amount of templates for a one time payment of $9.99.</h2>
                 <PlansWrapper>
                     <FreePlan>
                     <h3>Starter</h3>
@@ -229,7 +229,7 @@ class Checkout extends Component {
                         <Features>
                             <p>Access to scraping tool</p>
                             <p>Unlimited scraping</p>
-                            <p>Create 1 form</p>
+                            <p>Create 1 scraping template</p>
                         </Features>
                     </FreePlan>
                     <PremiumPlan>
@@ -241,13 +241,13 @@ class Checkout extends Component {
                         <Features>
                             <p>Access to scraping tool</p>
                             <p>Unlimited scraping</p>
-                            <PremiumFeature>Create unlimited forms</PremiumFeature>
+                            <PremiumFeature>Create unlimited scraping templates</PremiumFeature>
                         </Features>
                         {login}
                     </PremiumPlan>
                 </PlansWrapper>
                 <FormExplanation>
-                    <p>*Form = a grouping of profile fields to scrape</p>
+                    <p>*Template = a grouping of profile fields to scrape</p>
                 </FormExplanation>
             </PageWrapper>
         )

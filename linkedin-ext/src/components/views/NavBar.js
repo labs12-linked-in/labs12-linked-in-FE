@@ -36,6 +36,10 @@ const NavDiv = styled.div`
     font-size: 18px;
     font-weight: 600;
     margin-left: 10px;
+
+    @media (max-width: 650px) {
+        display: none;
+    }
   }
   
   a {

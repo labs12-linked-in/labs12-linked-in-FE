@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import homepageHero from '../../images/homepage-hero.svg';
-import linkedinLogo from '../../images/homepage-linkedin-logo.jpg';
+import linkedinLogo from '../../images/logoBlueLong.svg';
 import scrape from '../../images/homepageScrape.svg';
 import template from '../../images/homepageTemplates.svg';
-// import { TweenMax } from "gsap/TweenMax";
 
 // **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
@@ -16,12 +15,16 @@ const PageWrapper = styled.div`
 
 const TopWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
-    height: 100%;
+    height: 600px;
     background: url("https://i.imgur.com/9cMSTU1.jpg");
     background-size: cover;
     width: 100%;
     display: flex;
     justify-content: center;
+
+    @media (max-width: 850px) {
+        height: 500px;
+    }
 `;
 
 const ContentWrapper = styled.div`
@@ -34,11 +37,15 @@ const ContentWrapper = styled.div`
 
 const HeroText = styled.div`
     ${'' /* border: 1px solid red; */}
-    width: 100%;
     padding: 0px 10px 0 0;
     color: white;
     text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
-    margin: auto 50px auto 0;
+    margin: auto 125px auto 50px;
+
+    @media (max-width: 850px) {
+        text-align: center;
+        margin: auto 
+    }
 
     h1 {
         line-height: 35px;
@@ -78,80 +85,82 @@ const AddExtensionBtn = styled.button`
 
 const HeroPic = styled.div`
     ${'' /* border: 1px solid red; */}
-    margin-top: 46px;
+    margin: auto 50px auto 0;
+    
+    @media (max-width: 850px) {
+        display: none;
+    }
 
     img {
         ${'' /* border: 1px solid red; */}
-        width: 300px;
+        width: 350px;
     }
 `;
 
 const BottomWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
+    font-size: 22px;
 `;
 
-const BounceArrowWrapper = styled.div`
+const First = styled.div`
     ${'' /* border: 1px solid red; */}
     display: flex;
     justify-content: center;
-    margin-top: -20px;
-
-    a {
-        text-decoration: none;
-        font-size: 50px;
-        color: #283e48;
-    }
-
-    ${'' /* commented out bounce code until I want to spend more time making it work */}
-    ${'' /* .bounce {
-        animation: bounce 2s infinite;
-        -webkit-animation: bounce 2s infinite;
-    }
-
-    infinite {
-        animation: bounce 2s infinite;
-    }
-
-    .fa {
-        font-size: 50px;
-    }
-
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-        }
-        40% {
-            transform: translateY(-15px);
-        }
-        60% {
-            transform: translateY(-7.5px);
-        }
-    } */}
-`;
-
-const FirstAndThird = styled.div`
-    ${'' /* border: 1px solid red; */}
-    display: flex;
-    justify-content: center;
-    margin-top: 80px;
+    align-items: center;
     padding: 0 20px;
+    height: 400px;
+    background-color: #3B9FC1;
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        height: 475px;
+    }
+
+    h2 {
+        ${'' /* border: 1px solid red; */}
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    p {
+        margin-top: 0;
+        color: white;
+
+        @media (max-width: 850px) {
+            margin-bottom: 0;
+        }
+    }
 `;
 
-const FirstAndThirdText = styled.div`
+const FirstText = styled.div`
     ${'' /* border: 1px solid red; */}
-    width: 300px;
-    margin: auto 0;
-    max-width: 350px;
-    padding-right: 55px;
+    width: 400px;
+    max-width: 400px;
+    min-width: 350px;
+    margin-left: 75px;
+    margin-right: 60px;
+
+    @media (max-width: 850px) {
+        order: 2;
+        text-align: center;
+        margin: 0
+    }
 `;
 
-const FirstAndThirdPic = styled.div`
+const FirstPic = styled.div`
     ${'' /* border: 1px solid red; */}
-    max-width: 250px;
-    min-width: 200px;
-    padding-left: 40px;
+    width: 250px;
+    min-width: 250px;
     display: flex;
     align-items: center;
+    margin-left: 60px;
+    margin-right: 75px;
+
+    @media (max-width: 850px) {
+        width: 150px;
+        min-width: 150px;
+        margin: 0;
+    }
 
     img {
         ${'' /* border: 1px solid red; */}
@@ -163,24 +172,123 @@ const Second = styled.div`
     ${'' /* border: 1px solid red; */}
     display: flex;
     justify-content: center;
-    margin-top: 80px;
-`;
+    align-items: center
+    height: 400px;
 
-const SecondText = styled.div`
-    border: 1px solid red;
-    padding: 0 0 0 25px;
-    width: 50%;
-    margin: auto 50px auto 0;
-    max-width: 350px;
+    @media (max-width: 850px) {
+        flex-direction: column;
+    }
+
+    h2 {
+        ${'' /* border: 1px solid red; */}
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-top: 0;
+
+        @media (max-width: 850px) {
+            margin-bottom: 0;
+        }
+    }
 `;
 
 const SecondPic = styled.div`
     ${'' /* border: 1px solid red; */}
-    max-width: 350px;
+    display: flex;
+    width: 300px;
+    max-width: 300px;
     min-width: 300px;
-    padding: 0 50px 0 0;
+    align-items: center;
+    margin-left: 175px;
+    margin-right: 45px;
+
+    @media (max-width: 850px) {
+        width: 200px;
+        min-width: 200px;
+        margin: 0;
+    }
+
+    img {
+        ${'' /* border: 1px solid red; */}
+        width: 100%
+    }
+`;
+
+const SecondText = styled.div`
+    ${'' /* border: 1px solid red; */}
+    width: 400px;
+    max-width: 400px;
+    min-width: 350px;
+    margin-left: 45px;
+    margin-right: 175px;
+
+    @media (max-width: 850px) {
+        text-align: center;
+        margin: 0
+    }
+`;
+
+
+const Third = styled.div`
+    ${'' /* border: 1px solid red; */}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    height: 400px;
+    background-color: #005B7A;
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+        height: 450px;
+    }
+
+    h2 {
+        ${'' /* border: 1px solid red; */}
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    p {
+        margin-top: 0;
+        color: white;
+
+        @media (max-width: 850px) {
+            margin-bottom: 0;
+        }
+    }
+`;
+
+const ThirdText = styled.div`
+    ${'' /* border: 1px solid red; */}
+    width: 400px;
+    max-width: 400px;
+    min-width: 350px;
+    margin-left: 100px;
+    margin-right: 35px;
+
+    @media (max-width: 850px) {
+        order: 2;
+        text-align: center;
+        margin: 0
+    }
+`;
+
+const ThirdPic = styled.div`
+    ${'' /* border: 1px solid red; */}
+    width: 300px;
+    min-width: 300px;
     display: flex;
     align-items: center;
+    margin-left: 35px;
+    margin-right: 100px;
+
+    @media (max-width: 850px) {
+        width: 250px;
+        min-width: 250px;
+        margin: 0;
+    }
 
     img {
         ${'' /* border: 1px solid red; */}
@@ -197,7 +305,7 @@ const BottomCTA = styled.div`
 
     h3 {
         font-size: 24px;
-        margin: 80px 0 10px 0;
+        margin: 40px 0 10px 0;
     }
 
     button {
@@ -223,39 +331,36 @@ const Homepage = (props) => {
                 </ContentWrapper>
             </TopWrapper>
             <BottomWrapper>
-                <BounceArrowWrapper class = 'arrow bounce'>
-                    <a class = 'fa fa-chevron-down' href="#scroll"></a>
-                </BounceArrowWrapper>
-                <FirstAndThird className = 'scroll'>
-                    <FirstAndThirdText>
-                        <h2>Made for LinkedIn</h2>
-                        <p>LinkedIn Chrome Extension was made solely for LinkedIn and nothing else. This means you can always count on it to be the most reliable and easy-to-use scraper for LinkedIn.</p>
-                    </FirstAndThirdText>
-                    <FirstAndThirdPic> 
-                        <img src={linkedinLogo} alt="" />
-                    </FirstAndThirdPic>
-                </FirstAndThird>
+                <First>
+                    <FirstText>
+                        <h2>Effortlessly scrape</h2>
+                        <p>We've done all the work for you. All info you'd want to scrape from a LinkedIn profile is available - all you need to do is choose what you want from a list of options.</p>
+                    </FirstText>
+                    <FirstPic> 
+                        <img src={scrape} alt="" />
+                    </FirstPic>
+                </First>
                 <Second>
                     <SecondPic> 
-                        <img src={scrape} alt="" />
+                        <img src={linkedinLogo} alt="" />
                     </SecondPic>
                     <SecondText>
-                        <h2>Effortlessly scrape</h2>
-                        <p>We've done all the work for you. All info you'd want to scrape from a LinkedIn profile is available - all you need to do is choose what you want from a list of options. No messing around with selectors and trying to identify what makes them unique.</p>
+                        <h2>Made for LinkedIn</h2>
+                        <p>LinkedIn Chrome Extension was made solely for LinkedIn and nothing else. This means you can always count on it to be the most reliable and easy-to-use scraper for LinkedIn.</p>
                     </SecondText>
                 </Second>
-                <FirstAndThird>
-                    <FirstAndThirdText>
+                <Third>
+                    <ThirdText>
                         <h2>Create templates</h2>
-                        <p>Save groups of fields you commonly scrape into templates and then choose which template you'd like to use as you scrape different profiles. You get one template for free and can create unlimited templates as a premium member.</p>
-                    </FirstAndThirdText>
-                    <FirstAndThirdPic> 
+                        <p>Save groups of fields you commonly scrape into templates and then choose which template you'd like to use as you scrape different profiles.</p>
+                    </ThirdText>
+                    <ThirdPic> 
                         <img src={template} alt="" />
-                    </FirstAndThirdPic>
-                </FirstAndThird>
+                    </ThirdPic>
+                </Third>
                 <BottomCTA>
-                    <h3>Subheader</h3>
-                    <AddExtensionBtn>Add to Chrome for free</AddExtensionBtn>
+                    <h3>Start scraping for free now!</h3>
+                    <AddExtensionBtn>Add to Chrome</AddExtensionBtn>
                 </BottomCTA>
             </BottomWrapper>
         </PageWrapper>

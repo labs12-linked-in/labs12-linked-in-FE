@@ -7,17 +7,19 @@ const FooterWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
     position: absolute;
     bottom:0;
-    ${'' /* height: 40px; */}
     width: 100%;
 `;
 
 const FooterContent = styled.div`
-    ${'' /* border: 1px solid red; */}
+    border: 1px solid red;
     background-color: #283e49;
-    display: flex;
-    flex-direction: column;
     width: 100%;
     color: white;
+    display: flex;
+
+    @media (max-width: 850px) {
+        justify-content: center;
+    }
   
   img {
       width: 30px;
