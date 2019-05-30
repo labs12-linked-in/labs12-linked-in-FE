@@ -65,6 +65,10 @@ const Left = styled.div`
     margin-left: 10px;
     text-transform: none;
 
+    &:hover {
+      color: #0284b1;
+    }
+
     @media (max-width: 650px) {
         display: none;
     }
