@@ -67,6 +67,7 @@ const FreePlan = styled.div`
 
     @media (max-width: 850px) {
         margin-right: 0;
+        width: 325px;
     }
 `;
 
@@ -102,17 +103,18 @@ const PremiumPlan = styled.div`
     @media (max-width: 850px) {
         margin-left: 0;
         margin-top: 30px;
+        width: 325px;
     }
 
     h3 {
-        color: #ff6d66;
+        color: #007096;
     }
 `;
 
 const PremiumPrice = styled.div`
     ${'' /* border: 1px solid red; */}
     width: 100%;
-    background-color: #ff6d66;
+    background-color: #007096;
     padding: 10px 0;
     
     p {
@@ -136,7 +138,7 @@ const Features = styled.div`
 `;
 
 const PremiumFeature = styled.p`
-    color: #ff6d66;
+    color: #007096;
     font-weight: bold;
 `;
 
