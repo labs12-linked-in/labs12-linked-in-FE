@@ -144,6 +144,7 @@ const FirstText = styled.div`
         order: 2;
         text-align: center;
         margin: 0
+        padding: 0 30px;
     }
 `;
 
@@ -226,6 +227,7 @@ const SecondText = styled.div`
     @media (max-width: 850px) {
         text-align: center;
         margin: 0
+        padding: 0 30px;
     }
 `;
 
@@ -272,6 +274,7 @@ const ThirdText = styled.div`
         order: 2;
         text-align: center;
         margin: 0
+        padding: 0 30px;
     }
 `;
 

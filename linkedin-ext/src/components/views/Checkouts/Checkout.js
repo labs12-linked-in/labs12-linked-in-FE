@@ -19,7 +19,7 @@ const PageWrapper = styled.div`
         font-size: 18px;
         font-weight: 400;
         margin-bottom: 40px;
-        padding: 0 20px;
+        padding: 0 40px;
         text-align: center;
         max-width: 1100px;
     }
@@ -32,6 +32,8 @@ const H1 = styled.h1`
     font-weight: 400;
     margin: 20px;
     font-size: 26px;
+    text-align: center;
+    ${'' /* padding: 0 40px; */}
 `;
 
 const PlansWrapper = styled.div`
@@ -39,6 +41,10 @@ const PlansWrapper = styled.div`
     display: flex;
     justify-content: center;
     max-width: 90%;
+
+    @media (max-width: 850px) {
+        flex-direction: column;
+    }
 
     h3 {
         font-size: 26px;
@@ -58,6 +64,10 @@ const FreePlan = styled.div`
     margin-right: 10px;
     width: 350px;
     height: 350px;
+
+    @media (max-width: 850px) {
+        margin-right: 0;
+    }
 `;
 
 const FreePrice = styled.div`
@@ -88,6 +98,11 @@ const PremiumPlan = styled.div`
     margin-left: 10px;
     width: 350px;
     height: 350px;
+
+    @media (max-width: 850px) {
+        margin-left: 0;
+        margin-top: 30px;
+    }
 
     h3 {
         color: #ff6d66;
@@ -161,7 +176,6 @@ const Span = styled.span`
     border-radius: 4px;
 
 `
-
 // ****************************************************
 
 toast.configure()

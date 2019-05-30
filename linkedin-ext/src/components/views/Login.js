@@ -110,11 +110,12 @@ const SignInButton = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 25px;
+  margin-bottom: 75px;
   padding-left: 60px;
 
   @media (max-width: 700px) {
     padding: 0;
+    margin: 0;
   }
 
   p {
