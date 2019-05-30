@@ -87,7 +87,7 @@ const SignInText = styled.div`
 
 const ScrapeText = styled.div`
   ${'' /* border: 1px solid red; */}
-  padding-right: 15px;
+  padding-right: 8px;
   color: #686868;
 `;
 
@@ -95,8 +95,14 @@ const MainContent = styled.div`
   ${'' /* border: 1px solid red; */}
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: 30px 20px 120px 0;
   padding-top: 30px;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+    margin: 30px 0 120px 0;
+  }
 `;
 
 const SignInButton = styled.div`
@@ -104,8 +110,12 @@ const SignInButton = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
-  margin-left: 20px;
+  padding-top: 25px;
+  padding-left: 60px;
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 
   p {
     margin: 10px 0 0 0;
@@ -116,9 +126,16 @@ const SignInButton = styled.div`
 
 const Text = styled.div`
   ${'' /* border: 1px solid red; */}
-  width: 225px;
+  width: 285px;
+  max-width: 285px;
+  min-width: 285px;
   margin-left: 100px;
-  padding-left: 20px;
+
+  @media (max-width: 700px) {
+    margin-left: 0;
+    margin-top: 50px;
+    text-align: center
+  }
 
   h1 {
     margin: 0;
@@ -127,10 +144,12 @@ const Text = styled.div`
   ul {
     ${'' /* border: 1px solid red; */}
     padding-left: 30px;
+    text-align: left
 
     li {
       ${'' /* border: 1px solid red; */}
-      padding-top 5px;
+      padding-top 10px;
+      font-size: 18px;
     }
   }
 `;
@@ -208,6 +227,11 @@ class Login extends Component {
           </SignInButton>
           <Text>
             <h1>LinkedIn scraping made easy!</h1>
+            <ul>
+              <li>As easy as choosing fields and pressing a button!</li>
+              <li>Made specifically for LinkedIn</li>
+              <li>Create scraping templates for different types of hires</li>
+            </ul>
           </Text>
         </MainContent>
       </PageWrapper>

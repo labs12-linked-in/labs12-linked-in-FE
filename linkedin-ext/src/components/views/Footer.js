@@ -11,7 +11,7 @@ const FooterWrapper = styled.div`
 `;
 
 const FooterContent = styled.div`
-    border: 1px solid red;
+    ${'' /* border: 1px solid red; */}
     background-color: #283e49;
     width: 100%;
     color: white;

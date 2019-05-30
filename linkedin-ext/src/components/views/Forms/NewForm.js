@@ -101,6 +101,7 @@ const DeleteField = styled.button`
   border-radius: 5px;
   font-size: 13px;
   cursor: pointer;
+  background-color: white;
 
   &:hover {
     background-color: #b50707;

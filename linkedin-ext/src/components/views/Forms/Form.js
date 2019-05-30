@@ -33,6 +33,7 @@ const Delete = styled.button`
   color: #b50707;
   border-color: #b50707;
   width: 100px;
+  background-color: white;
 
   &:hover {
     background-color: #b50707;
