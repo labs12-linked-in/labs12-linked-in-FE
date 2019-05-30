@@ -40,6 +40,7 @@ const H1 = styled.h1`
   font-weight: normal;
   margin: 20px;
   text-align: center;
+  margin: 10px;
 `;
 
 const IndividualForm = styled.div`

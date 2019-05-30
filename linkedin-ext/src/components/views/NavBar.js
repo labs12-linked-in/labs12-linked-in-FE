@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
 import logoBlue from '../../images/logoBlue.svg';
 
@@ -30,16 +30,9 @@ const NavDiv = styled.div`
       width: 30px;
       height: 40px;
   }
-
-  h1 {
-    color: white;
-    font-size: 18px;
-    font-weight: 600;
-    margin-left: 10px;
-  }
   
   a {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -47,6 +40,7 @@ const NavDiv = styled.div`
     transition: all 0.1s ease;
     cursor: pointer;
     text-decoration: none;
+    text-transform: none;
 
     &:hover {
       color: #0284b1;
@@ -63,6 +57,22 @@ const Left = styled.div`
   align-items: center;
   width: 290px;
   margin-left: 20px;
+
+  p {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 10px;
+    text-transform: none;
+
+    &:hover {
+      color: #0284b1;
+    }
+
+    @media (max-width: 650px) {
+        display: none;
+    }
+  }
 `;
 
 const Right = styled.div`
@@ -74,7 +84,7 @@ const Right = styled.div`
   align-items: center;
 
   p {
-    padding-left: 8px
+    padding-left: 8px;
   }
 `;
 
@@ -88,9 +98,6 @@ class NavBar extends Component {
   }
   
   render() {
-    
-    const StyledLink = styled(Link)
-    // ****************************************************
 
     let pricingLink
     let line1
@@ -111,21 +118,19 @@ class NavBar extends Component {
       loginLink = <Link to="/login">Login</Link>
     }
 
-
-    
     return (
       <NavWrapper>
         <NavDiv>
             <Left>
-                <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
-                <h1><NavLink className="headerHome" to="/">LinkedIn Chrome Extension</NavLink></h1>
+              <Link to="/"><img src={logoBlue} alt="LinkedIn Chrome Extension logo"/></Link>
+              <Link to="/"><p>LinkedIn Chrome Extension</p></Link>
             </Left>
             <Right>
-                <p>{formsLink}</p>
-                <p>{line1}</p>
-                <p>{pricingLink}</p>
-                <p>{line2}</p>
-                <p>{loginLink}</p>
+              <p>{formsLink}</p>
+              <p>{line1}</p>
+              <p>{pricingLink}</p>
+              <p>{line2}</p>
+              <p>{loginLink}</p>
             </Right>
         </NavDiv>
       </NavWrapper>

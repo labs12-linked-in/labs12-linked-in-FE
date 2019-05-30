@@ -7,17 +7,19 @@ const FooterWrapper = styled.div`
     ${'' /* border: 1px solid red; */}
     position: absolute;
     bottom:0;
-    ${'' /* height: 40px; */}
     width: 100%;
 `;
 
 const FooterContent = styled.div`
     ${'' /* border: 1px solid red; */}
     background-color: #283e49;
-    display: flex;
-    flex-direction: column;
     width: 100%;
     color: white;
+    display: flex;
+
+    @media (max-width: 850px) {
+        justify-content: center;
+    }
   
   img {
       width: 30px;
@@ -32,6 +34,23 @@ const FooterContent = styled.div`
   }
 `;
 
+const Links = styled.div`
+    ${'' /* border: 1px solid red; */}
+    margin: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+`;
+
+const Contact = styled.div`
+`;
+const Features = styled.div`
+`;
+const Account = styled.div`
+`;
+const Company = styled.div`
+`;
+
 const Copyright = styled.div`
     ${'' /* border: 1px solid red; */}
     margin: 20px 20px;
@@ -40,8 +59,22 @@ const Copyright = styled.div`
 `;
 
 const footer = props => (
-    <FooterWrapper>
+	<FooterWrapper>
         <FooterContent>
+            {/* <Links>
+                <Contact>
+                    Contact
+                </Contact>
+                <Features>
+                    Features
+                </Features>
+                <Account>
+                    Account
+                </Account>
+                <Company>
+                    Company
+                </Company>
+            </Links> */}
             <Copyright>
                 <img src={logoBlue} alt="LinkedIn Chrome Extension logo"/>
                 <p>LinkedIn Chrome Extension © 2019 </p>
