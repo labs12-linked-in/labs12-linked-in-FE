@@ -143,7 +143,7 @@ const SubmitBtn = styled.button`
   height: 30px;
   width: 100px;
   border: 1px solid #0284b1;
-  margin-left: 10px;
+  margin: 20px 0;
   border-radius: 5px;
   cursor: pointer;
   background-color: #0284b1;
@@ -274,7 +274,8 @@ class UpdateIndivForm extends Component {
               );
             })}
             <Buttons>
-              <AddFieldBtn>Add field</AddFieldBtn>
+              {/* Add field button commented out until it's made to work properly */}
+              {/* <AddFieldBtn>Add field</AddFieldBtn> */}
               <SubmitBtn onClick={e => this.updateForm(e)}>Submit</SubmitBtn>
             </Buttons>
           </Form>
