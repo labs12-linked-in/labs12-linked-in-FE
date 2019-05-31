@@ -49,6 +49,11 @@ const Form = styled.form`
     width: 400px;
     height: 55px;
     font-size: 24px;
+    border: 1px solid grey;
+
+    @media (max-width: 600px) {
+      width: 90%;
+    }
   }
 `;
 
@@ -64,6 +69,10 @@ const Field = styled.div`
   align-items: center;
   font-size: 20px;
   padding: 10px 0;
+
+  @media (max-width: 600px) {
+        width: 90%;
+    }
 `;
 
 const FieldHeader = styled.div`
@@ -91,17 +100,19 @@ const SelectField = styled.div`
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    background-color: white;
   }
 `;
 
 const DeleteField = styled.button`
   ${"" /* border: 1px solid red; */}
   color: #b50707;
-  border-color: #b50707;
+  border: 1px solid #b50707;
   border-radius: 5px;
   font-size: 13px;
   cursor: pointer;
   background-color: white;
+  box-shadow: none;
 
   &:hover {
     background-color: #b50707;
@@ -128,6 +139,7 @@ const AddFieldBtn = styled.button`
   font-size: 14px;
   background-image: linear-gradient(-180deg, #0387fa, #0284b1, 90%);
   font-weight: bold;
+  background-color: white;
 
   &:hover {
     border: 1px solid #02659e;

@@ -3,6 +3,7 @@ import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 import "react-toastify/dist/ReactToastify.css";
 import reducers from '../../../reducers';
@@ -67,6 +68,7 @@ const FreePlan = styled.div`
 
     @media (max-width: 850px) {
         margin-right: 0;
+        width: 325px;
     }
 `;
 
@@ -102,17 +104,18 @@ const PremiumPlan = styled.div`
     @media (max-width: 850px) {
         margin-left: 0;
         margin-top: 30px;
+        width: 325px;
     }
 
     h3 {
-        color: #ff6d66;
+        color: #007096;
     }
 `;
 
 const PremiumPrice = styled.div`
     ${'' /* border: 1px solid red; */}
     width: 100%;
-    background-color: #ff6d66;
+    background-color: #007096;
     padding: 10px 0;
     
     p {
@@ -132,11 +135,28 @@ const Amount = styled.div`
 
 const Features = styled.div`
     ${'' /* border: 1px solid red; */}
+`;
 
+const AddExtensionBtn = styled.button`
+    ${'' /* border: 1px solid red; */}
+    height: 30px;
+    width: 140px;
+    border: 1px solid #273e49;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #273e49;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 3px;
+    margin-top: 3px;
 `;
 
 const PremiumFeature = styled.p`
-    color: #ff6d66;
+    color: #007096;
     font-weight: bold;
 `;
 
@@ -245,6 +265,7 @@ class Checkout extends Component {
                             <p>Unlimited scraping</p>
                             <p>Create 1 scraping template</p>
                         </Features>
+                        <Link to="/"><AddExtensionBtn>Add to Chrome</AddExtensionBtn></Link>
                     </FreePlan>
                     <PremiumPlan>
                         <h3>{this.state.name}</h3>

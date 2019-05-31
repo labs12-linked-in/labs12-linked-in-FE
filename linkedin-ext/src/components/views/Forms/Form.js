@@ -5,11 +5,12 @@ import styled from "styled-components";
 
 // **************** STYLED COMPONENETS ****************
 const FormWrapper = styled.div`
-  ${"" /* border: 1px solid red; */}
+  ${'' /* border: 1px solid red; */}
   padding: 10px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   button {
     ${"" /* background-color: red; */}
@@ -22,6 +23,10 @@ const FormWrapper = styled.div`
 const Name = styled.div`
   ${"" /* border: 1px solid red; */}
   width: 150px;
+
+  @media (max-width: 850px) {
+    width: 115px;
+  }
 `;
 
 const FieldCount = styled.div`
@@ -34,6 +39,11 @@ const Delete = styled.button`
   border-color: #b50707;
   width: 100px;
   background-color: white;
+  border: 1px solid #b50707;
+
+  @media (max-width: 600px) {
+    width: 50px;
+  }
 
   &:hover {
     background-color: #b50707;

@@ -23,7 +23,7 @@ const TopWrapper = styled.div`
     justify-content: center;
 
     @media (max-width: 850px) {
-        height: 500px;
+        height: 550px;
     }
 `;
 
@@ -144,7 +144,7 @@ const FirstText = styled.div`
         order: 2;
         text-align: center;
         margin: 0
-        padding: 0 30px;
+        width: 10px;
     }
 `;
 
@@ -175,6 +175,7 @@ const Second = styled.div`
     justify-content: center;
     align-items: center
     height: 400px;
+    padding: 0 20px;
 
     @media (max-width: 850px) {
         flex-direction: column;
@@ -227,7 +228,7 @@ const SecondText = styled.div`
     @media (max-width: 850px) {
         text-align: center;
         margin: 0
-        padding: 0 30px;
+        width: 100px;
     }
 `;
 
@@ -274,7 +275,8 @@ const ThirdText = styled.div`
         order: 2;
         text-align: center;
         margin: 0
-        padding: 0 30px;
+        ${'' /* padding: 0 30px; */}
+        width: 100px;
     }
 `;
 
@@ -309,6 +311,7 @@ const BottomCTA = styled.div`
     h3 {
         font-size: 24px;
         margin: 40px 0 10px 0;
+        text-align: center;
     }
 
     button {

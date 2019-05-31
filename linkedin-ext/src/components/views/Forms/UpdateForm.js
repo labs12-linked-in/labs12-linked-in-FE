@@ -51,6 +51,11 @@ const Form = styled.form`
     width: 400px;
     height: 55px;
     font-size: 24px;
+
+    @media (max-width: 600px) {
+      width: 90%;
+      border: 1px solid grey;
+    }
   }
 `;
 
@@ -66,6 +71,10 @@ const Field = styled.div`
   align-items: center;
   font-size: 20px;
   padding: 10px 0;
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const FieldHeader = styled.div`
@@ -93,17 +102,19 @@ const SelectField = styled.div`
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    background-color: white;
   }
 `;
 
 const DeleteField = styled.button`
   ${"" /* border: 1px solid red; */}
   color: #b50707;
-  border-color: #b50707;
+  border: 1px solid #b50707;
   border-radius: 5px;
   font-size: 13px;
   cursor: pointer;
   background-color: white;
+  box-shadow: none;
 
   &:hover {
     background-color: #b50707;
@@ -117,33 +128,34 @@ const Buttons = styled.div`
   align-items: center;
 `;
 
-const AddFieldBtn = styled.button`
-  ${"" /* border: 1px solid red; */}
-  height: 30px;
-  width: 100px;
-  margin: 20px 0;
-  border: 1px solid #0284b1;
-  margin-right: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #0284b1;
-  font-size: 14px;
-  background-image: linear-gradient(-180deg, #0387fa, #0284b1, 90%);
-  font-weight: bold;
+ {/* Add field button commented out until it's made to work properly */}
+// const AddFieldBtn = styled.button`
+//   ${"" /* border: 1px solid red; */}
+//   height: 30px;
+//   width: 100px;
+//   margin: 20px 0;
+//   border: 1px solid #0284b1;
+//   margin-right: 10px;
+//   border-radius: 5px;
+//   cursor: pointer;
+//   color: #0284b1;
+//   font-size: 14px;
+//   background-image: linear-gradient(-180deg, #0387fa, #0284b1, 90%);
+//   font-weight: bold;
 
-  &:hover {
-    border: 1px solid #02659e;
-    background-color: #0284b1;
-    color: white;
-  }
-`;
+//   &:hover {
+//     border: 1px solid #02659e;
+//     background-color: #0284b1;
+//     color: white;
+//   }
+// `;
 
 const SubmitBtn = styled.button`
   ${"" /* border: 1px solid red; */}
   height: 30px;
   width: 100px;
   border: 1px solid #0284b1;
-  margin-left: 10px;
+  margin: 20px 0;
   border-radius: 5px;
   cursor: pointer;
   background-color: #0284b1;
@@ -274,7 +286,8 @@ class UpdateIndivForm extends Component {
               );
             })}
             <Buttons>
-              <AddFieldBtn>Add field</AddFieldBtn>
+              {/* Add field button commented out until it's made to work properly */}
+              {/* <AddFieldBtn>Add field</AddFieldBtn> */}
               <SubmitBtn onClick={e => this.updateForm(e)}>Submit</SubmitBtn>
             </Buttons>
           </Form>
