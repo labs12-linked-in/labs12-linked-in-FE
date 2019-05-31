@@ -145,7 +145,6 @@ const FirstText = styled.div`
         text-align: center;
         margin: 0
         width: 10px;
-        ${'' /* padding: 0 30px; */}
     }
 `;
 
@@ -312,6 +311,7 @@ const BottomCTA = styled.div`
     h3 {
         font-size: 24px;
         margin: 40px 0 10px 0;
+        text-align: center;
     }
 
     button {
