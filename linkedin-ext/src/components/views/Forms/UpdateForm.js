@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getIndivForm, updateForm } from "../../../actions/formActions.js";
 import { getField, deleteField } from "../../../actions/formFieldActions.js";
 import styled from "styled-components";
+import Spinner from "../../Spinner/Spinner";
 
 // **************** STYLED COMPONENETS ****************
 const PageWrapper = styled.div`
@@ -188,6 +189,17 @@ class UpdateIndivForm extends Component {
     this.setState({ fields: this.props.fieldsToUpdate });
   }
 
+
+  componentDidUpdate(prevProps) {
+    if (this.props.fieldsToUpdate !== prevProps.fieldsToUpdate) {
+      console.log("it fire");
+      this.setState({
+        form: this.props.formToUpdate,
+        fields: this.props.fieldsToUpdate
+      });
+    }
+  }
+
   handleChangeForm = e => {
     this.setState({
       form: {
@@ -219,13 +231,28 @@ class UpdateIndivForm extends Component {
     this.props.history.push("/forms");
   };
 
-  render() {
-    {
-      console.log("state", this.state, "props", this.props);
+  afterFormDelete = () => {
+    let url_string = window.location.href; //window.location.href
+    let url = new URL(url_string);
+    let id = url.searchParams.get("id");
+    if(this.props.forms.isDeleting === false) {
+      this.props.getIndivForm(id);
+      this.props.getField(id);
     }
-    if (this.state.form == null) {
-      return <div> Loading</div>;
-    } else {
+  }
+
+  render() {
+    if (
+      this.props.forms.gettingField === true &&
+      this.state.form.length === 0 &&
+      this.state.fields.length === 0 &&
+      this.props.forms.isDelete === true) {
+      return <div> <Spinner /></div>;
+    } else if (
+      this.props.forms.gettingField === false &&
+      this.state.form.length !== 0 &&
+      this.state.fields.length !== 0 &&
+      this.props.forms.isDelete === false) {
       return (
         <PageWrapper>
           <Cancel href="" onClick={this.cancel}>
@@ -276,7 +303,11 @@ class UpdateIndivForm extends Component {
                     <DeleteField
                       onClick={e => {
                         if (window.confirm("Are you sure you want to delete this field?"))
-                        this.deleteField(e)}}
+                        this.deleteField(e)
+                        this.props.initialForm()
+                        this.props.initialField()
+                        this.afterFormDelete()
+                        }}
                       value={this.state.fields[idx].id}
                     >
                       Delete
@@ -293,6 +324,10 @@ class UpdateIndivForm extends Component {
           </Form>
         </PageWrapper>
       );
+    } else {
+      return (
+        <div><Spinner /></div>
+      )
     }
   }
 }
@@ -300,7 +335,8 @@ class UpdateIndivForm extends Component {
 const mapStateToProps = state => {
   return {
     formToUpdate: state.formReducer.formToUpdate,
-    fieldsToUpdate: state.formReducer.fieldsToUpdate
+    fieldsToUpdate: state.formReducer.fieldsToUpdate,
+    forms: state.formReducer
   };
 };
 

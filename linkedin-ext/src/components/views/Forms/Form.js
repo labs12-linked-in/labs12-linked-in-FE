@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteForm, addFormToUpdate } from "../../../actions/formActions.js";
+import { deleteForm, addFormToUpdate, getForm } from "../../../actions/formActions.js";
 import styled from "styled-components";
 
 // **************** STYLED COMPONENETS ****************
@@ -64,6 +64,12 @@ class Form extends Component {
     );
   };
 
+  gettingForm = () => {
+    if (this.props.forms.isDeleting === false) {
+      this.props.getForm();
+    }
+  }
+
   render() {
     console.log("form props", this.props);
     const { id, name, field_count } = this.props.form;
@@ -80,6 +86,7 @@ class Form extends Component {
                   this.props.form.form_id,
                   e.stopPropagation()
                 );
+                this.gettingForm()
             }}
           >
             delete
@@ -92,11 +99,14 @@ class Form extends Component {
 
 const mapStateToProps = state => {
   return {
-    formToUpdate: state.formReducer.formToUpdate
+    formToUpdate: state.formReducer.formToUpdate,
+    forms: state.formReducer
   };
 };
 
+
+
 export default connect(
   mapStateToProps,
-  { deleteForm, addFormToUpdate }
+  { deleteForm, addFormToUpdate, getForm }
 )(Form);
