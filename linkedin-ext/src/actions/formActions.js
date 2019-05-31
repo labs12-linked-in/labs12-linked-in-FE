@@ -66,7 +66,15 @@ export const deleteForm = (userId, formId) => dispatch => {
     });
 };
 
+export const ADD_FORM_START = "ADD_FORM_START";
+export const ADD_FORM_SUCCESS = "ADD_FORM_SUCCESS";
+export const ADD_FORM_FAILURE = "ADD_FORM_FAILURE";
+export const ADD_FIELD_START = 'ADD_FIELD_START'
+export const ADD_FIELD_SUCCESS = 'ADD_FIELD_SUCCESS'
+export const ADD_FIELD_FAILURE = 'ADD_FIELD_FAILURE'
+
 export const addForm = newForm => async dispatch => {
+  dispatch({ type: ADD_FORM_START });
   await axios
     .post(
       `${deployedDb}/api/forms/${localStorage.getItem("id")}`,
@@ -80,8 +88,10 @@ export const addForm = newForm => async dispatch => {
       }
     )
     .then(async id => {
+      dispatch({ type: ADD_FORM_SUCCESS });
       console.log(id, "id");
       for (let i = 0; i < newForm.fields.length; i++) {
+        dispatch({type: ADD_FIELD_START})
         await axios
           .post(
             `${deployedDb}/api/fields/field`,
@@ -97,13 +107,17 @@ export const addForm = newForm => async dispatch => {
           )
           .then(res => {
             console.log(res, "field res");
+            dispatch({type: ADD_FIELD_SUCCESS})
           })
           .catch(err => {
             console.log("Failed to add form field", err);
+            dispatch({type: ADD_FIELD_FAILURE})
           });
       }
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      dispatch({ type: ADD_FORM_FAILURE });
+    });
 };
 
 export const UPDATE_FORM_START = "UPDATE_FORM_START";
@@ -150,4 +164,9 @@ export const addFormToUpdate = form => dispatch => {
   dispatch({ type: ADD_UPDATE_FORM_START });
   console.log("from formActions", form);
   dispatch({ type: ADD_UPDATE_FORM_SUCCESS, payload: form });
+};
+
+
+export const initialForm = none => dispatch => {
+  dispatch({ type: GET_INDIVFORM_START });
 };

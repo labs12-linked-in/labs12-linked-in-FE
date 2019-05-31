@@ -202,10 +202,15 @@ class NewForm extends Component {
     }));
   };
 
+  homepage = () => {
+    this.props.history.push("/forms")
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.addForm(this.state);
-    this.props.history.push("/forms");
+    setTimeout(this.homepage, 800)
+    
   };
 
   cancel = () => {
@@ -280,7 +285,10 @@ class NewForm extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    login: state.login,
+    forms: state.formReducer
+  };
 };
 
 const mapDispatchToProps = dispatch => {

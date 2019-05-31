@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getForm } from "../../../actions/formActions.js";
 import styled from "styled-components";
 import axios from "axios";
+import Spinner from "../../Spinner/Spinner";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
 const localDb = "http://localhost:9001";
@@ -61,8 +62,9 @@ const IndividualForm = styled.div`
 // ****************************************************
 
 class Forms extends Component {
-  componentDidMount() {
-    this.props.getForm(localStorage.getItem("id"));
+  componentWillMount() {
+    this.props.getForm();
+    console.log('i am here')
   }
 
   newForm = async () => {
@@ -93,13 +95,21 @@ class Forms extends Component {
   };
 
   render() {
-    let form = <div>loading</div>;
+    let form = (
+      <div>
+        <Spinner />
+      </div>
+    )
 
-    if (!this.props.fetching && this.props.forms !== null) {
+    if ((this.props.forms.forms === null ||
+      this.props.forms.forms.length === (0 || undefined)) &&
+    !this.props.forms.isLoading && this.props.forms.gettingForm === false &&
+    this.props.forms.isDeleting === false && this.props.forms.isAdding === false &&
+    this.props.forms.isAddingField === false && this.props.forms.isAdding === false) {
       form = (
         <FormsWrapper>
           <H1>Create scraping templates to customize the fields you scrape</H1>
-          {this.props.forms.map(form => (
+          {this.props.forms.forms.map(form => (
             <IndividualForm>
               <Form form={form} history={this.props.history} />
             </IndividualForm>
@@ -108,6 +118,28 @@ class Forms extends Component {
         </FormsWrapper>
       );
     }
+    else if (this.props.forms.forms !== null && this.props.forms.isLoading === false) {
+      form = (
+        <FormsWrapper>
+          <H1>Create scraping templates to customize the fields you scrape</H1>
+          {this.props.forms.forms.map(form => (
+            <IndividualForm>
+              <Form form={form} history={this.props.history} />
+            </IndividualForm>
+          ))}
+          <CreateFormBtn onClick={this.newForm}>Create new template</CreateFormBtn>
+        </FormsWrapper>
+      );
+    } 
+    else if (this.props.forms.gettingForm === true &&
+      this.props.forms.isDeleting === true && this.props.forms.isAdding === true &&
+      this.props.forms.isAddingField === true && this.props.forms.isAdding === true) {
+        form = (
+          <div>
+            <Spinner />
+          </div>
+        )
+      }
 
     return <div>{form}</div>;
   }
@@ -115,8 +147,8 @@ class Forms extends Component {
 
 const mapStateToProps = state => {
   return {
-    forms: state.formReducer.forms,
-    getForm: state.formReducer.getForm
+    login: state.login,
+    forms: state.formReducer
   };
 };
 

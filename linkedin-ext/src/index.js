@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import logger from "redux-logger";
-import thunk from "redux-thunk";
+import thunkMiddleware from "redux-thunk";
 
 import './index.css';
 
@@ -14,7 +14,7 @@ import reducer from "./reducers/index";
 const store = createStore(
   reducer,
   compose(
-    applyMiddleware(thunk, logger),
+    applyMiddleware(thunkMiddleware, logger),
     window.__REDUX_DEVTOOLS_EXTENSION__
       ? window.__REDUX_DEVTOOLS_EXTENSION__()
       : f => f

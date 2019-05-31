@@ -44,3 +44,7 @@ export const deleteField = id => dispatch => {
       alert("Failed to delete form, please try again");
     });
 };
+
+export const initialField = none => dispatch => {
+  dispatch({ type: GET_FIELDS_START });
+};
