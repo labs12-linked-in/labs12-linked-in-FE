@@ -183,7 +183,7 @@ class Login extends Component {
 
     // Initializes OAuth.io with API key
     // Sign-up an account to get one
-    window.OAuth.initialize("Yq_ObrXeRonGLhBwvd3nXD2oFlA");
+    window.OAuth.initialize("xlVDUJB4gEZbVwwevZHnQQD2Q6s");
 
     // Popup and ask for authorization
     window.OAuth.popup("linkedin2").done(function(token) {
