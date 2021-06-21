@@ -162,7 +162,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
 const localDb = "http://localhost:9001";
-const deployedApp = "https://linkedinextension.netlify.app";
+const deployedApp = "https://linkedin-extension.netlify.app";
 const localApp = "http://localhost:3000";
 
 class Login extends Component {
