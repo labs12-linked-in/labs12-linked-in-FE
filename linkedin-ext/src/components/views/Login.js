@@ -162,7 +162,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 
 const deployedDb = "https://linkedinextension.herokuapp.com";
 const localDb = "http://localhost:9001";
-const deployedApp = "https://linkedinextension.netlify.com";
+const deployedApp = "https://linkedinextension.netlify.app";
 const localApp = "http://localhost:3000";
 
 class Login extends Component {
@@ -183,7 +183,7 @@ class Login extends Component {
 
     // Initializes OAuth.io with API key
     // Sign-up an account to get one
-    window.OAuth.initialize("xlVDUJB4gEZbVwwevZHnQQD2Q6s");
+    window.OAuth.initialize("Yq_ObrXeRonGLhBwvd3nXD2oFlA");
 
     // Popup and ask for authorization
     window.OAuth.popup("linkedin2").done(function(token) {
@@ -194,7 +194,7 @@ class Login extends Component {
         localStorage.setItem("firstName", response.data.userInfo.first_name);
         localStorage.setItem("lastName", response.data.userInfo.last_name);
         localStorage.setItem("token", response.data.token);
-        window.OAuth.redirect("linkedin2", `${localApp}/forms`);
+        window.OAuth.redirect("linkedin2", `${deployedApp}/forms`);
       });
     });
   }
