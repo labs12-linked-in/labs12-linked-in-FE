@@ -1,4 +1,4 @@
 [build]
 base = "linkedin-ext/"
 publish = "linkedin-ext/build"
-command = "CI = yarn build"
+command = "CI = npm run build"
